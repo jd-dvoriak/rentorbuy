@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.w3.org/2000/svg"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://rentorbuy.cz</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://rentorbuy.cz"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rentorbuy.cz?lang=en"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
