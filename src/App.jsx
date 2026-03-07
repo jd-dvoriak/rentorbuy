@@ -17,7 +17,7 @@ const I18N = {
     price: "Kupní cena", dp: "Vlastní prostředky",
     rate: "Úroková sazba", term: "Doba splácení",
     invest: "Výnos z investic (např. S&P 500)", appreciation: "Zhodnocení nemovitosti",
-    oppNote: "Nájemce investuje vlastní prostředky + měsíční úspory (když hypotéka > nájem) s daným výnosem.",
+    oppNote: "Kdo platí méně měsíčně, investuje rozdíl s daným výnosem. Nájemce navíc investuje vlastní prostředky.",
     buyWins: "Koupě se vyplatí", rentWins: "Pronájem se vyplatí",
     after: "po", yrs: "letech", moreBy: "více čistého jmění díky",
     buyVerb: "koupi", rentVerb: "pronájmu + investování",
@@ -54,7 +54,7 @@ const I18N = {
     price: "Purchase price", dp: "Down payment",
     rate: "Mortgage rate", term: "Mortgage term",
     invest: "Investment return (e.g. S&P 500)", appreciation: "Property appreciation",
-    oppNote: "Renter invests down payment + monthly savings (when mortgage > rent) at this return rate.",
+    oppNote: "Whoever pays less per month invests the difference at this return rate. Renter also invests the down payment.",
     buyWins: "Buying wins", rentWins: "Renting wins",
     after: "after", yrs: "years", moreBy: "more net equity by",
     buyVerb: "buying", rentVerb: "renting + investing",
@@ -117,13 +117,13 @@ function compute(baseRent, rentRate, purchasePrice, downPayment, annualRate, mor
     : mRate > 0 ? Math.round(principal * mRate * Math.pow(1 + mRate, nPay) / (Math.pow(1 + mRate, nPay) - 1))
     : Math.round(principal / nPay);
 
-  let bal = principal, dpC = downPayment, savC = 0, cross = null;
+  let bal = principal, dpC = downPayment, renterSavC = 0, buyerSavC = 0, cross = null;
 
   const rows = Array.from({ length: totalYears }, (_, i) => {
     const rent = Math.round(baseRent * Math.pow(1 + rRate, i));
     const mtg = i < mortgageYears ? mp : 0;
     const pv = Math.round(purchasePrice * Math.pow(1 + pRate, i));
-    let yI = 0, yP = 0, mS = 0, mSc = 0;
+    let yI = 0, yP = 0, rMS = 0, rMSc = 0, bMS = 0, bMSc = 0;
 
     for (let m = 0; m < 12; m++) {
       if (bal > 0 && i < mortgageYears) {
@@ -133,9 +133,21 @@ function compute(baseRent, rentRate, purchasePrice, downPayment, annualRate, mor
         yP += Math.min(mP, bal);
         bal = Math.max(0, bal - mP);
       }
-      const diff = mtg - rent;
-      if (diff > 0) { savC = (savC + diff) * (1 + iRateM); mS += diff; mSc++; }
-      else { savC *= (1 + iRateM); }
+      const diff = mtg - rent; // positive = renter pays less, negative = buyer pays less
+      if (diff > 0) {
+        // Renter pays less → renter invests the difference
+        renterSavC = (renterSavC + diff) * (1 + iRateM);
+        buyerSavC *= (1 + iRateM);
+        rMS += diff; rMSc++;
+      } else if (diff < 0) {
+        // Buyer pays less → buyer invests the difference
+        buyerSavC = (buyerSavC + (-diff)) * (1 + iRateM);
+        renterSavC *= (1 + iRateM);
+        bMS += (-diff); bMSc++;
+      } else {
+        renterSavC *= (1 + iRateM);
+        buyerSavC *= (1 + iRateM);
+      }
       dpC *= (1 + iRateM);
     }
 
@@ -145,10 +157,12 @@ function compute(baseRent, rentRate, purchasePrice, downPayment, annualRate, mor
       year: 2026 + i, rent, mortgage: mtg,
       yearInterest: Math.round(yI), balance: Math.round(Math.max(0, bal)),
       propertyValue: pv,
-      buyerEquity: Math.round(pv - Math.max(0, bal)),
-      renterEquity: Math.round(dpC + savC),
-      dpInvested: Math.round(dpC), savingsInvested: Math.round(savC),
-      monthlySavings: mSc > 0 ? Math.round(mS / mSc) : 0,
+      buyerEquity: Math.round(pv - Math.max(0, bal) + buyerSavC),
+      renterEquity: Math.round(dpC + renterSavC),
+      dpInvested: Math.round(dpC), renterSavInvested: Math.round(renterSavC),
+      buyerSavInvested: Math.round(buyerSavC),
+      renterMoSav: rMSc > 0 ? Math.round(rMS / rMSc) : 0,
+      buyerMoSav: bMSc > 0 ? Math.round(bMS / bMSc) : 0,
     };
   });
 
@@ -249,8 +263,11 @@ function MonthlyTip({ active, payload, t }) {
       <div style={{ fontWeight: 700, marginBottom: 6, fontSize: 14, color: "#fff" }}>{d.year}</div>
       {tipRow(C.rent, t.rentL, `${fmt.n(d.rent)} CZK`)}
       {tipRow(C.buy, t.mtgL, d.mortgage > 0 ? `${fmt.n(d.mortgage)} CZK` : t.paidS)}
-      {d.monthlySavings > 0 && (
-        <div style={{ fontSize: 11, color: C.inv, marginTop: 4, textAlign: "right" }}>+{fmt.n(d.monthlySavings)}/m</div>
+      {d.renterMoSav > 0 && (
+        <div style={{ fontSize: 11, color: C.inv, marginTop: 4, textAlign: "right" }}>{t.renter} +{fmt.n(d.renterMoSav)}/m</div>
+      )}
+      {d.buyerMoSav > 0 && (
+        <div style={{ fontSize: 11, color: C.inv, marginTop: 4, textAlign: "right" }}>{t.buyer} +{fmt.n(d.buyerMoSav)}/m</div>
       )}
     </div>
   );
@@ -266,11 +283,12 @@ function EquityTip({ active, payload, t }) {
       <div style={{ fontSize: 10, color: C.buy, textTransform: "uppercase", letterSpacing: 1, marginBottom: 2 }}>{t.buyer}</div>
       {tipRow("#aaa", t.prop, fmt.m1(d.propertyValue))}
       {tipRow("#aaa", t.debtL, `−${fmt.m1(d.balance)}`)}
+      {d.buyerSavInvested > 0 && tipRow("#aaa", t.sav, fmt.m1(d.buyerSavInvested))}
       {tipRow(C.buy, t.eq, fmt.m1(d.buyerEquity))}
       <div style={{ height: 6 }} />
       <div style={{ fontSize: 10, color: C.rent, textTransform: "uppercase", letterSpacing: 1, marginBottom: 2 }}>{t.renter}</div>
       {tipRow("#aaa", t.dpInv, fmt.m1(d.dpInvested))}
-      {tipRow("#aaa", t.sav, fmt.m1(d.savingsInvested))}
+      {d.renterSavInvested > 0 && tipRow("#aaa", t.sav, fmt.m1(d.renterSavInvested))}
       {tipRow(C.rent, t.portfolio, fmt.m1(d.renterEquity))}
       <div style={{ borderTop: "1px solid #333", paddingTop: 6, marginTop: 6, fontWeight: 700, color: ahead ? C.buy : C.rent }}>
         {ahead ? `${t.bPlus}${fmt.m1(d.buyerEquity - d.renterEquity)}` : `${t.rPlus}${fmt.m1(d.renterEquity - d.buyerEquity)}`}
@@ -326,8 +344,8 @@ export default function RentVsBuy() {
   }, [r.data]);
 
   const verdict = bw
-    ? `${t.propWorth} ${fmt.m1(last.propertyValue)} CZK ${last.balance > 0 ? `${t.debt} ${fmt.m1(last.balance)}` : t.paid}. ${t.renterReach} ${fmt.m1(r.rentEq)} CZK.`
-    : `${t.investReach} ${fmt.m1(r.rentEq)} CZK (${fmt.m1(last.dpInvested)} ${t.fromDp} + ${fmt.m1(last.savingsInvested)} ${t.fromSav}). ${t.buyerWould} ${fmt.m1(r.buyEq)} CZK.`;
+    ? `${t.propWorth} ${fmt.m1(last.propertyValue)} CZK ${last.balance > 0 ? `${t.debt} ${fmt.m1(last.balance)}` : t.paid}${last.buyerSavInvested > 0 ? ` + ${fmt.m1(last.buyerSavInvested)} ${t.fromSav}` : ""}. ${t.renterReach} ${fmt.m1(r.rentEq)} CZK.`
+    : `${t.investReach} ${fmt.m1(r.rentEq)} CZK (${fmt.m1(last.dpInvested)} ${t.fromDp}${last.renterSavInvested > 0 ? ` + ${fmt.m1(last.renterSavInvested)} ${t.fromSav}` : ""}). ${t.buyerWould} ${fmt.m1(r.buyEq)} CZK.`;
 
   return (
     <div style={{ background: C.bg, color: C.txt, minHeight: "100vh", fontFamily: "'Inter',-apple-system,sans-serif" }}>
@@ -485,8 +503,8 @@ export default function RentVsBuy() {
                       <td style={{ padding: "6px 10px", textAlign: "right", color: "#6a6a7a" }}>{d.year}</td>
                       <td style={{ padding: "6px 10px", textAlign: "right", color: C.rent }}>{fmt.n(d.rent)}</td>
                       <td style={{ padding: "6px 10px", textAlign: "right", color: C.buy }}>{d.mortgage > 0 ? fmt.n(d.mortgage) : "—"}</td>
-                      <td style={{ padding: "6px 10px", textAlign: "right", color: d.monthlySavings > 0 ? C.inv : "#3a3a4a" }}>
-                        {d.monthlySavings > 0 ? `+${fmt.n(d.monthlySavings)}` : "—"}
+                      <td style={{ padding: "6px 10px", textAlign: "right", color: (d.renterMoSav > 0 || d.buyerMoSav > 0) ? C.inv : "#3a3a4a" }}>
+                        {d.renterMoSav > 0 ? `R +${fmt.n(d.renterMoSav)}` : d.buyerMoSav > 0 ? `B +${fmt.n(d.buyerMoSav)}` : "—"}
                       </td>
                       <td style={{ padding: "6px 10px", textAlign: "right", color: C.buy, fontWeight: 600 }}>{fmt.m1(d.buyerEquity)}</td>
                       <td style={{ padding: "6px 10px", textAlign: "right", color: C.rent, fontWeight: 600 }}>{fmt.m1(d.renterEquity)}</td>
