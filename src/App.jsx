@@ -68,6 +68,7 @@ const I18N = {
     ctaLearnBtn: "Přečíst průvodce",
     ctaAboutTitle: "O projektu",
     ctaAboutDesc: "Kdo za tím stojí a proč jsme to udělali.",
+    ctaAboutBtn: "Zjistit víc",
     // ── LEARN PAGE ──
     learnHero: "Pronájem nebo koupě? Pojďme si to rozebrat.",
     learnHeroSub: "Bez emocí, bez tlaku. Jen čísla a zdravý rozum.",
@@ -179,6 +180,7 @@ const I18N = {
     ctaLearnBtn: "Read the guide",
     ctaAboutTitle: "About the project",
     ctaAboutDesc: "Who's behind it and why we built it.",
+    ctaAboutBtn: "Learn more",
     learnHero: "Rent or buy? Let's break it down.",
     learnHeroSub: "No emotions, no pressure. Just numbers and common sense.",
     emo1Title: "Why is this such a hard decision?",
@@ -418,7 +420,7 @@ const dp = (c) => ({ r: 5, fill: c, stroke: C.bg, strokeWidth: 2 });
    LEARN PAGE
    ══════════════════════════════════════════ */
 function LearnPage({ t, onGoCalc }) {
-  const P = ({ children, style }) => <p style={{ fontSize: 15, color: C.dim, lineHeight: 1.8, margin: "0 0 16px", ...style }}>{children}</p>;
+  const P = ({ children, style }) => <p style={{ fontSize: 15, color: C.dim, lineHeight: 1.8, margin: "0 0 16px", textAlign: "justify", ...style }}>{children}</p>;
   const H = ({ children, icon }) => <h2 style={{ fontSize: 22, fontWeight: 800, color: C.txt, margin: "48px 0 20px", display: "flex", alignItems: "center", gap: 10 }}>{icon && <span style={{ fontSize: 24 }}>{icon}</span>}{children}</h2>;
   const Item = ({ title, children, color }) => (
     <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 22px", marginBottom: 12 }}>
@@ -479,7 +481,7 @@ function LearnPage({ t, onGoCalc }) {
    ABOUT PAGE
    ══════════════════════════════════════════ */
 function AboutPage({ t, track, onGoCalc, onGoLearn }) {
-  const P = ({ children }) => <p style={{ fontSize: 15, color: C.dim, lineHeight: 1.8, margin: "0 0 16px" }}>{children}</p>;
+  const P = ({ children }) => <p style={{ fontSize: 15, color: C.dim, lineHeight: 1.8, margin: "0 0 16px", textAlign: "justify" }}>{children}</p>;
   return (
     <main style={{ maxWidth: 680, margin: "0 auto", padding: "24px 24px 48px" }}>
       <h1 style={{ fontSize: 28, fontWeight: 800, color: C.txt, margin: "40px 0 24px" }}>{t.aboutTitle}</h1>
@@ -491,18 +493,22 @@ function AboutPage({ t, track, onGoCalc, onGoLearn }) {
           background: C.card, border: `1px solid ${C.border}`, borderRadius: 12,
           padding: "20px", cursor: "pointer", textAlign: "left", fontFamily: "inherit",
         }}>
-          <div style={{ fontSize: 20, marginBottom: 8 }}>🧮</div>
-          <div style={{ fontSize: 15, fontWeight: 700, color: C.txt, marginBottom: 6 }}>{t.navCalc}</div>
-          <div style={{ fontSize: 13, color: C.dim }}>{t.aboutCalcDesc}</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+            <span style={{ fontSize: 20 }}>🧮</span>
+            <span style={{ fontSize: 15, fontWeight: 700, color: C.txt }}>{t.navCalc}</span>
+          </div>
+          <div style={{ fontSize: 13, color: C.dim, textAlign: "justify" }}>{t.aboutCalcDesc}</div>
           <span style={{ color: C.rent, fontSize: 13, fontWeight: 600, display: "inline-block", marginTop: 10 }}>{t.aboutCalcBtn} →</span>
         </button>
         <button onClick={onGoLearn} style={{
           background: C.card, border: `1px solid ${C.border}`, borderRadius: 12,
           padding: "20px", cursor: "pointer", textAlign: "left", fontFamily: "inherit",
         }}>
-          <div style={{ fontSize: 20, marginBottom: 8 }}>📖</div>
-          <div style={{ fontSize: 15, fontWeight: 700, color: C.txt, marginBottom: 6 }}>{t.navLearn}</div>
-          <div style={{ fontSize: 13, color: C.dim }}>{t.aboutLearnDesc}</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+            <span style={{ fontSize: 20 }}>📖</span>
+            <span style={{ fontSize: 15, fontWeight: 700, color: C.txt }}>{t.navLearn}</span>
+          </div>
+          <div style={{ fontSize: 13, color: C.dim, textAlign: "justify" }}>{t.aboutLearnDesc}</div>
           <span style={{ color: C.rent, fontSize: 13, fontWeight: 600, display: "inline-block", marginTop: 10 }}>{t.ctaLearnBtn} →</span>
         </button>
       </div>
@@ -571,7 +577,7 @@ function CalcPage({ t, track, onGoLearn, onGoAbout }) {
         {/* Intro */}
         <div style={{ marginBottom: 20 }}>
           <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 20px 16px" }}>
-            <p style={{ fontSize: 15, color: C.txt, lineHeight: 1.7, margin: "0 0 14px" }}>{t.intro}</p>
+            <p style={{ fontSize: 15, color: C.txt, lineHeight: 1.7, margin: "0 0 14px", textAlign: "justify" }}>{t.intro}</p>
             <button onClick={onGoLearn} style={{
               background: "none", border: "none", color: C.rent, fontSize: 13, fontWeight: 600,
               cursor: "pointer", fontFamily: "inherit", padding: 0, textAlign: "left",
@@ -606,7 +612,7 @@ function CalcPage({ t, track, onGoLearn, onGoAbout }) {
           <fieldset style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "16px 18px 8px", margin: 0 }}>
             <legend style={{ fontSize: 10, color: C.buy, textTransform: "uppercase", letterSpacing: 2, fontWeight: 700, padding: "0 4px" }}>{t.buy}</legend>
             <Slider label={t.price} value={purchasePrice} onChange={setPurchasePrice} min={2e6} max={30e6} step={5e5} format={fmt.m1} unit="CZK" color={C.buy} />
-            <Slider label={t.dp} value={downPayment} onChange={(v) => setDownPayment(Math.min(v, purchasePrice))} min={0} max={Math.min(purchasePrice, 15e6)} step={1e5} format={fmt.m1} unit="CZK" color={C.buy} />
+            <Slider label={t.dp} value={downPayment} onChange={(v) => setDownPayment(Math.min(v, purchasePrice))} min={0} max={purchasePrice} step={1e5} format={fmt.m1} unit="CZK" color={C.buy} />
             <Slider label={t.rate} value={annualRate} onChange={setAnnualRate} min={1} max={10} step={0.1} unit="%" color={C.buy} />
             <Slider label={t.term} value={mortgageYears} onChange={setMortgageYears} min={5} max={40} step={1} unit={t.unit} color={C.buy} />
           </fieldset>
@@ -628,7 +634,7 @@ function CalcPage({ t, track, onGoLearn, onGoAbout }) {
             <span style={{ color: C.dim2, fontSize: 13 }}>{t.horizonLabel} {mortgageYears} {t.unit}</span>
           </div>
           <div style={{ fontSize: 32, fontWeight: 800, color: C.txt, marginBottom: 8, fontFamily: "monospace", letterSpacing: -1 }}>{fmt.m2(Math.abs(eqDiff))} CZK</div>
-          <p style={{ fontSize: 14, color: C.tipSub, lineHeight: 1.7, maxWidth: 700, margin: 0 }}>{t.moreBy} {bw ? t.buyVerb : t.rentVerb}. {vText}</p>
+          <p style={{ fontSize: 14, color: C.tipSub, lineHeight: 1.7, maxWidth: 700, margin: 0, textAlign: "justify" }}>{t.moreBy} {bw ? t.buyVerb : t.rentVerb}. {vText}</p>
 
           {/* Breakpoint insight */}
           {r.breakpoint && (
@@ -727,18 +733,23 @@ function CalcPage({ t, track, onGoLearn, onGoAbout }) {
             background: C.card, border: `1px solid ${C.border}`, borderRadius: 12,
             padding: "22px 20px", cursor: "pointer", textAlign: "left", fontFamily: "inherit",
           }}>
-            <div style={{ fontSize: 20, marginBottom: 8 }}>📖</div>
-            <div style={{ fontSize: 15, fontWeight: 700, color: C.txt, marginBottom: 6 }}>{t.ctaLearnTitle}</div>
-            <div style={{ fontSize: 13, color: C.dim, lineHeight: 1.6, marginBottom: 12 }}>{t.ctaLearnDesc}</div>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+              <span style={{ fontSize: 20 }}>📖</span>
+              <span style={{ fontSize: 15, fontWeight: 700, color: C.txt }}>{t.ctaLearnTitle}</span>
+            </div>
+            <div style={{ fontSize: 13, color: C.dim, lineHeight: 1.6, marginBottom: 12, textAlign: "justify" }}>{t.ctaLearnDesc}</div>
             <span style={{ color: C.rent, fontSize: 13, fontWeight: 600 }}>{t.ctaLearnBtn} →</span>
           </button>
           <button onClick={onGoAbout} style={{
             background: C.card, border: `1px solid ${C.border}`, borderRadius: 12,
             padding: "22px 20px", cursor: "pointer", textAlign: "left", fontFamily: "inherit",
           }}>
-            <div style={{ fontSize: 20, marginBottom: 8 }}>👋</div>
-            <div style={{ fontSize: 15, fontWeight: 700, color: C.txt, marginBottom: 6 }}>{t.ctaAboutTitle}</div>
-            <div style={{ fontSize: 13, color: C.dim, lineHeight: 1.6 }}>{t.ctaAboutDesc}</div>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+              <span style={{ fontSize: 20 }}>👋</span>
+              <span style={{ fontSize: 15, fontWeight: 700, color: C.txt }}>{t.ctaAboutTitle}</span>
+            </div>
+            <div style={{ fontSize: 13, color: C.dim, lineHeight: 1.6, marginBottom: 12, textAlign: "justify" }}>{t.ctaAboutDesc}</div>
+            <span style={{ color: C.rent, fontSize: 13, fontWeight: 600 }}>{t.ctaAboutBtn} →</span>
           </button>
         </div>
       </main>
