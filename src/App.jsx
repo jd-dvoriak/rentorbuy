@@ -745,7 +745,27 @@ const dp = (c) => ({ r: 5, fill: c, stroke: C.bg, strokeWidth: 2 });
 /* ══════════════════════════════════════════
    LEARN PAGE
    ══════════════════════════════════════════ */
-function LearnPage({ t, onGoCalc, onGoPro }) {
+function LearnPage({ t, track, onGoCalc, onGoPro }) {
+  // Scroll depth tracking
+  useEffect(() => {
+    const thresholds = [25, 50, 75, 100];
+    const fired = new Set();
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight <= 0) return;
+      const percent = Math.round((scrollTop / docHeight) * 100);
+      thresholds.forEach((t) => {
+        if (percent >= t && !fired.has(t)) {
+          fired.add(t);
+          track("scroll_depth", { page: "learn", percent: t });
+        }
+      });
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [track]);
+
   const P = ({ children, style }) => <p style={{ fontSize: 15, color: C.dim, lineHeight: 1.8, margin: "0 0 16px", textAlign: "justify", ...style }}>{children}</p>;
   const H = ({ children, icon }) => <h2 style={{ fontSize: 22, fontWeight: 800, color: C.txt, margin: "48px 0 20px", display: "flex", alignItems: "center", gap: 10 }}>{icon && <span style={{ fontSize: 24 }}>{icon}</span>}{children}</h2>;
   const Item = ({ title, children, color }) => (
@@ -880,6 +900,58 @@ function AboutPage({ t, track, onGoCalc, onGoLearn, onGoPro }) {
 }
 
 /* ══════════════════════════════════════════
+   SLIDER TRACKING HOOK
+   ══════════════════════════════════════════ */
+function useSliderTracking(track, pageName) {
+  const timeouts = useRef({});
+  const slidersUsed = useRef(new Set());
+  const engagementFired = useRef(false);
+
+  useEffect(() => {
+    // Reset on page change
+    slidersUsed.current = new Set();
+    engagementFired.current = false;
+  }, [pageName]);
+
+  const trackSlider = useCallback((sliderName, value) => {
+    clearTimeout(timeouts.current[sliderName]);
+    timeouts.current[sliderName] = setTimeout(() => {
+      track("slider_interaction", { slider_name: sliderName, page: pageName, value });
+    }, 1000);
+
+    slidersUsed.current.add(sliderName);
+    if (slidersUsed.current.size >= 3 && !engagementFired.current) {
+      engagementFired.current = true;
+      track("calculator_engagement", { page: pageName, slider_count: slidersUsed.current.size });
+    }
+  }, [track, pageName]);
+
+  return trackSlider;
+}
+
+/* ══════════════════════════════════════════
+   TIME ON PAGE HOOK
+   ══════════════════════════════════════════ */
+function useTimeOnPage(track, pageName) {
+  useEffect(() => {
+    const thresholds = [30, 60, 120];
+    const fired = new Set();
+    const start = Date.now();
+    const interval = setInterval(() => {
+      const elapsed = Math.floor((Date.now() - start) / 1000);
+      thresholds.forEach((t) => {
+        if (elapsed >= t && !fired.has(t)) {
+          fired.add(t);
+          track("time_on_calculator", { page: pageName, seconds: t });
+        }
+      });
+      if (fired.size === thresholds.length) clearInterval(interval);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [track, pageName]);
+}
+
+/* ══════════════════════════════════════════
    CALCULATOR PAGE
    ══════════════════════════════════════════ */
 function CalcPage({ t, track, onGoLearn, onGoAbout, onGoPro }) {
@@ -895,16 +967,25 @@ function CalcPage({ t, track, onGoLearn, onGoAbout, onGoPro }) {
   const verdictRef = useRef(null);
   const [verdictPos, setVerdictPos] = useState("at");
 
+  const ts = useSliderTracking(track, "calc");
+  const s = (setter, name) => (v) => { setter(v); ts(name, v); };
+  useTimeOnPage(track, "calc");
+
+  const verdictSeenRef = useRef(false);
   useEffect(() => {
     const el = verdictRef.current;
     if (!el) return;
     const obs = new IntersectionObserver(([e]) => {
       if (e.isIntersecting) setVerdictPos("at");
       else setVerdictPos(e.boundingClientRect.top > 0 ? "below" : "above");
+      if (e.isIntersecting && !verdictSeenRef.current) {
+        verdictSeenRef.current = true;
+        track("verdict_seen", { page: "calc" });
+      }
     }, { threshold: 0.1 });
     obs.observe(el);
     return () => obs.disconnect();
-  }, []);
+  }, [track]);
 
   const toggleSec = useCallback((k) => {
     setOpenSec((p) => { const n = { ...p, [k]: !p[k] }; if (n[k]) track("section_opened", { section: k }); return n; });
@@ -966,20 +1047,20 @@ function CalcPage({ t, track, onGoLearn, onGoAbout, onGoPro }) {
         <div role="form" aria-label={t.title} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 14, marginBottom: 24 }}>
           <fieldset style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "16px 18px 8px", margin: 0 }}>
             <legend style={{ fontSize: 10, color: C.rent, textTransform: "uppercase", letterSpacing: 2, fontWeight: 700, padding: "0 4px" }}>{t.rent}</legend>
-            <Slider label={t.monthlyRent} value={baseRent} onChange={setBaseRent} min={8000} max={80000} step={1000} format={fmt.n} unit="CZK" color={C.rent} />
-            <Slider label={t.rentGrowth} value={rentRate} onChange={setRentRate} min={0} max={12} step={0.5} unit="%" color={C.rent} />
+            <Slider label={t.monthlyRent} value={baseRent} onChange={s(setBaseRent, "rent")} min={8000} max={80000} step={1000} format={fmt.n} unit="CZK" color={C.rent} />
+            <Slider label={t.rentGrowth} value={rentRate} onChange={s(setRentRate, "rent_growth")} min={0} max={12} step={0.5} unit="%" color={C.rent} />
           </fieldset>
           <fieldset style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "16px 18px 8px", margin: 0 }}>
             <legend style={{ fontSize: 10, color: C.buy, textTransform: "uppercase", letterSpacing: 2, fontWeight: 700, padding: "0 4px" }}>{t.buy}</legend>
-            <Slider label={t.price} value={purchasePrice} onChange={setPurchasePrice} min={2e6} max={30e6} step={5e5} format={fmt.m1} unit="CZK" color={C.buy} />
-            <Slider label={t.dp} value={downPayment} onChange={(v) => setDownPayment(Math.min(v, purchasePrice))} min={0} max={purchasePrice} step={1e5} format={fmt.m1} unit="CZK" color={C.buy} />
-            <Slider label={t.rate} value={annualRate} onChange={setAnnualRate} min={1} max={10} step={0.1} unit="%" color={C.buy} />
-            <Slider label={t.term} value={mortgageYears} onChange={setMortgageYears} min={5} max={40} step={1} unit={t.unit} color={C.buy} />
+            <Slider label={t.price} value={purchasePrice} onChange={s(setPurchasePrice, "purchase_price")} min={2e6} max={30e6} step={5e5} format={fmt.m1} unit="CZK" color={C.buy} />
+            <Slider label={t.dp} value={downPayment} onChange={(v) => { const clamped = Math.min(v, purchasePrice); setDownPayment(clamped); ts("down_payment", clamped); }} min={0} max={purchasePrice} step={1e5} format={fmt.m1} unit="CZK" color={C.buy} />
+            <Slider label={t.rate} value={annualRate} onChange={s(setAnnualRate, "mortgage_rate")} min={1} max={10} step={0.1} unit="%" color={C.buy} />
+            <Slider label={t.term} value={mortgageYears} onChange={s(setMortgageYears, "mortgage_term")} min={5} max={40} step={1} unit={t.unit} color={C.buy} />
           </fieldset>
           <fieldset style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "16px 18px 8px", margin: 0 }}>
             <legend style={{ fontSize: 10, color: C.inv, textTransform: "uppercase", letterSpacing: 2, fontWeight: 700, padding: "0 4px" }}>{t.opp}</legend>
-            <Slider label={t.invest} value={investReturn} onChange={setInvestReturn} min={0} max={20} step={0.5} unit={`%${t.perYr}`} color={C.inv} />
-            <Slider label={t.appreciation} value={propAppr} onChange={setPropAppr} min={0} max={12} step={0.5} unit={`%${t.perYr}`} color={C.inv} />
+            <Slider label={t.invest} value={investReturn} onChange={s(setInvestReturn, "investment_return")} min={0} max={20} step={0.5} unit={`%${t.perYr}`} color={C.inv} />
+            <Slider label={t.appreciation} value={propAppr} onChange={s(setPropAppr, "property_appreciation")} min={0} max={12} step={0.5} unit={`%${t.perYr}`} color={C.inv} />
             <p style={{ fontSize: 10, color: C.faint, lineHeight: 1.5, margin: "4px 0 8px" }}>{t.oppNote}</p>
           </fieldset>
         </div>
@@ -1173,16 +1254,25 @@ function ProCalcPage({ t, track, onGoCalc, onGoLearn, onGoLearnPro }) {
   const verdictRef = useRef(null);
   const [verdictPos, setVerdictPos] = useState("at");
 
+  const ts = useSliderTracking(track, "pro");
+  const s = (setter, name) => (v) => { setter(v); ts(name, v); };
+  useTimeOnPage(track, "pro");
+
+  const verdictSeenRef = useRef(false);
   useEffect(() => {
     const el = verdictRef.current;
     if (!el) return;
     const obs = new IntersectionObserver(([e]) => {
       if (e.isIntersecting) setVerdictPos("at");
       else setVerdictPos(e.boundingClientRect.top > 0 ? "below" : "above");
+      if (e.isIntersecting && !verdictSeenRef.current) {
+        verdictSeenRef.current = true;
+        track("verdict_seen", { page: "pro" });
+      }
     }, { threshold: 0.1 });
     obs.observe(el);
     return () => obs.disconnect();
-  }, []);
+  }, [track]);
 
   // ── Compute ──
   const r = useMemo(() => computePro({
@@ -1200,6 +1290,10 @@ function ProCalcPage({ t, track, onGoCalc, onGoLearn, onGoLearnPro }) {
   const bw = eqDiff >= 0;
   const wc = bw ? C.buy : C.rent;
   const xI = Math.max(1, Math.floor(r.data.length / 7));
+
+  const prevV = useRef(null);
+  if (prevV.current !== null && prevV.current !== bw) track("verdict_changed", { page: "pro", new_verdict: bw ? "buy" : "rent", equity_diff_m: Math.round(Math.abs(eqDiff) / 1e6) });
+  prevV.current = bw;
 
   const yMaxEq = useMemo(() => { let mx = 0; for (const d of r.data) { const v = Math.max(d.buyerEquity, d.renterEquity); if (v > mx) mx = v; } return Math.ceil(mx / 1e6) * 1e6 + 1e6; }, [r.data]);
   const yMaxMo = useMemo(() => { let mx = 0; for (const d of r.data) { const v = Math.max(d.buyerMonthlyTotal, d.rent); if (v > mx) mx = v; } return Math.ceil(mx / 10000) * 10000 + 5000; }, [r.data]);
@@ -1251,39 +1345,39 @@ function ProCalcPage({ t, track, onGoCalc, onGoLearn, onGoLearnPro }) {
           {/* Rent */}
           <fieldset style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "16px 18px 8px", margin: 0 }}>
             <legend style={{ fontSize: 10, color: C.rent, textTransform: "uppercase", letterSpacing: 2, fontWeight: 700, padding: "0 4px" }}>{t.rent}</legend>
-            <Slider label={t.monthlyRent} value={baseRent} onChange={setBaseRent} min={8000} max={80000} step={1000} format={fmt.n} unit="CZK" color={C.rent} />
-            <Slider label={t.rentGrowth} value={rentRate} onChange={setRentRate} min={0} max={12} step={0.5} unit="%" color={C.rent} />
-            <Slider label={t.proDeposit} value={rentalDeposit} onChange={setRentalDeposit} min={0} max={5} step={1} unit={t.proDepositUnit} color={C.rent} />
+            <Slider label={t.monthlyRent} value={baseRent} onChange={s(setBaseRent, "rent")} min={8000} max={80000} step={1000} format={fmt.n} unit="CZK" color={C.rent} />
+            <Slider label={t.rentGrowth} value={rentRate} onChange={s(setRentRate, "rent_growth")} min={0} max={12} step={0.5} unit="%" color={C.rent} />
+            <Slider label={t.proDeposit} value={rentalDeposit} onChange={s(setRentalDeposit, "rental_deposit")} min={0} max={5} step={1} unit={t.proDepositUnit} color={C.rent} />
           </fieldset>
 
           {/* Mortgage */}
           <fieldset style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "16px 18px 8px", margin: 0 }}>
             <legend style={{ fontSize: 10, color: C.buy, textTransform: "uppercase", letterSpacing: 2, fontWeight: 700, padding: "0 4px" }}>{t.buy}</legend>
-            <Slider label={t.price} value={purchasePrice} onChange={setPurchasePrice} min={2e6} max={30e6} step={5e5} format={fmt.m1} unit="CZK" color={C.buy} />
-            <Slider label={t.dp} value={downPayment} onChange={(v) => setDownPayment(Math.min(v, purchasePrice))} min={0} max={purchasePrice} step={1e5} format={fmt.m1} unit="CZK" color={C.buy} />
-            <Slider label={t.rate} value={annualRate} onChange={setAnnualRate} min={1} max={10} step={0.1} unit="%" color={C.buy} />
-            <Slider label={t.term} value={mortgageYears} onChange={setMortgageYears} min={5} max={40} step={1} unit={t.proRenoCycleUnit} color={C.buy} />
-            <Slider label={t.proMaintenance} value={maintenanceFee} onChange={setMaintenanceFee} min={0} max={10000} step={500} format={fmt.n} unit={t.proMaintenanceUnit} color={C.buy} />
+            <Slider label={t.price} value={purchasePrice} onChange={s(setPurchasePrice, "purchase_price")} min={2e6} max={30e6} step={5e5} format={fmt.m1} unit="CZK" color={C.buy} />
+            <Slider label={t.dp} value={downPayment} onChange={(v) => { const clamped = Math.min(v, purchasePrice); setDownPayment(clamped); ts("down_payment", clamped); }} min={0} max={purchasePrice} step={1e5} format={fmt.m1} unit="CZK" color={C.buy} />
+            <Slider label={t.rate} value={annualRate} onChange={s(setAnnualRate, "mortgage_rate")} min={1} max={10} step={0.1} unit="%" color={C.buy} />
+            <Slider label={t.term} value={mortgageYears} onChange={s(setMortgageYears, "mortgage_term")} min={5} max={40} step={1} unit={t.proRenoCycleUnit} color={C.buy} />
+            <Slider label={t.proMaintenance} value={maintenanceFee} onChange={s(setMaintenanceFee, "maintenance_fee")} min={0} max={10000} step={500} format={fmt.n} unit={t.proMaintenanceUnit} color={C.buy} />
           </fieldset>
 
           {/* Opportunity cost */}
           <fieldset style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "16px 18px 8px", margin: 0 }}>
             <legend style={{ fontSize: 10, color: C.inv, textTransform: "uppercase", letterSpacing: 2, fontWeight: 700, padding: "0 4px" }}>{t.opp}</legend>
-            <Slider label={t.invest} value={investReturn} onChange={setInvestReturn} min={0} max={20} step={0.5} unit={`%${t.perYr}`} color={C.inv} />
-            <Slider label={t.appreciation} value={propAppr} onChange={setPropAppr} min={0} max={12} step={0.5} unit={`%${t.perYr}`} color={C.inv} />
+            <Slider label={t.invest} value={investReturn} onChange={s(setInvestReturn, "investment_return")} min={0} max={20} step={0.5} unit={`%${t.perYr}`} color={C.inv} />
+            <Slider label={t.appreciation} value={propAppr} onChange={s(setPropAppr, "property_appreciation")} min={0} max={12} step={0.5} unit={`%${t.perYr}`} color={C.inv} />
           </fieldset>
 
           {/* Other criteria */}
           <fieldset style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "16px 18px 8px", margin: 0 }}>
             <legend style={{ fontSize: 10, color: C.other, textTransform: "uppercase", letterSpacing: 2, fontWeight: 700, padding: "0 4px" }}>{t.proOther}</legend>
-            <Slider label={t.proTransfer} value={transactionCost} onChange={setTransactionCost} min={0} max={5} step={0.5} unit="%" color={C.other} />
-            <Slider label={t.proPropTax} value={propertyTaxRate} onChange={setPropertyTaxRate} min={0} max={1} step={0.01} unit={t.proPropTaxUnit} color={C.other} />
-            <Slider label={t.proPropIns} value={propertyInsRate} onChange={setPropertyInsRate} min={0} max={1} step={0.05} unit={t.proPropInsUnit} color={C.other} />
-            <Slider label={t.proMortIns} value={mortgageInsRate} onChange={setMortgageInsRate} min={0} max={1} step={0.05} unit={t.proMortInsUnit} color={C.other} />
-            <Slider label={t.proDeduction} value={interestDeductionLimit} onChange={setInterestDeductionLimit} min={0} max={300000} step={10000} format={fmt.n} unit={t.proDeductionUnit} color={C.other} />
-            <Slider label={t.proIncomeTax} value={incomeTaxRate} onChange={setIncomeTaxRate} min={0} max={30} step={1} unit="%" color={C.other} />
-            <Slider label={t.proRenoCycle} value={renovationCycle} onChange={setRenovationCycle} min={0} max={30} step={1} unit={t.proRenoCycleUnit} color={C.other} />
-            <Slider label={t.proRenoCost} value={renovationCostPct} onChange={setRenovationCostPct} min={0} max={30} step={1} unit={t.proRenoCostUnit} color={C.other} />
+            <Slider label={t.proTransfer} value={transactionCost} onChange={s(setTransactionCost, "transfer_costs")} min={0} max={5} step={0.5} unit="%" color={C.other} />
+            <Slider label={t.proPropTax} value={propertyTaxRate} onChange={s(setPropertyTaxRate, "property_tax")} min={0} max={1} step={0.01} unit={t.proPropTaxUnit} color={C.other} />
+            <Slider label={t.proPropIns} value={propertyInsRate} onChange={s(setPropertyInsRate, "property_insurance")} min={0} max={1} step={0.05} unit={t.proPropInsUnit} color={C.other} />
+            <Slider label={t.proMortIns} value={mortgageInsRate} onChange={s(setMortgageInsRate, "mortgage_insurance")} min={0} max={1} step={0.05} unit={t.proMortInsUnit} color={C.other} />
+            <Slider label={t.proDeduction} value={interestDeductionLimit} onChange={s(setInterestDeductionLimit, "interest_deduction")} min={0} max={300000} step={10000} format={fmt.n} unit={t.proDeductionUnit} color={C.other} />
+            <Slider label={t.proIncomeTax} value={incomeTaxRate} onChange={s(setIncomeTaxRate, "income_tax_rate")} min={0} max={30} step={1} unit="%" color={C.other} />
+            <Slider label={t.proRenoCycle} value={renovationCycle} onChange={s(setRenovationCycle, "renovation_cycle")} min={0} max={30} step={1} unit={t.proRenoCycleUnit} color={C.other} />
+            <Slider label={t.proRenoCost} value={renovationCostPct} onChange={s(setRenovationCostPct, "renovation_cost")} min={0} max={30} step={1} unit={t.proRenoCostUnit} color={C.other} />
           </fieldset>
         </div>
 
@@ -1485,7 +1579,18 @@ export default function App() {
   const t = I18N[lang];
   const track = useCallback((name, params) => { if (typeof window.gtag === "function") window.gtag("event", name, params); }, []);
 
-  const go = useCallback((p) => { setPage(p); setMenuOpen(false); window.scrollTo(0, 0); track("page_view", { page: p }); }, [track]);
+  // Capture UTM params on first load
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search);
+    const src = p.get("utm_source"), med = p.get("utm_medium"), cam = p.get("utm_campaign");
+    if (src || med || cam) {
+      track("session_start_with_params", {
+        utm_source: src || "(not set)", utm_medium: med || "(not set)", utm_campaign: cam || "(not set)",
+      });
+    }
+  }, [track]);
+
+  const go = useCallback((p, source) => { setPage(prev => { if (source) track("cta_click", { from: prev, to: p, source }); track("page_view", { page: p }); return p; }); setMenuOpen(false); window.scrollTo(0, 0); }, [track]);
 
   return (
     <div style={{ background: C.bg, color: C.txt, minHeight: "100vh", fontFamily: "'Inter',-apple-system,sans-serif" }}>
@@ -1505,7 +1610,7 @@ export default function App() {
 
           <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
             {/* Theme toggle */}
-            <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} aria-label="Toggle theme"
+            <button onClick={() => { const nt = theme === "dark" ? "light" : "dark"; setTheme(nt); track("theme_toggled", { theme: nt }); }} aria-label="Toggle theme"
               style={{ background: C.langBg, border: `1px solid ${C.langBorder}`, borderRadius: 8, padding: "6px 10px", cursor: "pointer", fontSize: 16, lineHeight: 1, display: "flex", alignItems: "center" }}>
               {theme === "dark" ? "☀️" : "🌙"}
             </button>
@@ -1552,10 +1657,10 @@ export default function App() {
       </header>
 
       {/* ── PAGE CONTENT ── */}
-      {page === "calc" && <CalcPage t={t} track={track} onGoLearn={() => go("learn")} onGoAbout={() => go("about")} onGoPro={() => go("pro")} />}
-      {page === "pro" && <ProCalcPage t={t} track={track} onGoCalc={() => go("calc")} onGoLearn={() => go("learn")} onGoLearnPro={() => { go("learn"); setTimeout(() => document.getElementById("pro-params")?.scrollIntoView({ behavior: "smooth" }), 100); }} />}
-      {page === "learn" && <LearnPage t={t} onGoCalc={() => go("calc")} onGoPro={() => go("pro")} />}
-      {page === "about" && <AboutPage t={t} track={track} onGoCalc={() => go("calc")} onGoLearn={() => go("learn")} onGoPro={() => go("pro")} />}
+      {page === "calc" && <CalcPage t={t} track={track} onGoLearn={() => go("learn", "calc_bottom_cta")} onGoAbout={() => go("about", "calc_bottom_cta")} onGoPro={() => go("pro", "calc_cta")} />}
+      {page === "pro" && <ProCalcPage t={t} track={track} onGoCalc={() => go("calc", "pro_cta")} onGoLearn={() => go("learn", "pro_cta")} onGoLearnPro={() => { go("learn", "pro_cta_params"); setTimeout(() => document.getElementById("pro-params")?.scrollIntoView({ behavior: "smooth" }), 100); }} />}
+      {page === "learn" && <LearnPage t={t} track={track} onGoCalc={() => go("calc", "learn_cta")} onGoPro={() => go("pro", "learn_cta")} />}
+      {page === "about" && <AboutPage t={t} track={track} onGoCalc={() => go("calc", "about_cta")} onGoLearn={() => go("learn", "about_cta")} onGoPro={() => go("pro", "about_cta")} />}
 
       {/* ── FOOTER ── */}
       <footer style={{ borderTop: `1px solid ${C.footerBorder}`, padding: "24px 24px 80px", background: C.footerBg }}>
