@@ -10,7 +10,7 @@ import {
 const I18N = {
   cs: {
     // Nav
-    navCalc: "Kalkulačka", navLearn: "Jak na to", navAbout: "O projektu",
+    navCalc: "Kalkulačka", navPro: "Detailní kalkulačka", navLearn: "Jak na to", navAbout: "O projektu",
     // Header
     title: "Vyplatí se mi pronájem nebo koupě?",
     meta: "Výchozí hodnoty: průměry Praha, 2026 · Zdroje: Deloitte, ČNB, ČBA, ČSÚ",
@@ -58,6 +58,8 @@ const I18N = {
     contact: "Kontakt", unit: "let",
     // Intro
     intro: "Kolik platíte za nájem? Kolik stojí byt, o kterém uvažujete? Nastavte si čísla a kalkulačka vám ukáže, jestli je pro vás výhodnější pronájem nebo koupě.",
+    introNote: "Toto je zjednodušená kalkulačka — stačí pro základní rozhodnutí. Chcete zahrnout daně, pojištění, údržbu a renovace?",
+    introProLink: "Vyzkoušejte detailní kalkulačku",
     introLink: "Nevíte, kde začít? Přečtěte si, jak na to",
     howTitle: "3 kroky",
     how1: "Nastavte si parametry pronájmu, koupě a investic",
@@ -69,6 +71,9 @@ const I18N = {
     ctaAboutTitle: "O projektu",
     ctaAboutDesc: "Kdo za tím stojí a proč jsme to udělali.",
     ctaAboutBtn: "Zjistit víc",
+    ctaProTitle: "Chcete přesnější výpočet?",
+    ctaProDesc: "Detailní kalkulačka zahrnuje daně, pojištění, údržbu, odpočty úroků a renovace — všechny náklady, které základní kalkulačka zjednodušuje.",
+    ctaProBtn: "Otevřít detailní kalkulačku",
     // ── LEARN PAGE ──
     learnHero: "Pronájem nebo koupě? Pojďme si to rozebrat.",
     learnHeroSub: "Bez emocí, bez tlaku. Jen čísla a zdravý rozum.",
@@ -116,6 +121,45 @@ const I18N = {
     emo5p1: "Neexistuje univerzální odpověď. Záleží na vašem nájmu, na ceně bytu, na úrokové sazbě, na tom, jak dlouho plánujete bydlet, a na tom, co byste dělali s penězi, které byste jinak investovali.",
     emo5p2: "Naše kalkulačka vám nedá odpověď na to, jestli máte koupit byt. Ale ukáže vám čísla, která za normálních okolností nikdo nepočítá. A s čísly se rozhoduje líp než s emocemi.",
     emo5cta: "Vyzkoušet kalkulačku",
+
+    // ── LEARN: PRO SECTION ──
+    emoProTitle: "Detailní kalkulačka — další parametry",
+    emoProIntro: "Základní kalkulačka zjednodušuje. Detailní kalkulačka přidává náklady, které většina lidí přehlíží, ale které reálně ovlivňují, jestli se vám víc vyplatí pronájem nebo koupě.",
+    emoProCta: "Vyzkoušet detailní kalkulačku",
+    proS1t: "Kauce (počet nájmů)", proS1: "Nájemce typicky složí 1–3 měsíční nájmy jako kauci. Tyto peníze nejsou mrtvé — ze zákona musí být úročeny, konkrétní výše ale není stanovena. Kalkulačka počítá s 2 % ročně, což odpovídá běžné inflaci.",
+    proS2t: "Fond oprav (údržba)", proS2: "Měsíční příspěvek do fondu oprav SVJ. Typicky 2 000–4 000 Kč měsíčně. Platí vlastník, ne nájemce.",
+    proS3t: "Náklady převodu nemovitosti", proS3: "Jednorázový náklad při koupi — daň z nabytí, právní služby, znalecký posudek, provize. Typicky 2–4 % z kupní ceny. Tento náklad snižuje jmění kupujícího hned na začátku.",
+    proS4t: "Daň z nemovitosti", proS4: "Roční daň, kterou platí vlastník. V ČR je velmi nízká — typicky kolem 0,03 % z hodnoty nemovitosti ročně.",
+    proS5t: "Pojištění nemovitosti", proS5: "Pojištění proti živlům, vytopení, vandalismu. Typicky 0,1 % z hodnoty nemovitosti ročně. Povinné pro hypotéku.",
+    proS6t: "Pojištění hypotéky", proS6: "Pojištění schopnosti splácet. Typicky 0,3 % z původní výše hypotéky ročně. Platí se jen po dobu splácení.",
+    proS7t: "Odpočet úroků z hypotéky", proS7: "V ČR si můžete odečíst zaplacené úroky z hypotéky od daňového základu — max. 150 000 Kč ročně. Při sazbě 15 % je úspora až 22 500 Kč/rok.",
+    proS8t: "Sazba daně z příjmu", proS8: "Sazba, kterou se počítá daňový odpočet úroků. Standardně 15 % pro většinu zaměstnanců v ČR.",
+    proS9t: "Velká renovace", proS9: "Každých 10–20 let potřebuje byt generální opravu — kuchyň, koupelna, podlahy. Typicky 10 % z aktuální hodnoty nemovitosti.",
+    // ── PRO CALCULATOR i18n ──
+    proTitle: "Detailní kalkulačka: Pronájem vs. Koupě",
+    proIntro: "Rozšířená kalkulačka zahrnuje daně, pojištění, údržbu, odpočty úroků i renovace. Nastavte si čísla a zjistěte, jestli se vám víc vyplatí pronájem nebo koupě.",
+    proLinkBasic: "Základní kalkulačka", proLinkLearn: "Jak na to — průvodce",
+    proHow1: "Nastavte parametry pronájmu, koupě, investic a dalších nákladů",
+    proHow2: "Kalkulačka porovná čisté jmění obou variant včetně všech nákladů",
+    proHow3: "Výsledek najdete níže — posuňte dolů",
+    proOther: "Další náklady",
+    proDeposit: "Kauce (počet nájmů)", proDepositUnit: "měs.",
+    proMaintenance: "Fond oprav", proMaintenanceUnit: "CZK/měs.",
+    proTransfer: "Náklady převodu nemovitosti (jednorázově)",
+    proPropTax: "Daň z nemovitosti", proPropTaxUnit: "%/rok",
+    proPropIns: "Pojištění nemovitosti", proPropInsUnit: "%/rok",
+    proMortIns: "Pojištění hypotéky", proMortInsUnit: "%/rok",
+    proDeduction: "Odpočet úroků z hypotéky (limit)", proDeductionUnit: "CZK/rok",
+    proIncomeTax: "Sazba daně z příjmu",
+    proRenoCycle: "Velká renovace každých", proRenoCycleUnit: "let",
+    proRenoCost: "Náklady renovace", proRenoCostUnit: "% z ceny",
+    proBuyerTotal: "Kupující celkem/měs.", proTotalBuy: "Celkové náklady koupě", proTotalRent: "Celkový nájem",
+    proTransferCost: "Náklady převodu nemovitosti", proOneTime: "jednorázově", proInclTransfer: "vč. převod",
+    proBreakWarning: "Výhodnost se v čase mění", proBreakPoints: "bodů zlomu", proLeads: "vede",
+    proLegBuy: "Kupující (nemovitost − dluh + investice)", proLegRent: "Nájemce (portfolio + kauce)",
+    proSecMonthly: "Měsíční náklady (celkové)",
+    proLegBuyTotal: "Kupující celkem (hypotéka + fond oprav + daně + pojištění)",
+    proHReno: "Renovace", proHDeduction: "Odpočet", proHBuyerTotal: "Kup. celk.", proHorizon: "Horizont",
     // ── ABOUT PAGE ──
     aboutTitle: "O projektu rentorbuy.cz",
     aboutP1: "Tenhle projekt vznikl z jednoduchého důvodu: chtěli jsme si sami spočítat, jestli se nám vyplatí koupit byt, nebo jestli je lepší zůstat v nájmu a investovat. Zjistili jsme, že žádná česká kalkulačka nepočítá s náklady obětované příležitosti — tedy s tím, co by vaše peníze vydělaly, kdybyste je investovali místo do nemovitosti.",
@@ -128,9 +172,11 @@ const I18N = {
     aboutCalcDesc: "Spočítejte si, jestli se vám víc vyplatí pronájem nebo koupě.",
     aboutCalcBtn: "Spustit kalkulačku",
     aboutLearnDesc: "Vysvětlujeme pozadí, náklady obětované příležitosti a jak kalkulačka počítá.",
+    aboutProDesc: "Zahrnuje daně, pojištění, údržbu, odpočty úroků a renovace.",
+    aboutProBtn: "Otevřít detailní kalkulačku",
   },
   en: {
-    navCalc: "Calculator", navLearn: "Learn", navAbout: "About",
+    navCalc: "Calculator", navPro: "Detailed Calculator", navLearn: "Learn", navAbout: "About",
     title: "Should I Rent or Buy?",
     meta: "Defaults: Prague averages, 2026 · Sources: Deloitte, CNB, CBA, CZSO",
     rent: "Renting", buy: "Buying", opp: "Opportunity cost",
@@ -170,6 +216,8 @@ const I18N = {
     src: "Data: Deloitte Rent Index 2025, CBA Hypomonitor 2025, CZSO 2024, RE/MAX Prague 2025, CNB 2025.",
     contact: "Contact", unit: "years",
     intro: "How much do you pay in rent? How much does the apartment you're considering cost? Set the numbers and the calculator will tell you whether renting or buying makes more sense for you.",
+    introNote: "This is a simplified calculator — enough for a high-level decision. Want to include taxes, insurance, maintenance, and renovations?",
+    introProLink: "Try the detailed calculator",
     introLink: "Not sure where to start? Read our guide",
     howTitle: "3 steps",
     how1: "Set your rent, purchase, and investment parameters",
@@ -181,6 +229,9 @@ const I18N = {
     ctaAboutTitle: "About the project",
     ctaAboutDesc: "Who's behind it and why we built it.",
     ctaAboutBtn: "Learn more",
+    ctaProTitle: "Want a more precise calculation?",
+    ctaProDesc: "The detailed calculator includes taxes, insurance, maintenance, interest deductions, and renovations — all the costs the basic calculator simplifies away.",
+    ctaProBtn: "Open detailed calculator",
     learnHero: "Rent or buy? Let's break it down.",
     learnHeroSub: "No emotions, no pressure. Just numbers and common sense.",
     emo1Title: "Why is this such a hard decision?",
@@ -214,6 +265,45 @@ const I18N = {
     emo5p1: "There's no universal answer. It depends on your rent, the apartment price, the interest rate, how long you plan to stay, and what you'd do with the money you'd otherwise invest.",
     emo5p2: "Our calculator won't tell you whether to buy. But it'll show you numbers that nobody normally calculates. And decisions are better made with numbers than with emotions.",
     emo5cta: "Try the calculator",
+
+    // ── LEARN: PRO SECTION ──
+    emoProTitle: "Detailed Calculator — additional parameters",
+    emoProIntro: "The basic calculator simplifies. The detailed calculator adds costs that most people overlook, but which significantly affect whether renting or buying makes more sense for you.",
+    emoProCta: "Try the detailed calculator",
+    proS1t: "Rental deposit (months)", proS1: "Renters typically pay 1–3 months' rent as a deposit. This money isn't dead — by Czech law, the landlord must pay interest on it, though the exact rate isn't specified. The calculator uses 2%, which reflects standard inflation.",
+    proS2t: "Maintenance fund (fond oprav)", proS2: "Monthly contribution to the building's maintenance fund (SVJ). Typically 2,000–4,000 CZK/month. Paid by the owner, not the renter.",
+    proS3t: "Property transfer costs", proS3: "One-time cost at purchase — transfer tax, legal fees, appraisal, commission. Typically 2–4% of the purchase price.",
+    proS4t: "Property tax", proS4: "Annual tax paid by the owner. In the Czech Republic it's very low — typically around 0.03% of the property value per year.",
+    proS5t: "Property insurance", proS5: "Insurance against natural disasters, flooding, vandalism. Typically 0.1% of the property value per year. Required for mortgage.",
+    proS6t: "Mortgage insurance", proS6: "Payment protection insurance. Typically 0.3% of the original mortgage amount per year. Only paid during the mortgage term.",
+    proS7t: "Mortgage interest deduction", proS7: "In the Czech Republic, you can deduct mortgage interest from your tax base — up to 150,000 CZK/year. At 15% tax rate, savings can reach 22,500 CZK/year.",
+    proS8t: "Income tax rate", proS8: "The rate used to calculate the mortgage interest tax deduction. Standard rate is 15% for most employees in the Czech Republic.",
+    proS9t: "Major renovation", proS9: "Every 10–20 years, an apartment needs a major overhaul — kitchen, bathroom, floors. Typically 10% of the current property value.",
+    // ── PRO CALCULATOR i18n ──
+    proTitle: "Detailed Calculator: Rent vs. Buy",
+    proIntro: "The extended calculator includes taxes, insurance, maintenance, interest deductions, and renovations. Set the numbers and find out whether renting or buying makes more sense.",
+    proLinkBasic: "Basic calculator", proLinkLearn: "Learn — guide",
+    proHow1: "Set rent, purchase, investment, and additional cost parameters",
+    proHow2: "The calculator compares net equity of both options including all costs",
+    proHow3: "Scroll down to see the result",
+    proOther: "Additional costs",
+    proDeposit: "Rental deposit (months)", proDepositUnit: "mo.",
+    proMaintenance: "Maintenance fund", proMaintenanceUnit: "CZK/mo.",
+    proTransfer: "Property transfer costs (one-time)",
+    proPropTax: "Property tax", proPropTaxUnit: "%/yr",
+    proPropIns: "Property insurance", proPropInsUnit: "%/yr",
+    proMortIns: "Mortgage insurance", proMortInsUnit: "%/yr",
+    proDeduction: "Mortgage interest deduction (limit)", proDeductionUnit: "CZK/yr",
+    proIncomeTax: "Income tax rate",
+    proRenoCycle: "Major renovation every", proRenoCycleUnit: "yrs",
+    proRenoCost: "Renovation cost", proRenoCostUnit: "% of value",
+    proBuyerTotal: "Buyer total/mo.", proTotalBuy: "Total cost of buying", proTotalRent: "Total rent",
+    proTransferCost: "Property transfer costs", proOneTime: "one-time", proInclTransfer: "incl. transfer",
+    proBreakWarning: "Advantage changes over time", proBreakPoints: "crossover points", proLeads: "leads",
+    proLegBuy: "Buyer (property − debt + investments)", proLegRent: "Renter (portfolio + deposit)",
+    proSecMonthly: "Monthly costs (total)",
+    proLegBuyTotal: "Buyer total (mortgage + maintenance + taxes + insurance)",
+    proHReno: "Reno.", proHDeduction: "Deduct.", proHBuyerTotal: "Buy. total", proHorizon: "Horizon",
     aboutTitle: "About rentorbuy.cz",
     aboutP1: "This project started for a simple reason: we wanted to calculate whether it makes sense to buy an apartment or keep renting and investing. We found that no Czech calculator accounts for opportunity cost — the return your money could earn if invested instead of being locked in real estate.",
     aboutP2: "So we built our own. And then shared it, because we believe everyone should have access to these numbers. Free, no registration, no ads.",
@@ -225,6 +315,8 @@ const I18N = {
     aboutCalcDesc: "Calculate whether renting or buying makes more sense for you.",
     aboutCalcBtn: "Open calculator",
     aboutLearnDesc: "We explain the background, opportunity cost, and how the calculator works.",
+    aboutProDesc: "Includes taxes, insurance, maintenance, interest deductions, and renovations.",
+    aboutProBtn: "Open detailed calculator",
   },
 };
 
@@ -234,7 +326,7 @@ const I18N = {
 const themes = {
   dark: {
     bg: "#0e0e1a", card: "#151522", border: "#222238",
-    buy: "#fb7185", rent: "#818cf8", inv: "#4ade80", warn: "#fbbf24",
+    buy: "#fb7185", rent: "#818cf8", inv: "#4ade80", warn: "#fbbf24", other: "#f59e0b",
     txt: "#e0e0e0", txt2: "#ccc", dim: "#8a8a9a", dim2: "#7a7a8a", faint: "#4a4a5a", muted: "#3a3a4a",
     sliderTrack: "#2a2a3e", tipBg: "#1c1c30", tipBorder: "#333", tipSub: "#aaa",
     grid: "#1e1e30", axis: "#333", axisTick: "#5a5a6a",
@@ -247,7 +339,7 @@ const themes = {
   },
   light: {
     bg: "#f5f5f7", card: "#ffffff", border: "#e0e0e6",
-    buy: "#e11d48", rent: "#6366f1", inv: "#16a34a", warn: "#d97706",
+    buy: "#e11d48", rent: "#6366f1", inv: "#16a34a", warn: "#d97706", other: "#d97706",
     txt: "#1a1a2a", txt2: "#333", dim: "#555", dim2: "#666", faint: "#999", muted: "#bbb",
     sliderTrack: "#ddd", tipBg: "#fff", tipBorder: "#ddd", tipSub: "#666",
     grid: "#eee", axis: "#ccc", axisTick: "#888",
@@ -334,6 +426,199 @@ function compute(baseRent, rentRate, purchasePrice, downPayment, annualRate, mor
 }
 
 /* ══════════════════════════════════════════
+   PRO CALCULATION ENGINE
+   ══════════════════════════════════════════ */
+const PRO_DEFAULTS = {
+  rentalDeposit: 2,
+  maintenanceFee: 3000,
+  propertyTaxRate: 0.03,
+  propertyInsRate: 0.1,
+  mortgageInsRate: 0.3,
+  transactionCost: 2,
+  interestDeductionLimit: 150000,
+  incomeTaxRate: 15,
+  renovationCycle: 15,
+  renovationCostPct: 10,
+  rentalDepositInterest: 2,
+};
+
+function computePro(params) {
+  const {
+    baseRent, rentRate, rentalDeposit,
+    purchasePrice, downPayment, annualRate, mortgageYears, maintenanceFee,
+    investReturn, propertyAppreciation,
+    propertyTaxRate, propertyInsRate, mortgageInsRate,
+    transactionCost, interestDeductionLimit, incomeTaxRate,
+    renovationCycle, renovationCostPct, rentalDepositInterest,
+  } = params;
+
+  const principal = Math.max(0, purchasePrice - downPayment);
+  const mRate = annualRate / 100 / 12;
+  const nPay = mortgageYears * 12;
+  const rRate = rentRate / 100;
+  const iRateM = Math.pow(1 + investReturn / 100, 1 / 12) - 1;
+  const pRate = propertyAppreciation / 100;
+  const totalYears = mortgageYears + 1;
+
+  // Monthly mortgage payment (annuity)
+  const mp = principal <= 0 ? 0
+    : mRate > 0 ? Math.round(principal * mRate * Math.pow(1 + mRate, nPay) / (Math.pow(1 + mRate, nPay) - 1))
+    : Math.round(principal / nPay);
+
+  // One-time transaction cost (buyer pays at year 0)
+  const txCost = Math.round(purchasePrice * transactionCost / 100);
+
+  // Rental deposit: renter locks N months of rent, earns fixed 2% interest
+  const depositAmount = baseRent * rentalDeposit;
+  const depositRateM = Math.pow(1 + rentalDepositInterest / 100, 1 / 12) - 1;
+
+  let bal = principal;
+  let dpC = downPayment;      // renter's DP compounding at investReturn
+  let rSav = 0;               // renter's monthly savings compounding
+  let bSav = 0;               // buyer's monthly savings compounding
+  let depC = depositAmount;   // rental deposit compounding at 2%
+  let cross = null;
+  let totalBuyerCosts = txCost + downPayment; // cumulative buyer cash out
+  let totalRenterCosts = depositAmount;        // cumulative renter cash out
+
+  const rows = Array.from({ length: totalYears }, (_, i) => {
+    const rent = Math.round(baseRent * Math.pow(1 + rRate, i));
+    const mtg = i < mortgageYears ? mp : 0;
+    const pv = Math.round(purchasePrice * Math.pow(1 + pRate, i));
+
+    // ── BUYER ANNUAL COSTS ──
+    const yearMaintenance = maintenanceFee * 12;
+    const yearPropertyTax = Math.round(pv * propertyTaxRate / 100);
+    const yearPropertyIns = Math.round(pv * propertyInsRate / 100);
+    const yearMortgageIns = i < mortgageYears ? Math.round(purchasePrice * mortgageInsRate / 100) : 0;
+
+    // Renovation (one-time in specific years)
+    let yearRenovation = 0;
+    if (renovationCycle > 0 && i > 0 && i % renovationCycle === 0) {
+      yearRenovation = Math.round(pv * renovationCostPct / 100);
+    }
+
+    // Amortization + interest tracking
+    let yI = 0, yP = 0;
+    for (let m = 0; m < 12; m++) {
+      if (bal > 0 && i < mortgageYears) {
+        const mi = bal * mRate;
+        const mP = mp - mi;
+        yI += mi;
+        yP += Math.min(mP, bal);
+        bal = Math.max(0, bal - mP);
+      }
+    }
+
+    // ── TAX BENEFIT ──
+    // Mortgage interest deduction: min(yearInterest, limit) * taxRate
+    const deductible = Math.min(yI, interestDeductionLimit);
+    const taxBenefit = Math.round(deductible * incomeTaxRate / 100);
+
+    // ── TOTAL MONTHLY COSTS ──
+    // Buyer: mortgage + maintenance + (annual costs / 12) - tax benefit / 12 + renovation / 12
+    const buyerAnnualExtra = yearPropertyTax + yearPropertyIns + yearMortgageIns + yearRenovation - taxBenefit;
+    const buyerMonthlyTotal = mtg + maintenanceFee + Math.round(buyerAnnualExtra / 12);
+    const renterMonthlyTotal = rent;
+
+    // ── MONTHLY SAVINGS INVESTMENT (symmetric) ──
+    let rMS = 0, rMSc = 0, bMS = 0, bMSc = 0;
+    for (let m = 0; m < 12; m++) {
+      const bCost = buyerMonthlyTotal;
+      const rCost = renterMonthlyTotal;
+      const diff = bCost - rCost;
+      if (diff > 0) {
+        // Renter pays less → renter invests difference
+        rSav = (rSav + diff) * (1 + iRateM);
+        bSav *= (1 + iRateM);
+        rMS += diff; rMSc++;
+      } else if (diff < 0) {
+        // Buyer pays less → buyer invests difference
+        bSav = (bSav + (-diff)) * (1 + iRateM);
+        rSav *= (1 + iRateM);
+        bMS += (-diff); bMSc++;
+      } else {
+        rSav *= (1 + iRateM);
+        bSav *= (1 + iRateM);
+      }
+      dpC *= (1 + iRateM);
+      depC *= (1 + depositRateM);
+    }
+
+    if (!cross && renterMonthlyTotal >= buyerMonthlyTotal && buyerMonthlyTotal > 0) cross = 2026 + i;
+
+    // Cumulative costs
+    totalBuyerCosts += mtg * 12 + yearMaintenance + yearPropertyTax + yearPropertyIns + yearMortgageIns + yearRenovation - taxBenefit;
+    totalRenterCosts += rent * 12;
+
+    // ── EQUITY ──
+    const buyerEquity = Math.round(pv - Math.max(0, bal) + bSav - txCost * (i === 0 ? 1 : 0));
+    // Actually txCost is already spent, reduce from buyer equity as sunk cost at year 0
+    const renterEquity = Math.round(dpC + rSav + depC);
+
+    return {
+      year: 2026 + i,
+      // Monthly
+      rent: renterMonthlyTotal,
+      mortgage: mtg,
+      buyerMonthlyTotal,
+      // Annual details
+      yearInterest: Math.round(yI),
+      yearMaintenance,
+      yearPropertyTax,
+      yearPropertyIns,
+      yearMortgageIns,
+      yearRenovation,
+      taxBenefit,
+      buyerAnnualExtra,
+      // Balance
+      balance: Math.round(Math.max(0, bal)),
+      propertyValue: pv,
+      // Equity
+      buyerEquity: Math.round(pv - Math.max(0, bal) + bSav),
+      renterEquity,
+      dpInvested: Math.round(dpC),
+      renterSavInvested: Math.round(rSav),
+      buyerSavInvested: Math.round(bSav),
+      rentalDeposit: Math.round(depC),
+      // Monthly savings
+      renterMoSav: rMSc > 0 ? Math.round(rMS / rMSc) : 0,
+      buyerMoSav: bMSc > 0 ? Math.round(bMS / bMSc) : 0,
+      // Cumulative
+      totalBuyerCosts: Math.round(totalBuyerCosts),
+      totalRenterCosts: Math.round(totalRenterCosts),
+    };
+  });
+
+  // Subtract transaction cost from buyer equity at all years (sunk cost)
+  rows.forEach(r => { r.buyerEquity -= txCost; });
+
+  // Find ALL breakpoints (equity crossovers)
+  const breakpoints = [];
+  for (let i = 1; i < rows.length; i++) {
+    const prevBuyWins = rows[i - 1].buyerEquity >= rows[i - 1].renterEquity;
+    const curBuyWins = rows[i].buyerEquity >= rows[i].renterEquity;
+    if (prevBuyWins !== curBuyWins) {
+      breakpoints.push({ year: rows[i].year, buyWinsAfter: curBuyWins });
+    }
+  }
+
+  const last = rows[rows.length - 1];
+  return {
+    data: rows, mp, txCost,
+    tMort: mp * nPay + downPayment + txCost,
+    tInt: mp * nPay - principal,
+    tRent: rows.reduce((s, d) => s + d.rent * 12, 0),
+    cross, breakpoints,
+    buyEq: last.buyerEquity,
+    rentEq: last.renterEquity,
+    years: mortgageYears,
+    depositAmount,
+  };
+}
+
+
+/* ══════════════════════════════════════════
    SHARED COMPONENTS
    ══════════════════════════════════════════ */
 function Slider({ label, value, onChange, min, max, step, format, unit, color }) {
@@ -412,6 +697,47 @@ function EquityTip({ active, payload, t }) {
   </div>);
 }
 
+
+/* Pro-specific tooltips */
+function ProEquityTip({ active, payload, t }) {
+  if (!active || !payload?.[0]) return null;
+  const d = payload[0].payload;
+  const ah = d.buyerEquity >= d.renterEquity;
+  return (<div style={{ ...getTipBox(), minWidth: 260 }}>
+    <div style={{ fontWeight: 700, marginBottom: 8, fontSize: 14, color: C.txt }}>{d.year}</div>
+    <div style={{ fontSize: 10, color: C.buy, textTransform: "uppercase", letterSpacing: 1, marginBottom: 2 }}>{t.buyer}</div>
+    {tipRow(C.tipSub, t.prop, fmt.m1(d.propertyValue))}
+    {tipRow(C.tipSub, t.debtL, `−${fmt.m1(d.balance)}`)}
+    {d.buyerSavInvested > 0 && tipRow(C.tipSub, t.sav, fmt.m1(d.buyerSavInvested))}
+    {tipRow(C.buy, t.eq, fmt.m1(d.buyerEquity))}
+    <div style={{ height: 6 }} />
+    <div style={{ fontSize: 10, color: C.rent, textTransform: "uppercase", letterSpacing: 1, marginBottom: 2 }}>{t.renter}</div>
+    {tipRow(C.tipSub, t.dpInv, fmt.m1(d.dpInvested))}
+    {d.renterSavInvested > 0 && tipRow(C.tipSub, t.sav, fmt.m1(d.renterSavInvested))}
+    {tipRow(C.tipSub, "Kauce", fmt.m1(d.rentalDeposit))}
+    {tipRow(C.rent, t.portfolio, fmt.m1(d.renterEquity))}
+    <div style={{ borderTop: "1px solid #333", paddingTop: 6, marginTop: 6, fontWeight: 700, color: ah ? C.buy : C.rent }}>
+      {ah ? `${t.bPlus}${fmt.m1(d.buyerEquity - d.renterEquity)}` : `${t.rPlus}${fmt.m1(d.renterEquity - d.buyerEquity)}`}
+    </div>
+  </div>);
+}
+
+function ProMonthlyTip({ active, payload, t }) {
+  if (!active || !payload?.[0]) return null;
+  const d = payload[0].payload;
+  return (<div style={{ ...getTipBox(), minWidth: 240 }}>
+    <div style={{ fontWeight: 700, marginBottom: 6, fontSize: 14, color: C.txt }}>{d.year}</div>
+    {tipRow(C.rent, t.rentL, `${fmt.n(d.rent)} CZK`)}
+    {tipRow(C.buy, t.proBuyerTotal, d.buyerMonthlyTotal > 0 ? `${fmt.n(d.buyerMonthlyTotal)} CZK` : t.paidS)}
+    {tipRow(C.tipSub, `  ${t.mtgL}`, `${fmt.n(d.mortgage)} CZK`)}
+    {tipRow(C.tipSub, "  + ostatní", `${fmt.n(d.buyerMonthlyTotal - d.mortgage)} CZK`)}
+    {d.yearRenovation > 0 && tipRow(C.warn, `  ${t.proHReno}`, `${fmt.n(d.yearRenovation)} CZK`)}
+    {d.taxBenefit > 0 && tipRow(C.inv, `  ${t.proHDeduction}`, `−${fmt.n(d.taxBenefit)} CZK/${t.unit}`)}
+    {d.renterMoSav > 0 && <div style={{ fontSize: 11, color: C.inv, marginTop: 4 }}>{t.renter} +{fmt.n(d.renterMoSav)}/m</div>}
+    {d.buyerMoSav > 0 && <div style={{ fontSize: 11, color: C.inv, marginTop: 4 }}>{t.buyer} +{fmt.n(d.buyerMoSav)}/m</div>}
+  </div>);
+}
+
 const getAx = () => ({ stroke: C.axis, fontSize: 11, tickLine: false, tick: { fill: C.axisTick } });
 const getGr = () => ({ stroke: C.grid, strokeDasharray: "3 3" });
 const dp = (c) => ({ r: 5, fill: c, stroke: C.bg, strokeWidth: 2 });
@@ -419,7 +745,7 @@ const dp = (c) => ({ r: 5, fill: c, stroke: C.bg, strokeWidth: 2 });
 /* ══════════════════════════════════════════
    LEARN PAGE
    ══════════════════════════════════════════ */
-function LearnPage({ t, onGoCalc }) {
+function LearnPage({ t, onGoCalc, onGoPro }) {
   const P = ({ children, style }) => <p style={{ fontSize: 15, color: C.dim, lineHeight: 1.8, margin: "0 0 16px", textAlign: "justify", ...style }}>{children}</p>;
   const H = ({ children, icon }) => <h2 style={{ fontSize: 22, fontWeight: 800, color: C.txt, margin: "48px 0 20px", display: "flex", alignItems: "center", gap: 10 }}>{icon && <span style={{ fontSize: 24 }}>{icon}</span>}{children}</h2>;
   const Item = ({ title, children, color }) => (
@@ -465,6 +791,25 @@ function LearnPage({ t, onGoCalc }) {
         [t.emo4s7t, t.emo4s7, C.inv], [t.emo4s8t, t.emo4s8, C.inv],
       ].map(([title, desc, color]) => <Item key={title} title={title} color={color}>{desc}</Item>)}
 
+
+      {/* ── PRO SECTION ── */}
+      <div id="pro-params" style={{ scrollMarginTop: 80 }} />
+      <H icon="🔬">{t.emoProTitle}</H>
+      <P>{t.emoProIntro}</P>
+      {[
+        [t.proS1t, t.proS1, C.rent], [t.proS2t, t.proS2, C.buy],
+        [t.proS3t, t.proS3, C.other], [t.proS4t, t.proS4, C.other],
+        [t.proS5t, t.proS5, C.other], [t.proS6t, t.proS6, C.other],
+        [t.proS7t, t.proS7, C.inv], [t.proS8t, t.proS8, C.other],
+        [t.proS9t, t.proS9, C.other],
+      ].map(([title, desc, color]) => <Item key={title} title={title} color={color}>{desc}</Item>)}
+
+      <button onClick={onGoPro} style={{
+        display: "block", width: "100%", padding: "16px", marginTop: 24,
+        background: C.other, color: "#fff", fontSize: 16, fontWeight: 700,
+        border: "none", borderRadius: 12, cursor: "pointer", fontFamily: "inherit",
+      }}>{t.emoProCta} →</button>
+
       {/* Takeaway */}
       <H icon="💡">{t.emo5Title}</H>
       <P>{t.emo5p1}</P><P>{t.emo5p2}</P>
@@ -480,7 +825,7 @@ function LearnPage({ t, onGoCalc }) {
 /* ══════════════════════════════════════════
    ABOUT PAGE
    ══════════════════════════════════════════ */
-function AboutPage({ t, track, onGoCalc, onGoLearn }) {
+function AboutPage({ t, track, onGoCalc, onGoLearn, onGoPro }) {
   const P = ({ children }) => <p style={{ fontSize: 15, color: C.dim, lineHeight: 1.8, margin: "0 0 16px", textAlign: "justify" }}>{children}</p>;
   return (
     <main style={{ maxWidth: 680, margin: "0 auto", padding: "24px 24px 48px" }}>
@@ -488,7 +833,7 @@ function AboutPage({ t, track, onGoCalc, onGoLearn }) {
       <P>{t.aboutP1}</P><P>{t.aboutP2}</P><P>{t.aboutP3}</P><P>{t.aboutP4}</P>
 
       {/* Links to other sections */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 12, marginTop: 32 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12, marginTop: 32 }}>
         <button onClick={onGoCalc} style={{
           background: C.card, border: `1px solid ${C.border}`, borderRadius: 12,
           padding: "20px", cursor: "pointer", textAlign: "left", fontFamily: "inherit",
@@ -499,6 +844,17 @@ function AboutPage({ t, track, onGoCalc, onGoLearn }) {
           </div>
           <div style={{ fontSize: 13, color: C.dim, textAlign: "justify" }}>{t.aboutCalcDesc}</div>
           <span style={{ color: C.rent, fontSize: 13, fontWeight: 600, display: "inline-block", marginTop: 10 }}>{t.aboutCalcBtn} →</span>
+        </button>
+        <button onClick={onGoPro} style={{
+          background: C.card, border: `1px solid ${C.border}`, borderRadius: 12,
+          padding: "20px", cursor: "pointer", textAlign: "left", fontFamily: "inherit",
+        }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+            <span style={{ fontSize: 20 }}>📊</span>
+            <span style={{ fontSize: 15, fontWeight: 700, color: C.txt }}>{t.navPro}</span>
+          </div>
+          <div style={{ fontSize: 13, color: C.dim, textAlign: "justify" }}>{t.aboutProDesc}</div>
+          <span style={{ color: C.other, fontSize: 13, fontWeight: 600, display: "inline-block", marginTop: 10 }}>{t.aboutProBtn} →</span>
         </button>
         <button onClick={onGoLearn} style={{
           background: C.card, border: `1px solid ${C.border}`, borderRadius: 12,
@@ -526,7 +882,7 @@ function AboutPage({ t, track, onGoCalc, onGoLearn }) {
 /* ══════════════════════════════════════════
    CALCULATOR PAGE
    ══════════════════════════════════════════ */
-function CalcPage({ t, track, onGoLearn, onGoAbout }) {
+function CalcPage({ t, track, onGoLearn, onGoAbout, onGoPro }) {
   const [baseRent, setBaseRent] = useState(22000);
   const [rentRate, setRentRate] = useState(5);
   const [purchasePrice, setPurchasePrice] = useState(8500000);
@@ -537,12 +893,15 @@ function CalcPage({ t, track, onGoLearn, onGoAbout }) {
   const [propAppr, setPropAppr] = useState(5);
   const [openSec, setOpenSec] = useState({ eq: true, mo: false, tbl: false });
   const verdictRef = useRef(null);
-  const [verdictVis, setVerdictVis] = useState(false);
+  const [verdictPos, setVerdictPos] = useState("at");
 
   useEffect(() => {
     const el = verdictRef.current;
     if (!el) return;
-    const obs = new IntersectionObserver(([e]) => setVerdictVis(e.isIntersecting), { threshold: 0.1 });
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) setVerdictPos("at");
+      else setVerdictPos(e.boundingClientRect.top > 0 ? "below" : "above");
+    }, { threshold: 0.1 });
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
@@ -577,7 +936,8 @@ function CalcPage({ t, track, onGoLearn, onGoAbout }) {
         {/* Intro */}
         <div style={{ marginBottom: 20 }}>
           <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 20px 16px" }}>
-            <p style={{ fontSize: 15, color: C.txt, lineHeight: 1.7, margin: "0 0 14px", textAlign: "justify" }}>{t.intro}</p>
+            <p style={{ fontSize: 15, color: C.txt, lineHeight: 1.7, margin: "0 0 10px", textAlign: "justify" }}>{t.intro}</p>
+            <p style={{ fontSize: 13, color: C.dim, lineHeight: 1.6, margin: "0 0 14px", textAlign: "justify" }}>{t.introNote} <button onClick={onGoPro} style={{ background: "none", border: "none", color: C.other, fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", padding: 0 }}>📊 {t.introProLink} →</button></p>
             <button onClick={onGoLearn} style={{
               background: "none", border: "none", color: C.rent, fontSize: 13, fontWeight: 600,
               cursor: "pointer", fontFamily: "inherit", padding: 0, textAlign: "left",
@@ -728,7 +1088,18 @@ function CalcPage({ t, track, onGoLearn, onGoAbout }) {
         </ChartSection>
 
         {/* Bottom CTAs to other sections */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 14, marginTop: 16, marginBottom: 8 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14, marginTop: 16, marginBottom: 8 }}>
+          <button onClick={onGoPro} style={{
+            background: C.card, border: `1px solid ${C.border}`, borderRadius: 12,
+            padding: "22px 20px", cursor: "pointer", textAlign: "left", fontFamily: "inherit",
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+              <span style={{ fontSize: 20 }}>📊</span>
+              <span style={{ fontSize: 15, fontWeight: 700, color: C.txt }}>{t.ctaProTitle}</span>
+            </div>
+            <div style={{ fontSize: 13, color: C.dim, lineHeight: 1.6, marginBottom: 12, textAlign: "justify" }}>{t.ctaProDesc}</div>
+            <span style={{ color: C.other, fontSize: 13, fontWeight: 600 }}>{t.ctaProBtn} →</span>
+          </button>
           <button onClick={onGoLearn} style={{
             background: C.card, border: `1px solid ${C.border}`, borderRadius: 12,
             padding: "22px 20px", cursor: "pointer", textAlign: "left", fontFamily: "inherit",
@@ -755,7 +1126,7 @@ function CalcPage({ t, track, onGoLearn, onGoAbout }) {
       </main>
 
       {/* Sticky bottom bar */}
-      {!verdictVis && (
+      {verdictPos !== "at" && (
         <button onClick={() => verdictRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
           style={{
             position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 50,
@@ -767,12 +1138,337 @@ function CalcPage({ t, track, onGoLearn, onGoAbout }) {
           }}>
           <span style={{ background: wc, color: "#fff", fontSize: 11, fontWeight: 800, padding: "4px 10px", borderRadius: 12, letterSpacing: 0.5 }}>{bw ? t.buyWins : t.rentWins}</span>
           <span style={{ color: C.txt, fontFamily: "monospace" }}>{fmt.m2(Math.abs(eqDiff))} CZK</span>
-          <span style={{ fontSize: 12, color: C.dim }}>↓</span>
+          <span style={{ fontSize: 12, color: C.dim }}>{verdictPos === "below" ? "↓" : "↑"}</span>
         </button>
       )}
     </>
   );
 }
+
+function ProCalcPage({ t, track, onGoCalc, onGoLearn, onGoLearnPro }) {
+  const [baseRent, setBaseRent] = useState(22000);
+  const [rentRate, setRentRate] = useState(5);
+  const [rentalDeposit, setRentalDeposit] = useState(PRO_DEFAULTS.rentalDeposit);
+  const [purchasePrice, setPurchasePrice] = useState(8500000);
+  const [downPayment, setDownPayment] = useState(1700000);
+  const [annualRate, setAnnualRate] = useState(4.5);
+  const [mortgageYears, setMortgageYears] = useState(30);
+  const [maintenanceFee, setMaintenanceFee] = useState(PRO_DEFAULTS.maintenanceFee);
+  const [investReturn, setInvestReturn] = useState(8);
+  const [propAppr, setPropAppr] = useState(5);
+
+  // ── Other criteria ──
+  const [propertyTaxRate, setPropertyTaxRate] = useState(PRO_DEFAULTS.propertyTaxRate);
+  const [propertyInsRate, setPropertyInsRate] = useState(PRO_DEFAULTS.propertyInsRate);
+  const [mortgageInsRate, setMortgageInsRate] = useState(PRO_DEFAULTS.mortgageInsRate);
+  const [transactionCost, setTransactionCost] = useState(PRO_DEFAULTS.transactionCost);
+  const [interestDeductionLimit, setInterestDeductionLimit] = useState(PRO_DEFAULTS.interestDeductionLimit);
+  const [incomeTaxRate, setIncomeTaxRate] = useState(PRO_DEFAULTS.incomeTaxRate);
+  const [renovationCycle, setRenovationCycle] = useState(PRO_DEFAULTS.renovationCycle);
+  const [renovationCostPct, setRenovationCostPct] = useState(PRO_DEFAULTS.renovationCostPct);
+
+  // ── UI state ──
+  const [openSec, setOpenSec] = useState({ eq: true, mo: false, tbl: false });
+  const toggleSec = useCallback((k) => { setOpenSec((p) => { const n = { ...p, [k]: !p[k] }; if (n[k]) track("section_opened", { section: `pro_${k}` }); return n; }); }, [track]);
+  const verdictRef = useRef(null);
+  const [verdictPos, setVerdictPos] = useState("at");
+
+  useEffect(() => {
+    const el = verdictRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) setVerdictPos("at");
+      else setVerdictPos(e.boundingClientRect.top > 0 ? "below" : "above");
+    }, { threshold: 0.1 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  // ── Compute ──
+  const r = useMemo(() => computePro({
+    baseRent, rentRate, rentalDeposit,
+    purchasePrice, downPayment, annualRate, mortgageYears, maintenanceFee,
+    investReturn, propertyAppreciation: propAppr,
+    propertyTaxRate, propertyInsRate, mortgageInsRate,
+    transactionCost, interestDeductionLimit, incomeTaxRate,
+    renovationCycle, renovationCostPct,
+    rentalDepositInterest: PRO_DEFAULTS.rentalDepositInterest,
+  }), [baseRent, rentRate, rentalDeposit, purchasePrice, downPayment, annualRate, mortgageYears, maintenanceFee, investReturn, propAppr, propertyTaxRate, propertyInsRate, mortgageInsRate, transactionCost, interestDeductionLimit, incomeTaxRate, renovationCycle, renovationCostPct]);
+
+  const last = r.data[r.data.length - 1];
+  const eqDiff = r.buyEq - r.rentEq;
+  const bw = eqDiff >= 0;
+  const wc = bw ? C.buy : C.rent;
+  const xI = Math.max(1, Math.floor(r.data.length / 7));
+
+  const yMaxEq = useMemo(() => { let mx = 0; for (const d of r.data) { const v = Math.max(d.buyerEquity, d.renterEquity); if (v > mx) mx = v; } return Math.ceil(mx / 1e6) * 1e6 + 1e6; }, [r.data]);
+  const yMaxMo = useMemo(() => { let mx = 0; for (const d of r.data) { const v = Math.max(d.buyerMonthlyTotal, d.rent); if (v > mx) mx = v; } return Math.ceil(mx / 10000) * 10000 + 5000; }, [r.data]);
+
+  return (
+    <>
+    <div style={{ padding: "24px 24px 32px" }}>
+      <div style={{ maxWidth: 960, margin: "0 auto" }}>
+
+        <h1 style={{ fontSize: 24, fontWeight: 800, color: C.txt, margin: "0 0 8px" }}>{t.proTitle}</h1>
+
+        {/* ── INTRO ── */}
+        <div style={{ marginBottom: 20 }}>
+          <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 20px 16px" }}>
+            <p style={{ fontSize: 15, color: C.txt, lineHeight: 1.7, margin: "0 0 14px", textAlign: "justify" }}>{t.proIntro}</p>
+            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+              <button onClick={onGoCalc} style={{ background: "none", border: "none", color: C.rent, fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", padding: 0, textAlign: "left" }}>
+                🧮 {t.proLinkBasic} →
+              </button>
+              <button onClick={onGoLearnPro} style={{ background: "none", border: "none", color: C.rent, fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", padding: 0, textAlign: "left" }}>
+                📖 {t.proLinkLearn} →
+              </button>
+            </div>
+          </div>
+          <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
+            {[
+              t.proHow1,
+              t.proHow2,
+              t.proHow3,
+            ].map((s, i) => (
+              <div key={i} style={{
+                flex: 1, background: C.card, border: `1px solid ${C.border}`, borderRadius: 10,
+                padding: "10px 12px", display: "flex", flexDirection: "column", gap: 6, alignItems: "center", textAlign: "center",
+              }}>
+                <span style={{
+                  background: C.stepBg, color: C.stepTxt,
+                  fontSize: 11, fontWeight: 800, borderRadius: 10,
+                  width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center",
+                }}>{i + 1}</span>
+                <span style={{ fontSize: 11, color: C.dim2, lineHeight: 1.4 }}>{s}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── CONTROLS ── */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 14, marginBottom: 24 }}>
+
+          {/* Rent */}
+          <fieldset style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "16px 18px 8px", margin: 0 }}>
+            <legend style={{ fontSize: 10, color: C.rent, textTransform: "uppercase", letterSpacing: 2, fontWeight: 700, padding: "0 4px" }}>{t.rent}</legend>
+            <Slider label={t.monthlyRent} value={baseRent} onChange={setBaseRent} min={8000} max={80000} step={1000} format={fmt.n} unit="CZK" color={C.rent} />
+            <Slider label={t.rentGrowth} value={rentRate} onChange={setRentRate} min={0} max={12} step={0.5} unit="%" color={C.rent} />
+            <Slider label={t.proDeposit} value={rentalDeposit} onChange={setRentalDeposit} min={0} max={5} step={1} unit={t.proDepositUnit} color={C.rent} />
+          </fieldset>
+
+          {/* Mortgage */}
+          <fieldset style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "16px 18px 8px", margin: 0 }}>
+            <legend style={{ fontSize: 10, color: C.buy, textTransform: "uppercase", letterSpacing: 2, fontWeight: 700, padding: "0 4px" }}>{t.buy}</legend>
+            <Slider label={t.price} value={purchasePrice} onChange={setPurchasePrice} min={2e6} max={30e6} step={5e5} format={fmt.m1} unit="CZK" color={C.buy} />
+            <Slider label={t.dp} value={downPayment} onChange={(v) => setDownPayment(Math.min(v, purchasePrice))} min={0} max={purchasePrice} step={1e5} format={fmt.m1} unit="CZK" color={C.buy} />
+            <Slider label={t.rate} value={annualRate} onChange={setAnnualRate} min={1} max={10} step={0.1} unit="%" color={C.buy} />
+            <Slider label={t.term} value={mortgageYears} onChange={setMortgageYears} min={5} max={40} step={1} unit={t.proRenoCycleUnit} color={C.buy} />
+            <Slider label={t.proMaintenance} value={maintenanceFee} onChange={setMaintenanceFee} min={0} max={10000} step={500} format={fmt.n} unit={t.proMaintenanceUnit} color={C.buy} />
+          </fieldset>
+
+          {/* Opportunity cost */}
+          <fieldset style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "16px 18px 8px", margin: 0 }}>
+            <legend style={{ fontSize: 10, color: C.inv, textTransform: "uppercase", letterSpacing: 2, fontWeight: 700, padding: "0 4px" }}>{t.opp}</legend>
+            <Slider label={t.invest} value={investReturn} onChange={setInvestReturn} min={0} max={20} step={0.5} unit={`%${t.perYr}`} color={C.inv} />
+            <Slider label={t.appreciation} value={propAppr} onChange={setPropAppr} min={0} max={12} step={0.5} unit={`%${t.perYr}`} color={C.inv} />
+          </fieldset>
+
+          {/* Other criteria */}
+          <fieldset style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "16px 18px 8px", margin: 0 }}>
+            <legend style={{ fontSize: 10, color: C.other, textTransform: "uppercase", letterSpacing: 2, fontWeight: 700, padding: "0 4px" }}>{t.proOther}</legend>
+            <Slider label={t.proTransfer} value={transactionCost} onChange={setTransactionCost} min={0} max={5} step={0.5} unit="%" color={C.other} />
+            <Slider label={t.proPropTax} value={propertyTaxRate} onChange={setPropertyTaxRate} min={0} max={1} step={0.01} unit={t.proPropTaxUnit} color={C.other} />
+            <Slider label={t.proPropIns} value={propertyInsRate} onChange={setPropertyInsRate} min={0} max={1} step={0.05} unit={t.proPropInsUnit} color={C.other} />
+            <Slider label={t.proMortIns} value={mortgageInsRate} onChange={setMortgageInsRate} min={0} max={1} step={0.05} unit={t.proMortInsUnit} color={C.other} />
+            <Slider label={t.proDeduction} value={interestDeductionLimit} onChange={setInterestDeductionLimit} min={0} max={300000} step={10000} format={fmt.n} unit={t.proDeductionUnit} color={C.other} />
+            <Slider label={t.proIncomeTax} value={incomeTaxRate} onChange={setIncomeTaxRate} min={0} max={30} step={1} unit="%" color={C.other} />
+            <Slider label={t.proRenoCycle} value={renovationCycle} onChange={setRenovationCycle} min={0} max={30} step={1} unit={t.proRenoCycleUnit} color={C.other} />
+            <Slider label={t.proRenoCost} value={renovationCostPct} onChange={setRenovationCostPct} min={0} max={30} step={1} unit={t.proRenoCostUnit} color={C.other} />
+          </fieldset>
+        </div>
+
+        {/* ── VERDICT ── */}
+        <div ref={verdictRef} style={{
+          background: `linear-gradient(135deg, ${wc}18, ${wc}08)`, border: `1px solid ${wc}33`,
+          borderRadius: 16, padding: "28px", marginBottom: 32, scrollMarginTop: 16,
+        }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12, flexWrap: "wrap" }}>
+            <strong style={{ background: wc, color: "#fff", fontSize: 13, fontWeight: 800, padding: "6px 16px", borderRadius: 20, letterSpacing: 1, textTransform: "uppercase" }}>
+              {bw ? t.buyWins : t.rentWins}
+            </strong>
+            <span style={{ color: C.dim2, fontSize: 13 }}>{t.proHorizon} {mortgageYears} {t.unit}</span>
+          </div>
+          <div style={{ fontSize: 32, fontWeight: 800, color: C.txt, fontFamily: "monospace", letterSpacing: -1, marginBottom: 8 }}>
+            {fmt.m2(Math.abs(eqDiff))} CZK
+          </div>
+
+          {r.breakpoints.length > 0 && (
+            <div style={{ marginTop: 10, display: "flex", flexDirection: "column", gap: 6 }}>
+              {r.breakpoints.length === 1 ? (
+                <div style={{ padding: "10px 14px", borderRadius: 10, background: `${r.breakpoints[0].buyWinsAfter ? C.buy : C.rent}12`, border: `1px solid ${r.breakpoints[0].buyWinsAfter ? C.buy : C.rent}33`, fontSize: 13, color: C.txt2 }}>
+                  💡 {r.breakpoints[0].buyWinsAfter ? t.breakBuyAfter : t.breakRentAfter} <strong style={{ color: r.breakpoints[0].buyWinsAfter ? C.buy : C.rent }}>{r.breakpoints[0].year}</strong>
+                </div>
+              ) : (
+                (() => {
+                  // Build period descriptions from breakpoints
+                  const firstBuyWins = r.data[0].buyerEquity >= r.data[0].renterEquity;
+                  const periods = [];
+                  let prevYear = r.data[0].year;
+                  let prevBuyWins = firstBuyWins;
+                  for (const bp of r.breakpoints) {
+                    periods.push({ from: prevYear, to: bp.year - 1, buyWins: prevBuyWins });
+                    prevYear = bp.year;
+                    prevBuyWins = bp.buyWinsAfter;
+                  }
+                  periods.push({ from: prevYear, to: r.data[r.data.length - 1].year, buyWins: prevBuyWins });
+                  return (
+                    <>
+                      <div style={{ padding: "10px 14px", borderRadius: 10, background: `${C.warn}12`, border: `1px solid ${C.warn}33`, fontSize: 13, color: C.txt2 }}>
+                        ⚠️ {t.proBreakWarning} — {r.breakpoints.length} {t.proBreakPoints}:
+                      </div>
+                      {periods.map((p, idx) => {
+                        const c = p.buyWins ? C.buy : C.rent;
+                        const label = p.buyWins ? t.buyWins : t.rentWins;
+                        return (
+                          <div key={idx} style={{ padding: "8px 14px", borderRadius: 8, background: `${c}10`, border: `1px solid ${c}25`, fontSize: 12, color: C.txt2, display: "flex", alignItems: "center", gap: 8 }}>
+                            <span style={{ width: 8, height: 8, borderRadius: "50%", background: c, flexShrink: 0 }} />
+                            <span><strong style={{ color: c }}>{label}</strong> {t.proLeads}: {p.from}–{p.to}</span>
+                          </div>
+                        );
+                      })}
+                    </>
+                  );
+                })()
+              )}
+            </div>
+          )}
+
+          {r.txCost > 0 && (
+            <div style={{ marginTop: 8, fontSize: 12, color: C.dim }}>
+              {t.proTransferCost}: {fmt.n(r.txCost)} CZK ({t.proOneTime})
+            </div>
+          )}
+
+          <div style={{ display: "flex", gap: 24, marginTop: 20, flexWrap: "wrap" }}>
+            {[
+              [t.lblBuyEq, fmt.m1(r.buyEq), C.buy],
+              [t.lblRentEq, fmt.m1(r.rentEq), C.rent],
+              [t.lblMtg, fmt.n(r.mp), C.buy],
+              [t.proBuyerTotal, fmt.n(last.buyerMonthlyTotal), C.buy],
+              [t.lblRent1, fmt.n(baseRent), C.rent],
+              [`${t.lblRentN} ${r.years}`, fmt.n(last.rent), C.rent],
+            ].map(([l, v, c]) => (
+              <div key={l}>
+                <div style={{ fontSize: 10, color: C.dim, textTransform: "uppercase", letterSpacing: 1 }}>{l}</div>
+                <div style={{ fontSize: 16, fontWeight: 700, color: c, fontFamily: "monospace", marginTop: 2 }}>{v}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── EQUITY CHART ── */}
+        <ChartSection title={t.secEquity} open={openSec.eq} onToggle={() => toggleSec("eq")}>
+          <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 12px 8px 0" }}>
+            <ResponsiveContainer width="100%" height={320}>
+              <AreaChart data={r.data} margin={{ top: 10, right: 20, bottom: 10, left: 20 }}>
+                <defs>
+                  <linearGradient id="gBp" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor={C.buy} stopOpacity={0.15} /><stop offset="95%" stopColor={C.buy} stopOpacity={0} /></linearGradient>
+                  <linearGradient id="gRp" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor={C.rent} stopOpacity={0.15} /><stop offset="95%" stopColor={C.rent} stopOpacity={0} /></linearGradient>
+                </defs>
+                <CartesianGrid {...getGr()} />
+                <XAxis dataKey="year" {...getAx()} interval={xI} />
+                <YAxis {...getAx()} tickFormatter={fmt.m1} domain={[0, yMaxEq]} />
+                <Tooltip content={<ProEquityTip t={t} />} />
+                <Area type="monotone" dataKey="buyerEquity" stroke={C.buy} strokeWidth={2.5} fill="url(#gBp)" activeDot={dp(C.buy)} />
+                <Area type="monotone" dataKey="renterEquity" stroke={C.rent} strokeWidth={2.5} fill="url(#gRp)" activeDot={dp(C.rent)} />
+              </AreaChart>
+            </ResponsiveContainer>
+            <ChartLegend items={[[C.buy, t.proLegBuy], [C.rent, t.proLegRent]]} />
+          </div>
+        </ChartSection>
+
+        {/* ── MONTHLY COST CHART ── */}
+        <ChartSection title={t.proSecMonthly} open={openSec.mo} onToggle={() => toggleSec("mo")}>
+          <div style={{ display: "flex", gap: 12, marginBottom: 16, flexWrap: "wrap" }}>
+            <Card label={t.proTotalBuy} value={`${fmt.m1(r.tMort)} CZK`} sub={`${t.proInclTransfer} ${fmt.n(r.txCost)}`} color={C.buy} />
+            <Card label={`${t.proTotalRent} (${r.years} ${t.unit})`} value={`${fmt.m1(r.tRent)} CZK`} sub={`${fmt.n(baseRent)} → ${fmt.n(last.rent)}/m`} color={C.rent} />
+          </div>
+          <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 12px 8px 0" }}>
+            <ResponsiveContainer width="100%" height={280}>
+              <LineChart data={r.data} margin={{ top: 10, right: 20, bottom: 10, left: 20 }}>
+                <CartesianGrid {...getGr()} />
+                <XAxis dataKey="year" {...getAx()} interval={xI} />
+                <YAxis {...getAx()} tickFormatter={fmt.k} domain={[0, yMaxMo]} />
+                <Tooltip content={<ProMonthlyTip t={t} />} />
+                <Line type="monotone" dataKey="rent" stroke={C.rent} strokeWidth={2.5} dot={false} activeDot={dp(C.rent)} />
+                <Line type="monotone" dataKey="buyerMonthlyTotal" stroke={C.buy} strokeWidth={2.5} dot={false} activeDot={dp(C.buy)} />
+              </LineChart>
+            </ResponsiveContainer>
+            <ChartLegend items={[[C.rent, t.rentL], [C.buy, t.proLegBuyTotal]]} />
+          </div>
+        </ChartSection>
+
+        {/* ── TABLE ── */}
+        <ChartSection title={t.secTable} open={openSec.tbl} onToggle={() => toggleSec("tbl")}>
+          <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, overflow: "auto" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 11, minWidth: 800, fontFamily: "monospace" }}>
+              <thead><tr style={{ borderBottom: `1px solid ${C.border}` }}>
+                {[t.hYear, t.hRent, t.proHBuyerTotal, t.hInv, t.proHReno, t.proHDeduction, t.hBuyEq, t.hRentEq, t.hD].map((h) => (
+                  <th key={h} style={{ padding: "10px 8px", textAlign: "right", color: C.faint, fontWeight: 600, fontSize: 9, textTransform: "uppercase", letterSpacing: 1 }}>{h}</th>
+                ))}
+              </tr></thead>
+              <tbody>{r.data.map((d, i) => {
+                const eq = d.buyerEquity - d.renterEquity;
+                return (<tr key={d.year} style={{ borderBottom: `1px solid ${C.rowBorder}`, background: i & 1 ? C.rowAlt : "transparent" }}>
+                  <td style={{ padding: "6px 8px", textAlign: "right", color: C.dim2 }}>{d.year}</td>
+                  <td style={{ padding: "6px 8px", textAlign: "right", color: C.rent }}>{fmt.n(d.rent)}</td>
+                  <td style={{ padding: "6px 8px", textAlign: "right", color: C.buy }}>{fmt.n(d.buyerMonthlyTotal)}</td>
+                  <td style={{ padding: "6px 8px", textAlign: "right", color: (d.renterMoSav > 0 || d.buyerMoSav > 0) ? C.inv : C.muted }}>
+                    {d.renterMoSav > 0 ? `R +${fmt.n(d.renterMoSav)}` : d.buyerMoSav > 0 ? `B +${fmt.n(d.buyerMoSav)}` : "—"}
+                  </td>
+                  <td style={{ padding: "6px 8px", textAlign: "right", color: d.yearRenovation > 0 ? C.warn : C.muted }}>
+                    {d.yearRenovation > 0 ? fmt.n(d.yearRenovation) : "—"}
+                  </td>
+                  <td style={{ padding: "6px 8px", textAlign: "right", color: d.taxBenefit > 0 ? C.inv : C.muted }}>
+                    {d.taxBenefit > 0 ? `−${fmt.n(d.taxBenefit)}` : "—"}
+                  </td>
+                  <td style={{ padding: "6px 8px", textAlign: "right", color: C.buy, fontWeight: 600 }}>{fmt.m1(d.buyerEquity)}</td>
+                  <td style={{ padding: "6px 8px", textAlign: "right", color: C.rent, fontWeight: 600 }}>{fmt.m1(d.renterEquity)}</td>
+                  <td style={{ padding: "6px 8px", textAlign: "right", color: eq >= 0 ? C.buy : C.rent, fontSize: 10 }}>
+                    {eq >= 0 ? `${t.bPlus}${fmt.m1(eq)}` : `${t.rPlus}${fmt.m1(Math.abs(eq))}`}
+                  </td>
+                </tr>);
+              })}</tbody>
+            </table>
+          </div>
+        </ChartSection>
+
+      </div>
+    </div>
+
+    {/* ── STICKY BOTTOM BAR ── */}
+    {verdictPos !== "at" && (
+      <button onClick={() => verdictRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+        style={{
+          position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 50,
+          display: "flex", alignItems: "center", justifyContent: "center", gap: 10,
+          padding: "16px 20px", background: C.bg,
+          borderTop: `2px solid ${wc}44`,
+          color: wc, fontSize: 15, fontWeight: 700, cursor: "pointer", border: "none",
+          borderTop: `2px solid ${wc}44`, fontFamily: "inherit",
+          boxShadow: "0 -8px 32px rgba(0,0,0,0.6)",
+        }}>
+        <span style={{ background: wc, color: "#fff", fontSize: 11, fontWeight: 800, padding: "4px 10px", borderRadius: 12, letterSpacing: 0.5 }}>
+          {bw ? t.buyWins : t.rentWins}
+        </span>
+        <span style={{ color: C.txt, fontFamily: "monospace" }}>{fmt.m2(Math.abs(eqDiff))} CZK</span>
+        <span style={{ fontSize: 12, color: C.dim }}>{verdictPos === "below" ? "↓" : "↑"}</span>
+      </button>
+    )}
+    </>
+  );
+}
+
 
 /* ══════════════════════════════════════════
    MAIN APP (Router + Menu)
@@ -836,7 +1532,7 @@ export default function App() {
         {menuOpen && (
           <div style={{ position: "absolute", top: "100%", left: 0, right: 0, background: C.menuBg, borderBottom: `1px solid ${C.menuBorder}`, animation: "slideIn 0.2s ease-out", zIndex: 61 }}>
             <div style={{ maxWidth: 960, margin: "0 auto", padding: "8px 24px 16px" }}>
-              {[["calc", t.navCalc, "🧮"], ["learn", t.navLearn, "📖"], ["about", t.navAbout, "👋"]].map(([key, label, icon]) => (
+              {[["calc", t.navCalc, "🧮"], ["pro", t.navPro, "🔬"], ["learn", t.navLearn, "📖"], ["about", t.navAbout, "👋"]].map(([key, label, icon]) => (
                 <button key={key} onClick={() => go(key)}
                   style={{
                     display: "flex", alignItems: "center", gap: 10, width: "100%",
@@ -856,9 +1552,10 @@ export default function App() {
       </header>
 
       {/* ── PAGE CONTENT ── */}
-      {page === "calc" && <CalcPage t={t} track={track} onGoLearn={() => go("learn")} onGoAbout={() => go("about")} />}
-      {page === "learn" && <LearnPage t={t} onGoCalc={() => go("calc")} />}
-      {page === "about" && <AboutPage t={t} track={track} onGoCalc={() => go("calc")} onGoLearn={() => go("learn")} />}
+      {page === "calc" && <CalcPage t={t} track={track} onGoLearn={() => go("learn")} onGoAbout={() => go("about")} onGoPro={() => go("pro")} />}
+      {page === "pro" && <ProCalcPage t={t} track={track} onGoCalc={() => go("calc")} onGoLearn={() => go("learn")} onGoLearnPro={() => { go("learn"); setTimeout(() => document.getElementById("pro-params")?.scrollIntoView({ behavior: "smooth" }), 100); }} />}
+      {page === "learn" && <LearnPage t={t} onGoCalc={() => go("calc")} onGoPro={() => go("pro")} />}
+      {page === "about" && <AboutPage t={t} track={track} onGoCalc={() => go("calc")} onGoLearn={() => go("learn")} onGoPro={() => go("pro")} />}
 
       {/* ── FOOTER ── */}
       <footer style={{ borderTop: `1px solid ${C.footerBorder}`, padding: "24px 24px 80px", background: C.footerBg }}>
