@@ -53,7 +53,7 @@ const I18N = {
     legBuy: "Kupující (nemovitost − dluh)", legRent: "Nájemce (investiční portfolio)",
     paidS: "Splaceno", perYr: "/rok", bal: "Zůstatek",
     // Footer
-    disc: "Upozornění: Zjednodušený model. Nezahrnuje údržbu, daň z nemovitosti, pojištění, transakční poplatky, daňové odpočty úroků, korekci o inflaci ani kauci. Zhodnocení a výnosy nejsou zaručené. Poraďte se s finančním poradcem.",
+    disc: "Upozornění: Kalkulačka je orientační nástroj. Každá situace je individuální a výpočet nemusí zachytit všechny náklady. Zhodnocení a výnosy nejsou zaručené. Poraďte se s finančním poradcem.",
     src: "Data: Deloitte Rent Index 2025, ČBA Hypomonitor 2025, ČSÚ 2024, RE/MAX Praha 2025, ČNB 2025.",
     contact: "Kontakt", unit: "let",
     // Intro
@@ -212,7 +212,7 @@ const I18N = {
     rentL: "Rent", mtgL: "Mortgage",
     legBuy: "Buyer (property − debt)", legRent: "Renter (investment portfolio)",
     paidS: "Paid off", perYr: "/yr", bal: "Balance",
-    disc: "Disclaimer: Simplified model. Does not include maintenance, property tax, insurance, transaction fees, mortgage interest deductions, inflation adjustment, or deposit. Returns are not guaranteed. Consult a financial advisor.",
+    disc: "Disclaimer: The calculator is an indicative tool. Every situation is individual and the calculation may not capture all costs. Returns and appreciation are not guaranteed. Consult a financial advisor.",
     src: "Data: Deloitte Rent Index 2025, CBA Hypomonitor 2025, CZSO 2024, RE/MAX Prague 2025, CNB 2025.",
     contact: "Contact", unit: "years",
     intro: "How much do you pay in rent? How much does the apartment you're considering cost? Set the numbers and the calculator will tell you whether renting or buying makes more sense for you.",
