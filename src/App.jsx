@@ -936,8 +936,8 @@ function CalcPage({ t, track, onGoLearn, onGoAbout, onGoPro }) {
         {/* Intro */}
         <div style={{ marginBottom: 20 }}>
           <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 20px 16px" }}>
-            <p style={{ fontSize: 15, color: C.txt, lineHeight: 1.7, margin: "0 0 10px", textAlign: "justify" }}>{t.intro}</p>
-            <p style={{ fontSize: 13, color: C.dim, lineHeight: 1.6, margin: "0 0 14px", textAlign: "justify" }}>{t.introNote} <button onClick={onGoPro} style={{ background: "none", border: "none", color: C.other, fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", padding: 0 }}>📊 {t.introProLink} →</button></p>
+            <p style={{ fontSize: 15, color: C.txt, lineHeight: 1.7, margin: "0 0 10px" }}>{t.intro}</p>
+            <p style={{ fontSize: 13, color: C.dim, lineHeight: 1.6, margin: "0 0 14px" }}>{t.introNote} <button onClick={onGoPro} style={{ background: "none", border: "none", color: C.other, fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", padding: 0 }}>📊 {t.introProLink} →</button></p>
             <button onClick={onGoLearn} style={{
               background: "none", border: "none", color: C.rent, fontSize: 13, fontWeight: 600,
               cursor: "pointer", fontFamily: "inherit", padding: 0, textAlign: "left",
@@ -1214,7 +1214,7 @@ function ProCalcPage({ t, track, onGoCalc, onGoLearn, onGoLearnPro }) {
         {/* ── INTRO ── */}
         <div style={{ marginBottom: 20 }}>
           <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 20px 16px" }}>
-            <p style={{ fontSize: 15, color: C.txt, lineHeight: 1.7, margin: "0 0 14px", textAlign: "justify" }}>{t.proIntro}</p>
+            <p style={{ fontSize: 15, color: C.txt, lineHeight: 1.7, margin: "0 0 14px" }}>{t.proIntro}</p>
             <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
               <button onClick={onGoCalc} style={{ background: "none", border: "none", color: C.rent, fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", padding: 0, textAlign: "left" }}>
                 🧮 {t.proLinkBasic} →
