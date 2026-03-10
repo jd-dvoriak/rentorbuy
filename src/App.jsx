@@ -1564,7 +1564,7 @@ export default function App() {
             <p style={{ fontSize: 11, color: C.muted, lineHeight: 1.7, margin: 0 }}>{t.disc}</p>
             <p style={{ fontSize: 10, color: C.footerTxt2, marginTop: 8 }}>{t.src}</p>
           </div>
-          <div style={{ textAlign: "right" }}>
+          <div style={{ textAlign: "right", marginLeft: "auto" }}>
             <div style={{ fontSize: 11, color: C.dim, marginBottom: 4 }}>{t.contact}</div>
             <a href="mailto:team@rentorbuy.cz" onClick={() => track("contact_click", { method: "email" })} style={{ color: C.rent, fontSize: 13, textDecoration: "none", fontWeight: 600 }}>team@rentorbuy.cz</a>
             <div style={{ fontSize: 10, color: C.footerTxt2, marginTop: 8 }}>© 2026 rentorbuy.cz</div>
