@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://rentorbuy.cz/sitemap.xml
+Sitemap: https://www.rentorbuy.cz/sitemap.xml
