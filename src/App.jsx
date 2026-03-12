@@ -1,8 +1,20 @@
 import React, { useState, useMemo, useCallback, useRef, useEffect } from "react";
-import {
-  AreaChart, Area, LineChart, Line, XAxis, YAxis,
-  Tooltip, ResponsiveContainer, CartesianGrid,
-} from "recharts";
+
+/* Lazy-load recharts for code-splitting (saves ~120 KiB from initial bundle) */
+let AreaChart, Area, LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid;
+let _rechartsLoaded = false;
+const _rechartsPromise = import("recharts").then(mod => {
+  ({ AreaChart, Area, LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } = mod);
+  _rechartsLoaded = true;
+});
+
+function useRecharts() {
+  const [ready, setReady] = useState(_rechartsLoaded);
+  useEffect(() => {
+    if (!_rechartsLoaded) _rechartsPromise.then(() => setReady(true));
+  }, []);
+  return ready;
+}
 
 /* ══════════════════════════════════════════
    i18n
@@ -327,12 +339,12 @@ const themes = {
   dark: {
     bg: "#0e0e1a", card: "#151522", border: "#222238",
     buy: "#fb7185", rent: "#818cf8", inv: "#4ade80", warn: "#fbbf24", other: "#f59e0b",
-    txt: "#e0e0e0", txt2: "#ccc", dim: "#8a8a9a", dim2: "#7a7a8a", faint: "#4a4a5a", muted: "#3a3a4a",
+    txt: "#e0e0e0", txt2: "#ccc", dim: "#8a8a9a", dim2: "#8a8a9a", faint: "#808090", muted: "#7a7a8a",
     sliderTrack: "#2a2a3e", tipBg: "#1c1c30", tipBorder: "#333", tipSub: "#aaa",
     grid: "#1e1e30", axis: "#333", axisTick: "#5a5a6a",
     rowAlt: "#12121e", rowBorder: "#1a1a2a",
     headerBg: "#0e0e1a", menuBg: "#12121e", menuBorder: "#2a2a3e",
-    footerBg: "#0a0a14", footerBorder: "#1e1e30", footerTxt: "#4a4a5a", footerTxt2: "#3a3a4a",
+    footerBg: "#0a0a14", footerBorder: "#1e1e30", footerTxt: "#7a7a8a", footerTxt2: "#7a7a8a",
     langBg: "#1a1a2a", langActiveBg: "#2a2a4a", langBorder: "#2a2a3e",
     stepBg: "#2a2a3e", stepTxt: "#aaa",
     crossBg: "#1a1a2a", crossBorder: "#2a2a3a",
@@ -970,6 +982,7 @@ function CalcPage({ t, track, onGoLearn, onGoAbout, onGoPro }) {
   const ts = useSliderTracking(track, "calc");
   const s = (setter, name) => (v) => { setter(v); ts(name, v); };
   useTimeOnPage(track, "calc");
+  const chartsReady = useRecharts();
 
   const verdictSeenRef = useRef(false);
   useEffect(() => {
@@ -1108,7 +1121,7 @@ function CalcPage({ t, track, onGoLearn, onGoAbout, onGoPro }) {
 
         {/* Equity Chart */}
         <ChartSection title={t.secEquity} open={openSec.eq} onToggle={() => toggleSec("eq")}>
-          <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 12px 8px 0" }}>
+          {chartsReady ? <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 12px 8px 0" }}>
             <ResponsiveContainer width="100%" height={320}>
               <AreaChart data={r.data} margin={{ top: 10, right: 20, bottom: 10, left: 20 }}>
                 <defs><linearGradient id="gB" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor={C.buy} stopOpacity={0.15} /><stop offset="95%" stopColor={C.buy} stopOpacity={0} /></linearGradient><linearGradient id="gR" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor={C.rent} stopOpacity={0.15} /><stop offset="95%" stopColor={C.rent} stopOpacity={0} /></linearGradient></defs>
@@ -1119,7 +1132,7 @@ function CalcPage({ t, track, onGoLearn, onGoAbout, onGoPro }) {
               </AreaChart>
             </ResponsiveContainer>
             <ChartLegend items={[[C.buy, t.legBuy], [C.rent, t.legRent]]} />
-          </div>
+          </div> : <div style={{ height: 320, display: "flex", alignItems: "center", justifyContent: "center", color: C.dim }}>⏳</div>}
         </ChartSection>
 
         {/* Monthly Chart */}
@@ -1129,7 +1142,7 @@ function CalcPage({ t, track, onGoLearn, onGoAbout, onGoPro }) {
             <Card label={`${t.totalRent} (${r.years} ${t.unit})`} value={`${fmt.m1(r.tRent)} CZK`} sub={`${fmt.n(baseRent)} → ${fmt.n(last.rent)}/m`} color={C.rent} />
             <Card label={t.cashD} value={`${fmt.m1(Math.abs(r.tMort - r.tRent))} CZK`} sub={r.tMort > r.tRent ? t.buyMore : t.rentMore} color={C.warn} />
           </div>
-          <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 12px 8px 0" }}>
+          {chartsReady ? <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 12px 8px 0" }}>
             <ResponsiveContainer width="100%" height={280}>
               <LineChart data={r.data} margin={{ top: 10, right: 20, bottom: 10, left: 20 }}>
                 <CartesianGrid {...getGr()} /><XAxis dataKey="year" {...getAx()} interval={xI} /><YAxis {...getAx()} tickFormatter={fmt.k} domain={[0, yMaxMo]} />
@@ -1139,7 +1152,7 @@ function CalcPage({ t, track, onGoLearn, onGoAbout, onGoPro }) {
               </LineChart>
             </ResponsiveContainer>
             <ChartLegend items={[[C.rent, `${t.rentL} (${rentRate}%${t.perYr})`], [C.buy, `${t.mtgL} (${annualRate}%)`]]} />
-          </div>
+          </div> : <div style={{ height: 280, display: "flex", alignItems: "center", justifyContent: "center", color: C.dim }}>⏳</div>}
           {r.cross && <p style={{ background: C.crossBg, border: `1px solid ${C.crossBorder}`, borderRadius: 8, padding: "10px 16px", fontSize: 12, color: C.dim2, marginTop: 12 }}>{t.crossover} <strong style={{ color: C.warn }}>{r.cross}</strong>.</p>}
         </ChartSection>
 
@@ -1257,6 +1270,7 @@ function ProCalcPage({ t, track, onGoCalc, onGoLearn, onGoLearnPro }) {
   const ts = useSliderTracking(track, "pro");
   const s = (setter, name) => (v) => { setter(v); ts(name, v); };
   useTimeOnPage(track, "pro");
+  const chartsReady = useRecharts();
 
   const verdictSeenRef = useRef(false);
   useEffect(() => {
@@ -1462,7 +1476,7 @@ function ProCalcPage({ t, track, onGoCalc, onGoLearn, onGoLearnPro }) {
 
         {/* ── EQUITY CHART ── */}
         <ChartSection title={t.secEquity} open={openSec.eq} onToggle={() => toggleSec("eq")}>
-          <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 12px 8px 0" }}>
+          {chartsReady ? <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 12px 8px 0" }}>
             <ResponsiveContainer width="100%" height={320}>
               <AreaChart data={r.data} margin={{ top: 10, right: 20, bottom: 10, left: 20 }}>
                 <defs>
@@ -1478,7 +1492,7 @@ function ProCalcPage({ t, track, onGoCalc, onGoLearn, onGoLearnPro }) {
               </AreaChart>
             </ResponsiveContainer>
             <ChartLegend items={[[C.buy, t.proLegBuy], [C.rent, t.proLegRent]]} />
-          </div>
+          </div> : <div style={{ height: 320, display: "flex", alignItems: "center", justifyContent: "center", color: C.dim }}>⏳</div>}
         </ChartSection>
 
         {/* ── MONTHLY COST CHART ── */}
@@ -1487,7 +1501,7 @@ function ProCalcPage({ t, track, onGoCalc, onGoLearn, onGoLearnPro }) {
             <Card label={t.proTotalBuy} value={`${fmt.m1(r.tMort)} CZK`} sub={`${t.proInclTransfer} ${fmt.n(r.txCost)}`} color={C.buy} />
             <Card label={`${t.proTotalRent} (${r.years} ${t.unit})`} value={`${fmt.m1(r.tRent)} CZK`} sub={`${fmt.n(baseRent)} → ${fmt.n(last.rent)}/m`} color={C.rent} />
           </div>
-          <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 12px 8px 0" }}>
+          {chartsReady ? <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 12px 8px 0" }}>
             <ResponsiveContainer width="100%" height={280}>
               <LineChart data={r.data} margin={{ top: 10, right: 20, bottom: 10, left: 20 }}>
                 <CartesianGrid {...getGr()} />
@@ -1499,7 +1513,7 @@ function ProCalcPage({ t, track, onGoCalc, onGoLearn, onGoLearnPro }) {
               </LineChart>
             </ResponsiveContainer>
             <ChartLegend items={[[C.rent, t.rentL], [C.buy, t.proLegBuyTotal]]} />
-          </div>
+          </div> : <div style={{ height: 280, display: "flex", alignItems: "center", justifyContent: "center", color: C.dim }}>⏳</div>}
         </ChartSection>
 
         {/* ── TABLE ── */}

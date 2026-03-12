@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1H8EX6JGHN"></script>
+  <!-- Google tag (gtag.js) — deferred until after page interactive -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-1H8EX6JGHN');
+    var _gtagLoaded = false;
+    function _loadGtag() {
+      if (_gtagLoaded) return;
+      _gtagLoaded = true;
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-1H8EX6JGHN';
+      s.async = true;
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-1H8EX6JGHN');
+    }
+    ['scroll','click','touchstart','keydown'].forEach(function(e){
+      document.addEventListener(e, _loadGtag, {once:true, passive:true});
+    });
+    setTimeout(_loadGtag, 3000);
   </script>
 
   <meta charset="UTF-8" />
