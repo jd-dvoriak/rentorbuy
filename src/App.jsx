@@ -1,10 +1,10 @@
 import React, { useState, useMemo, useCallback, useRef, useEffect } from "react";
 
 /* Lazy-load recharts for code-splitting (saves ~120 KiB from initial bundle) */
-let AreaChart, Area, LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid;
+let AreaChart, Area, LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, ReferenceDot;
 let _rechartsLoaded = false;
 const _rechartsPromise = import("recharts").then(mod => {
-  ({ AreaChart, Area, LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } = mod);
+  ({ AreaChart, Area, LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, ReferenceDot } = mod);
   _rechartsLoaded = true;
 });
 
@@ -574,6 +574,7 @@ function computePro(params) {
       rent: renterMonthlyTotal,
       mortgage: mtg,
       buyerMonthlyTotal,
+      buyerMonthlyExReno: mtg + maintenanceFee + Math.round((buyerAnnualExtra - yearRenovation) / 12),
       // Annual details
       yearInterest: Math.round(yI),
       yearMaintenance,
@@ -664,7 +665,12 @@ function ChartSection({ title, open, onToggle, children }) {
 function ChartLegend({ items }) {
   return (
     <div style={{ display: "flex", justifyContent: "center", gap: 24, paddingBottom: 10, flexWrap: "wrap" }}>
-      {items.map(([c, t]) => (<div key={t} style={{ display: "flex", alignItems: "center", gap: 6 }}><span style={{ width: 16, height: 3, background: c, borderRadius: 2, display: "inline-block" }} /><span style={{ fontSize: 11, color: C.dim2 }}>{t}</span></div>))}
+      {items.map(([c, t, shape]) => (<div key={t} style={{ display: "flex", alignItems: "center", gap: 6 }}>
+        {shape === "dot"
+          ? <span style={{ width: 10, height: 10, background: c, borderRadius: "50%", display: "inline-block", border: `2px solid ${C.bg}` }} />
+          : <span style={{ width: 16, height: 3, background: c, borderRadius: 2, display: "inline-block" }} />}
+        <span style={{ fontSize: 11, color: C.dim2 }}>{t}</span>
+      </div>))}
     </div>
   );
 }
@@ -1310,7 +1316,7 @@ function ProCalcPage({ t, track, onGoCalc, onGoLearn, onGoLearnPro }) {
   prevV.current = bw;
 
   const yMaxEq = useMemo(() => { let mx = 0; for (const d of r.data) { const v = Math.max(d.buyerEquity, d.renterEquity); if (v > mx) mx = v; } return Math.ceil(mx / 1e6) * 1e6 + 1e6; }, [r.data]);
-  const yMaxMo = useMemo(() => { let mx = 0; for (const d of r.data) { const v = Math.max(d.buyerMonthlyTotal, d.rent); if (v > mx) mx = v; } return Math.ceil(mx / 10000) * 10000 + 5000; }, [r.data]);
+  const yMaxMo = useMemo(() => { let mx = 0; for (const d of r.data) { const v = Math.max(d.buyerMonthlyExReno, d.rent); if (v > mx) mx = v; } return Math.ceil(mx / 10000) * 10000 + 5000; }, [r.data]);
 
   return (
     <>
@@ -1509,10 +1515,13 @@ function ProCalcPage({ t, track, onGoCalc, onGoLearn, onGoLearnPro }) {
                 <YAxis {...getAx()} tickFormatter={fmt.k} domain={[0, yMaxMo]} />
                 <Tooltip content={<ProMonthlyTip t={t} />} />
                 <Line type="monotone" dataKey="rent" stroke={C.rent} strokeWidth={2.5} dot={false} activeDot={dp(C.rent)} />
-                <Line type="monotone" dataKey="buyerMonthlyTotal" stroke={C.buy} strokeWidth={2.5} dot={false} activeDot={dp(C.buy)} />
+                <Line type="monotone" dataKey="buyerMonthlyExReno" stroke={C.buy} strokeWidth={2.5} dot={false} activeDot={dp(C.buy)} />
+                {r.data.filter(d => d.yearRenovation > 0).map(d => (
+                  <ReferenceDot key={d.year} x={d.year} y={d.buyerMonthlyExReno} r={6} fill={C.warn} stroke={C.bg} strokeWidth={2} />
+                ))}
               </LineChart>
             </ResponsiveContainer>
-            <ChartLegend items={[[C.rent, t.rentL], [C.buy, t.proLegBuyTotal]]} />
+            <ChartLegend items={[[C.rent, t.rentL], [C.buy, t.proLegBuyTotal], [C.warn, t.proHReno, "dot"]]} />
           </div> : <div style={{ height: 280, display: "flex", alignItems: "center", justifyContent: "center", color: C.dim }}>⏳</div>}
         </ChartSection>
 
