@@ -1591,8 +1591,14 @@ function ProCalcPage({ t, track, onGoCalc, onGoLearn, onGoLearnPro }) {
    MAIN APP (Router + Menu)
    ══════════════════════════════════════════ */
 export default function App() {
-  const [lang, setLang] = useState("cs");
-  const [page, setPage] = useState("calc");
+  // Read initial page and lang from URL query params
+  const initParams = useMemo(() => new URLSearchParams(window.location.search), []);
+  const validPages = ["calc", "pro", "learn", "about"];
+  const initPage = validPages.includes(initParams.get("page")) ? initParams.get("page") : "calc";
+  const initLang = initParams.get("lang") === "en" ? "en" : "cs";
+
+  const [lang, setLang] = useState(initLang);
+  const [page, setPage] = useState(initPage);
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState("dark");
 
@@ -1601,6 +1607,24 @@ export default function App() {
 
   const t = I18N[lang];
   const track = useCallback((name, params) => { if (typeof window.gtag === "function") window.gtag("event", name, params); }, []);
+
+  // Update URL when page or lang changes (without reload)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    // Preserve UTM params
+    const utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content"];
+    const utms = {};
+    utmKeys.forEach(k => { if (params.has(k)) utms[k] = params.get(k); });
+
+    const newParams = new URLSearchParams();
+    if (page !== "calc") newParams.set("page", page);
+    if (lang !== "cs") newParams.set("lang", lang);
+    Object.entries(utms).forEach(([k, v]) => newParams.set(k, v));
+
+    const qs = newParams.toString();
+    const newUrl = window.location.pathname + (qs ? "?" + qs : "");
+    window.history.replaceState(null, "", newUrl);
+  }, [page, lang]);
 
   // Capture UTM params on first load
   useEffect(() => {
