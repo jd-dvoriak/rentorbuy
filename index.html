@@ -93,7 +93,7 @@
       "email": "team@rentorbuy.cz"
     },
     "datePublished": "2026-03-06",
-    "dateModified": "2026-03-09"
+    "dateModified": "2026-03-14"
   }
   </script>
 
@@ -126,6 +126,22 @@
           "@type": "Answer",
           "text": "Průměrný nájem za byt 2+kk v Praze je přibližně 22 000 Kč měsíčně (data z Deloitte Rent Index 2025)."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Vyplatí se investice do bytu na pronájem v Praze?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Záleží na kupní ceně, výši nájmu, obsazenosti, nákladech vlastníka a alternativních investicích. Naše investiční kalkulačka na rentorbuy.cz spočítá čistý výnos, cash flow a porovná s indexovým fondem."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Co je Cash-on-Cash výnos z pronájmu nemovitosti?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cash-on-Cash výnos je roční čistý cash flow z pronájmu dělený vlastním vloženým kapitálem. Ukazuje, kolik procent ročně vyděláváte na penězích, které jste do nemovitosti skutečně investovali."
+        }
       }
     ]
   }
@@ -136,6 +152,8 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #0e0e1a; color: #e0e0e0; font-family: -apple-system, system-ui, sans-serif; }
     #root { min-height: 100vh; }
+    input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: #fff; cursor: pointer; border: 2px solid #888; }
+    input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: #fff; cursor: pointer; border: 2px solid #888; }
   </style>
 </head>
 <body>
@@ -144,10 +162,17 @@
     <div style="padding:40px;max-width:680px;margin:0 auto;font-family:sans-serif;color:#e0e0e0;background:#0e0e1a;min-height:100vh;">
       <h1>Vyplatí se pronájem nebo koupě bytu? | rentorbuy.cz</h1>
       <p>Interaktivní kalkulačka pro porovnání pronájmu a koupě bytu v České republice.</p>
+      <h2>Kalkulačky</h2>
+      <ul>
+        <li><a href="/?page=calc">Základní kalkulačka</a> — pronájem vs. koupě s náklady obětované příležitosti</li>
+        <li><a href="/?page=pro">Detailní kalkulačka</a> — zahrnuje daně, pojištění, údržbu, odpočty úroků a renovace</li>
+        <li><a href="/?page=invest">Investiční kalkulačka</a> — výnos z pronájmu, cash flow, porovnání s alternativní investicí</li>
+      </ul>
       <h2>Jak to funguje</h2>
       <p>Kalkulačka porovnává dvě varianty: (A) koupíte byt s hypotékou, nebo (B) zůstanete v nájmu a peníze investujete. Zahrnuje náklady obětované příležitosti, rozdíly v měsíčních platbách a zhodnocení nemovitosti.</p>
       <h2>Výchozí data</h2>
       <p>Průměrný nájem Praha 2+kk: 22 000 Kč/měs. Průměrná cena bytu: 8,5M Kč. Úroková sazba: 4,5%. Data: Deloitte, ČNB, ČBA, ČSÚ.</p>
+      <p><a href="/?page=learn">Jak na to — průvodce</a> | <a href="/?page=about">O projektu</a></p>
       <p>Pro plnou funkčnost kalkulačky zapněte JavaScript.</p>
       <p>Kontakt: <a href="mailto:team@rentorbuy.cz">team@rentorbuy.cz</a></p>
     </div>

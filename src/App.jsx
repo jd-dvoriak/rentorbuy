@@ -186,6 +186,64 @@ const I18N = {
     aboutLearnDesc: "Vysvětlujeme pozadí, náklady obětované příležitosti a jak kalkulačka počítá.",
     aboutProDesc: "Zahrnuje daně, pojištění, údržbu, odpočty úroků a renovace.",
     aboutProBtn: "Otevřít detailní kalkulačku",
+    // ── INVESTOR CALCULATOR ──
+    navInvest: "Investiční kalkulačka",
+    invTitle: "Investiční kalkulačka: Výnos z pronájmu",
+    invIntro: "Spočítejte si, jestli se vám vyplatí investice do bytu na pronájem. Kalkulačka zahrnuje všechny náklady vlastníka a porovnává s alternativní investicí.",
+    invLinkBasic: "Kalkulačka bydlení", invLinkLearn: "Jak na to — průvodce",
+    invHow1: "Nastavte parametry nemovitosti, financování a nákladů",
+    invHow2: "Kalkulačka spočítá čistý výnos z pronájmu a porovná s alternativou",
+    invHow3: "Výsledek najdete níže — posuňte dolů",
+    invProperty: "Nemovitost", invFinancing: "Financování", invRental: "Pronájem", invCosts: "Náklady vlastníka", invAlternative: "Alternativní investice",
+    invPrice: "Kupní cena nemovitosti", invDP: "Vlastní prostředky",
+    invRate: "Úroková sazba", invTerm: "Doba splácení",
+    invAppreciation: "Zhodnocení nemovitosti",
+    invRent: "Měsíční nájem", invRentGrowth: "Roční růst nájmu",
+    invOccupancy: "Obsazenost", invOccUnit: "%",
+    invMaintenance: "Fond oprav", invTransfer: "Náklady převodu",
+    invPropTax: "Daň z nemovitosti", invPropIns: "Pojištění nemovitosti",
+    invMortIns: "Pojištění hypotéky", invIncomeTax: "Daň z příjmu z pronájmu",
+    invMgmtFee: "Správa nemovitosti", invMgmtUnit: "% z nájmu",
+    invRenoCycle: "Velká renovace každých", invRenoCost: "Náklady renovace",
+    invAltReturn: "Alternativní výnos (např. S&P 500)",
+    // Investor verdict
+    invGrossYield: "Hrubý výnos", invNetYield: "Čistý výnos",
+    invCashFlow: "Měsíční cash flow", invCoCReturn: "Cash-on-Cash výnos",
+    invTotalROI: "Celková návratnost", invBreakeven: "Návratnost investice",
+    invPropertyWins: "Nemovitost se vyplatí", invAltWins: "Alternativa se vyplatí",
+    invPropertyValue: "Hodnota nemovitosti", invPortfolio: "Alternativní portfolio",
+    invNetIncome: "Čistý příjem z pronájmu", invAllCosts: "Celkové náklady vlastníka",
+    invMortgage: "Hypotéka", invEquity: "Čisté jmění z nemovitosti",
+    invAltEquity: "Portfolio alternativní investice",
+    invAfterYears: "po", invYears: "letech",
+    invMonthlyDetail: "Měsíční přehled", invEquityChart: "Vývoj jmění", invTableTitle: "Roční přehled",
+    invLegProperty: "Investor (nemovitost + čistý příjem)", invLegAlt: "Alternativní investice (portfolio)",
+    invLegIncome: "Čistý příjem/měs.", invLegCosts: "Náklady/měs.", invLegMtg: "Hypotéka/měs.",
+    invHYear: "Rok", invHRent: "Nájem", invHCosts: "Nákl.", invHCashFlow: "CF/m", invHPropEq: "Nemovit.", invHAltEq: "Altern.", invHD: "Δ",
+    invMonths: "měsíců",
+    invChoiceTitle: "Co vás zajímá?",
+    invChoiceLive: "Bydlení pro sebe", invChoiceLiveDesc: "Vyplatí se mi pronájem nebo koupě?",
+    invChoiceInvest: "Investice do nemovitosti", invChoiceInvestDesc: "Jaký výnos mi přinese byt na pronájem?",
+    invCtaTitle: "Kupujete jako investici?",
+    invCtaDesc: "Investiční kalkulačka spočítá výnos z pronájmu, cash flow a porovná s alternativní investicí.",
+    invCtaBtn: "Otevřít investiční kalkulačku",
+    // Learn page investor section
+    invLearnTitle: "Investiční kalkulačka — parametry",
+    invLearnIntro: "Investiční kalkulačka je určená pro ty, kdo zvažují koupi bytu jako investici na pronájem. Počítá čistý výnos po všech nákladech a porovnává s alternativní investicí.",
+    invLearnCta: "Vyzkoušet investiční kalkulačku",
+    invLS1t: "Obsazenost", invLS1: "Jak velkou část roku bude byt pronajatý. 95 % znamená asi 2,5 týdne ročně bez nájemce. Konzervativní odhad pro dlouhodobý pronájem v Praze.",
+    invLS2t: "Správa nemovitosti", invLS2: "Pokud pronájem řeší správcovská firma, typicky si účtuje 8–12 % z nájmu. Pokud spravujete sami, nastavte na 0 %.",
+    invLS3t: "Daň z příjmu z pronájmu", invLS3: "Příjem z pronájmu podléhá dani z příjmu. Můžete uplatnit skutečné výdaje nebo paušál 30 %. Standardní sazba je 15 %.",
+    invLS4t: "Cash-on-Cash výnos", invLS4: "Roční čistý cash flow dělený vlastním vloženým kapitálem. Ukazuje, kolik procent ročně vyděláváte na penězích, které jste skutečně investovali.",
+    invLS5t: "Alternativní investice", invLS5: "Co by vaše peníze vydělaly, kdybyste je místo nemovitosti investovali na trhu. S&P 500 má historický průměr ~10 % ročně. Používáme 8 % jako konzervativní odhad.",
+    invHorizon: "Horizont",
+    invBreakPropAfter: "Nemovitost se vyplatí od roku",
+    invBreakAltAfter: "Alternativa vede po celou dobu. Nemovitost se vyplatí od roku",
+    invBreakAlways: "po celou dobu horizontu",
+    invBreakWarning: "Výhodnost se v čase mění",
+    invGrossYieldDesc: "Roční hrubý příjem z pronájmu (po obsazenosti) dělený kupní cenou nemovitosti. Nezahrnuje žádné náklady — slouží jen pro rychlé porovnání.",
+    invNetYieldDesc: "Roční čistý příjem (po všech nákladech vlastníka kromě hypotéky) dělený kupní cenou. Ukazuje skutečný výnos nemovitosti jako aktiva.",
+    invCoCDesc: "Roční čistý cash flow (po nákladech i splátce hypotéky) dělený vlastním vloženým kapitálem. Ukazuje, kolik % ročně vyděláváte na penězích, které jste skutečně investovali.",
   },
   en: {
     navCalc: "Calculator", navPro: "Detailed Calculator", navLearn: "Learn", navAbout: "About",
@@ -329,6 +387,62 @@ const I18N = {
     aboutLearnDesc: "We explain the background, opportunity cost, and how the calculator works.",
     aboutProDesc: "Includes taxes, insurance, maintenance, interest deductions, and renovations.",
     aboutProBtn: "Open detailed calculator",
+    // ── INVESTOR CALCULATOR ──
+    navInvest: "Investor Calculator",
+    invTitle: "Investor Calculator: Rental Yield",
+    invIntro: "Calculate whether a rental property investment makes sense. Includes all owner costs and compares with an alternative investment.",
+    invLinkBasic: "Housing calculator", invLinkLearn: "Learn — guide",
+    invHow1: "Set property, financing, and cost parameters",
+    invHow2: "The calculator computes net rental yield and compares with alternatives",
+    invHow3: "Scroll down to see the result",
+    invProperty: "Property", invFinancing: "Financing", invRental: "Rental income", invCosts: "Owner costs", invAlternative: "Alternative investment",
+    invPrice: "Purchase price", invDP: "Down payment",
+    invRate: "Mortgage rate", invTerm: "Mortgage term",
+    invAppreciation: "Property appreciation",
+    invRent: "Monthly rent", invRentGrowth: "Annual rent increase",
+    invOccupancy: "Occupancy rate", invOccUnit: "%",
+    invMaintenance: "Maintenance fund", invTransfer: "Transfer costs",
+    invPropTax: "Property tax", invPropIns: "Property insurance",
+    invMortIns: "Mortgage insurance", invIncomeTax: "Income tax on rental",
+    invMgmtFee: "Property management", invMgmtUnit: "% of rent",
+    invRenoCycle: "Major renovation every", invRenoCost: "Renovation cost",
+    invAltReturn: "Alternative return (e.g. S&P 500)",
+    invGrossYield: "Gross yield", invNetYield: "Net yield",
+    invCashFlow: "Monthly cash flow", invCoCReturn: "Cash-on-Cash return",
+    invTotalROI: "Total ROI", invBreakeven: "Investment payback",
+    invPropertyWins: "Property wins", invAltWins: "Alternative wins",
+    invPropertyValue: "Property value", invPortfolio: "Alternative portfolio",
+    invNetIncome: "Net rental income", invAllCosts: "Total owner costs",
+    invMortgage: "Mortgage", invEquity: "Property net equity",
+    invAltEquity: "Alternative investment portfolio",
+    invAfterYears: "after", invYears: "years",
+    invMonthlyDetail: "Monthly overview", invEquityChart: "Equity over time", invTableTitle: "Yearly breakdown",
+    invLegProperty: "Investor (property + net income)", invLegAlt: "Alternative investment (portfolio)",
+    invLegIncome: "Net income/mo", invLegCosts: "Costs/mo", invLegMtg: "Mortgage/mo",
+    invHYear: "Year", invHRent: "Rent", invHCosts: "Costs", invHCashFlow: "CF/mo", invHPropEq: "Property", invHAltEq: "Altern.", invHD: "Δ",
+    invMonths: "months",
+    invChoiceTitle: "What are you looking for?",
+    invChoiceLive: "Housing for myself", invChoiceLiveDesc: "Should I rent or buy?",
+    invChoiceInvest: "Real estate investment", invChoiceInvestDesc: "What return will a rental property bring?",
+    invCtaTitle: "Buying as an investment?",
+    invCtaDesc: "The investor calculator computes rental yield, cash flow, and compares with alternative investments.",
+    invCtaBtn: "Open investor calculator",
+    invLearnTitle: "Investor Calculator — parameters",
+    invLearnIntro: "The investor calculator is designed for those considering buying an apartment as a rental investment. It calculates net yield after all costs and compares with alternative investments.",
+    invLearnCta: "Try the investor calculator",
+    invLS1t: "Occupancy rate", invLS1: "What percentage of the year the property will be rented. 95% means about 2.5 weeks vacant per year. Conservative estimate for long-term rentals in Prague.",
+    invLS2t: "Property management", invLS2: "If a management company handles the rental, they typically charge 8–12% of rent. If you manage it yourself, set to 0%.",
+    invLS3t: "Income tax on rental", invLS3: "Rental income is subject to income tax. You can claim actual expenses or a 30% flat deduction. Standard rate is 15%.",
+    invLS4t: "Cash-on-Cash return", invLS4: "Annual net cash flow divided by your own invested capital. Shows what percentage return you earn on the money you actually put in.",
+    invLS5t: "Alternative investment", invLS5: "What your money would earn if invested in the market instead of property. S&P 500 historical average is ~10% annually. We use 8% as a conservative estimate.",
+    invHorizon: "Horizon",
+    invBreakPropAfter: "Property becomes better from",
+    invBreakAltAfter: "Alternative leads the whole time. Property only wins from",
+    invBreakAlways: "for the entire horizon",
+    invBreakWarning: "Advantage changes over time",
+    invGrossYieldDesc: "Annual gross rental income (after occupancy) divided by purchase price. Excludes all costs — useful only for quick comparison.",
+    invNetYieldDesc: "Annual net income (after all owner costs except mortgage) divided by purchase price. Shows the real return of the property as an asset.",
+    invCoCDesc: "Annual net cash flow (after costs and mortgage payment) divided by your own invested capital. Shows what % return you earn on the money you actually put in.",
   },
 };
 
@@ -632,6 +746,162 @@ function computePro(params) {
 
 
 /* ══════════════════════════════════════════
+   INVESTOR CALCULATION ENGINE
+   ══════════════════════════════════════════ */
+const INV_DEFAULTS = {
+  occupancy: 95,
+  mgmtFee: 0,
+  incomeTaxRate: 15,
+  maintenanceFee: 3000,
+  propertyTaxRate: 0.03,
+  propertyInsRate: 0.1,
+  mortgageInsRate: 0.3,
+  transactionCost: 3,
+  renovationCycle: 15,
+  renovationCostPct: 10,
+};
+
+function computeInvestor(params) {
+  const {
+    purchasePrice, downPayment, annualRate, mortgageYears,
+    propertyAppreciation, baseRent, rentGrowth, occupancy,
+    maintenanceFee, transactionCost, propertyTaxRate, propertyInsRate,
+    mortgageInsRate, incomeTaxRate, mgmtFee, renovationCycle, renovationCostPct,
+    altReturn,
+  } = params;
+
+  const principal = Math.max(0, purchasePrice - downPayment);
+  const mRate = annualRate / 100 / 12;
+  const nPay = mortgageYears * 12;
+  const pRate = propertyAppreciation / 100;
+  const rGrowth = rentGrowth / 100;
+  const occ = occupancy / 100;
+  const iRateM = Math.pow(1 + altReturn / 100, 1 / 12) - 1;
+  const totalYears = mortgageYears + 1;
+  const txCost = Math.round(purchasePrice * transactionCost / 100);
+
+  const mp = principal <= 0 ? 0
+    : mRate > 0 ? Math.round(principal * mRate * Math.pow(1 + mRate, nPay) / (Math.pow(1 + mRate, nPay) - 1))
+    : Math.round(principal / nPay);
+
+  let bal = principal;
+  let altPortfolio = downPayment + txCost; // Alternative: invest DP + transfer costs
+  let cumNetIncome = 0;
+  let cumCosts = 0;
+  let breakeven = null;
+
+  const rows = Array.from({ length: totalYears }, (_, i) => {
+    const grossRent = Math.round(baseRent * Math.pow(1 + rGrowth, i));
+    const effectiveRent = Math.round(grossRent * occ);
+    const pv = Math.round(purchasePrice * Math.pow(1 + pRate, i));
+    const mtg = i < mortgageYears ? mp : 0;
+
+    // Owner costs
+    const yearMaint = maintenanceFee * 12;
+    const yearPropTax = Math.round(pv * propertyTaxRate / 100);
+    const yearPropIns = Math.round(pv * propertyInsRate / 100);
+    const yearMortIns = i < mortgageYears ? Math.round(purchasePrice * mortgageInsRate / 100) : 0;
+    const yearMgmt = Math.round(effectiveRent * 12 * mgmtFee / 100);
+    let yearReno = 0;
+    if (renovationCycle > 0 && i > 0 && i % renovationCycle === 0) {
+      yearReno = Math.round(pv * renovationCostPct / 100);
+    }
+
+    // Amortization
+    let yI = 0;
+    for (let m = 0; m < 12; m++) {
+      if (bal > 0 && i < mortgageYears) {
+        const mi = bal * mRate;
+        const mP = mp - mi;
+        yI += mi;
+        bal = Math.max(0, bal - mP);
+      }
+    }
+
+    // Income tax on net rental income (after deductible expenses)
+    const yearGrossIncome = effectiveRent * 12;
+    const yearDeductible = yearMaint + yearPropTax + yearPropIns + yearMortIns + yearMgmt + yI; // interest is deductible
+    const yearTaxableIncome = Math.max(0, yearGrossIncome - yearDeductible);
+    const yearIncomeTax = Math.round(yearTaxableIncome * incomeTaxRate / 100);
+
+    const yearTotalCosts = yearMaint + yearPropTax + yearPropIns + yearMortIns + yearMgmt + yearReno + yearIncomeTax;
+    const yearNetIncome = yearGrossIncome - yearTotalCosts;
+    const monthlyCashFlow = Math.round((yearNetIncome - mtg * 12) / 12);
+
+    cumNetIncome += yearNetIncome;
+    cumCosts += yearTotalCosts + mtg * 12;
+
+    // Alternative portfolio compounds monthly
+    for (let m = 0; m < 12; m++) {
+      // Alternative investor puts the same monthly outflow into index fund
+      altPortfolio *= (1 + iRateM);
+      // Investor's monthly outflow = mortgage + costs/12, minus rent income
+      // Alternative investor invests: mortgage payment + (costs - rent)/12
+      // But simpler: alternative investor starts with DP+txCost, adds nothing (pure compounding of DP)
+      // Then also invests the equivalent of monthly mortgage payment
+      if (i < mortgageYears) altPortfolio += mtg; // they invest what would be the mortgage
+      // Plus net costs difference
+      const monthCosts = Math.round(yearTotalCosts / 12);
+      altPortfolio += monthCosts; // they also invest what would be owner costs
+    }
+
+    // Property investor equity = property value - debt + cumulative net rental income
+    const investorEquity = Math.round(pv - Math.max(0, bal) + cumNetIncome);
+
+    if (!breakeven && cumNetIncome > txCost + downPayment * 0) breakeven = i;
+
+    const grossYield = purchasePrice > 0 ? (effectiveRent * 12) / purchasePrice * 100 : 0;
+    const netYield = purchasePrice > 0 ? yearNetIncome / purchasePrice * 100 : 0;
+    const totalInvested = downPayment + txCost;
+    const cocReturn = totalInvested > 0 ? (yearNetIncome - mtg * 12) / totalInvested * 100 : 0;
+
+    return {
+      year: 2026 + i,
+      grossRent, effectiveRent, mortgage: mtg,
+      yearMaint, yearPropTax, yearPropIns, yearMortIns, yearMgmt, yearReno, yearIncomeTax,
+      yearTotalCosts, yearNetIncome, yearInterest: Math.round(yI),
+      monthlyCashFlow,
+      monthlyNetIncome: Math.round(yearNetIncome / 12),
+      monthlyCosts: Math.round(yearTotalCosts / 12),
+      propertyValue: pv, balance: Math.round(Math.max(0, bal)),
+      investorEquity,
+      altPortfolio: Math.round(altPortfolio),
+      grossYield: Math.round(grossYield * 100) / 100,
+      netYield: Math.round(netYield * 100) / 100,
+      cocReturn: Math.round(cocReturn * 100) / 100,
+      cumNetIncome: Math.round(cumNetIncome),
+    };
+  });
+
+  const last = rows[rows.length - 1];
+  const totalInvested = downPayment + txCost;
+  const totalROI = totalInvested > 0 ? ((last.investorEquity - totalInvested) / totalInvested * 100) : 0;
+
+  // Find breakpoints (equity crossovers between property and alternative)
+  const breakpoints = [];
+  for (let i = 1; i < rows.length; i++) {
+    const prevPropWins = rows[i - 1].investorEquity >= rows[i - 1].altPortfolio;
+    const curPropWins = rows[i].investorEquity >= rows[i].altPortfolio;
+    if (prevPropWins !== curPropWins) {
+      breakpoints.push({ year: rows[i].year, propWinsAfter: curPropWins });
+    }
+  }
+
+  return {
+    data: rows, mp, txCost, totalInvested,
+    grossYield: rows[0].grossYield,
+    netYield: rows[0].netYield,
+    cocReturn: rows[0].cocReturn,
+    monthlyCashFlow: rows[0].monthlyCashFlow,
+    totalROI: Math.round(totalROI * 10) / 10,
+    investorEquity: last.investorEquity,
+    altEquity: last.altPortfolio,
+    years: mortgageYears,
+    breakpoints,
+  };
+}
+
+/* ══════════════════════════════════════════
    SHARED COMPONENTS
    ══════════════════════════════════════════ */
 function Slider({ label, value, onChange, min, max, step, format, unit, color }) {
@@ -643,7 +913,7 @@ function Slider({ label, value, onChange, min, max, step, format, unit, color })
         <span style={{ fontSize: 14, fontWeight: 700, color, fontFamily: "monospace" }}>{format ? format(value) : value}{unit && ` ${unit}`}</span>
       </div>
       <input type="range" min={min} max={max} step={step} value={value} onChange={(e) => onChange(+e.target.value)} aria-label={label}
-        style={{ width: "100%", height: 5, appearance: "none", WebkitAppearance: "none", background: `linear-gradient(90deg,${color} ${pct}%,${C.sliderTrack} ${pct}%)`, borderRadius: 6, outline: "none", cursor: "pointer" }} />
+        style={{ width: "100%", height: 8, appearance: "none", WebkitAppearance: "none", background: `linear-gradient(90deg,${color} ${pct}%,${C.sliderTrack} ${pct}%)`, borderRadius: 6, outline: "none", cursor: "pointer", touchAction: "manipulation" }} />
       <div style={{ display: "flex", justifyContent: "space-between", fontSize: 9, color: C.faint, marginTop: 2 }}>
         <span>{format ? format(min) : min}{unit && ` ${unit}`}</span><span>{format ? format(max) : max}{unit && ` ${unit}`}</span>
       </div>
@@ -763,7 +1033,7 @@ const dp = (c) => ({ r: 5, fill: c, stroke: C.bg, strokeWidth: 2 });
 /* ══════════════════════════════════════════
    LEARN PAGE
    ══════════════════════════════════════════ */
-function LearnPage({ t, track, onGoCalc, onGoPro }) {
+function LearnPage({ t, track, onGoCalc, onGoPro, onGoInvest }) {
   // Scroll depth tracking
   useEffect(() => {
     const thresholds = [25, 50, 75, 100];
@@ -848,6 +1118,22 @@ function LearnPage({ t, track, onGoCalc, onGoPro }) {
         border: "none", borderRadius: 12, cursor: "pointer", fontFamily: "inherit",
       }}>{t.emoProCta} →</button>
 
+      {/* ── INVESTOR SECTION ── */}
+      <div id="inv-params" style={{ scrollMarginTop: 80 }} />
+      <H icon="💰">{t.invLearnTitle}</H>
+      <P>{t.invLearnIntro}</P>
+      {[
+        [t.invLS1t, t.invLS1, C.inv], [t.invLS2t, t.invLS2, C.other],
+        [t.invLS3t, t.invLS3, C.other], [t.invLS4t, t.invLS4, C.inv],
+        [t.invLS5t, t.invLS5, C.rent],
+      ].map(([title, desc, color]) => <Item key={title} title={title} color={color}>{desc}</Item>)}
+
+      <button onClick={onGoInvest} style={{
+        display: "block", width: "100%", padding: "16px", marginTop: 24,
+        background: C.buy, color: "#fff", fontSize: 16, fontWeight: 700,
+        border: "none", borderRadius: 12, cursor: "pointer", fontFamily: "inherit",
+      }}>{t.invLearnCta} →</button>
+
       {/* Takeaway */}
       <H icon="💡">{t.emo5Title}</H>
       <P>{t.emo5p1}</P><P>{t.emo5p2}</P>
@@ -863,7 +1149,7 @@ function LearnPage({ t, track, onGoCalc, onGoPro }) {
 /* ══════════════════════════════════════════
    ABOUT PAGE
    ══════════════════════════════════════════ */
-function AboutPage({ t, track, onGoCalc, onGoLearn, onGoPro }) {
+function AboutPage({ t, track, onGoCalc, onGoLearn, onGoPro, onGoInvest }) {
   const P = ({ children }) => <p style={{ fontSize: 15, color: C.dim, lineHeight: 1.8, margin: "0 0 16px", textAlign: "justify" }}>{children}</p>;
   return (
     <main style={{ maxWidth: 680, margin: "0 auto", padding: "24px 24px 48px" }}>
@@ -893,6 +1179,17 @@ function AboutPage({ t, track, onGoCalc, onGoLearn, onGoPro }) {
           </div>
           <div style={{ fontSize: 13, color: C.dim, textAlign: "justify" }}>{t.aboutProDesc}</div>
           <span style={{ color: C.other, fontSize: 13, fontWeight: 600, display: "inline-block", marginTop: 10 }}>{t.aboutProBtn} →</span>
+        </button>
+        <button onClick={onGoInvest} style={{
+          background: C.card, border: `1px solid ${C.border}`, borderRadius: 12,
+          padding: "20px", cursor: "pointer", textAlign: "left", fontFamily: "inherit",
+        }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+            <span style={{ fontSize: 20 }}>💰</span>
+            <span style={{ fontSize: 15, fontWeight: 700, color: C.txt }}>{t.navInvest}</span>
+          </div>
+          <div style={{ fontSize: 13, color: C.dim, textAlign: "justify" }}>{t.invCtaDesc}</div>
+          <span style={{ color: C.buy, fontSize: 13, fontWeight: 600, display: "inline-block", marginTop: 10 }}>{t.invCtaBtn} →</span>
         </button>
         <button onClick={onGoLearn} style={{
           background: C.card, border: `1px solid ${C.border}`, borderRadius: 12,
@@ -970,9 +1267,53 @@ function useTimeOnPage(track, pageName) {
 }
 
 /* ══════════════════════════════════════════
+   SHARED: VERDICT OBSERVER + STICKY BAR
+   ══════════════════════════════════════════ */
+function useVerdictObserver(track, pageName) {
+  const verdictRef = useRef(null);
+  const [verdictPos, setVerdictPos] = useState("at");
+  const verdictSeenRef = useRef(false);
+
+  useEffect(() => {
+    const el = verdictRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) setVerdictPos("at");
+      else setVerdictPos(e.boundingClientRect.top > 0 ? "below" : "above");
+      if (e.isIntersecting && !verdictSeenRef.current) {
+        verdictSeenRef.current = true;
+        track("verdict_seen", { page: pageName });
+      }
+    }, { threshold: 0.1 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [track, pageName]);
+
+  return { verdictRef, verdictPos };
+}
+
+function StickyVerdictBar({ verdictPos, verdictRef, label, amount, color }) {
+  if (verdictPos === "at") return null;
+  return (
+    <button onClick={() => verdictRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+      style={{
+        position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 50,
+        display: "flex", alignItems: "center", justifyContent: "center", gap: 10,
+        padding: "16px 20px", background: C.bg, borderTop: `2px solid ${color}44`,
+        color, fontSize: 15, fontWeight: 700, cursor: "pointer", border: "none",
+        fontFamily: "inherit", boxShadow: "0 -8px 32px rgba(0,0,0,0.6)",
+      }}>
+      <span style={{ background: color, color: "#fff", fontSize: 11, fontWeight: 800, padding: "4px 10px", borderRadius: 12, letterSpacing: 0.5 }}>{label}</span>
+      <span style={{ color: C.txt, fontFamily: "monospace" }}>{amount}</span>
+      <span style={{ fontSize: 12, color: C.dim }}>{verdictPos === "below" ? "↓" : "↑"}</span>
+    </button>
+  );
+}
+
+/* ══════════════════════════════════════════
    CALCULATOR PAGE
    ══════════════════════════════════════════ */
-function CalcPage({ t, track, onGoLearn, onGoAbout, onGoPro }) {
+function CalcPage({ t, track, onGoLearn, onGoAbout, onGoPro, onGoInvest }) {
   const [baseRent, setBaseRent] = useState(22000);
   const [rentRate, setRentRate] = useState(5);
   const [purchasePrice, setPurchasePrice] = useState(8500000);
@@ -982,29 +1323,12 @@ function CalcPage({ t, track, onGoLearn, onGoAbout, onGoPro }) {
   const [investReturn, setInvestReturn] = useState(8);
   const [propAppr, setPropAppr] = useState(5);
   const [openSec, setOpenSec] = useState({ eq: true, mo: false, tbl: false });
-  const verdictRef = useRef(null);
-  const [verdictPos, setVerdictPos] = useState("at");
 
+  const { verdictRef, verdictPos } = useVerdictObserver(track, "calc");
   const ts = useSliderTracking(track, "calc");
   const s = (setter, name) => (v) => { setter(v); ts(name, v); };
   useTimeOnPage(track, "calc");
   const chartsReady = useRecharts();
-
-  const verdictSeenRef = useRef(false);
-  useEffect(() => {
-    const el = verdictRef.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) setVerdictPos("at");
-      else setVerdictPos(e.boundingClientRect.top > 0 ? "below" : "above");
-      if (e.isIntersecting && !verdictSeenRef.current) {
-        verdictSeenRef.current = true;
-        track("verdict_seen", { page: "calc" });
-      }
-    }, { threshold: 0.1 });
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [track]);
 
   const toggleSec = useCallback((k) => {
     setOpenSec((p) => { const n = { ...p, [k]: !p[k] }; if (n[k]) track("section_opened", { section: k }); return n; });
@@ -1033,6 +1357,31 @@ function CalcPage({ t, track, onGoLearn, onGoAbout, onGoPro }) {
   return (
     <>
       <main style={{ maxWidth: 960, margin: "0 auto", padding: "24px 24px 32px" }}>
+        {/* Choice cards */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 10, marginBottom: 16 }}>
+          <div style={{
+            background: `${C.rent}10`, border: `2px solid ${C.rent}44`, borderRadius: 12,
+            padding: "16px 18px", display: "flex", alignItems: "center", gap: 12,
+          }}>
+            <span style={{ fontSize: 22 }}>🏠</span>
+            <div>
+              <div style={{ fontSize: 14, fontWeight: 700, color: C.txt }}>{t.invChoiceLive}</div>
+              <div style={{ fontSize: 11, color: C.dim }}>{t.invChoiceLiveDesc}</div>
+            </div>
+          </div>
+          <button onClick={onGoInvest} style={{
+            background: C.card, border: `1px solid ${C.border}`, borderRadius: 12,
+            padding: "16px 18px", display: "flex", alignItems: "center", gap: 12,
+            cursor: "pointer", fontFamily: "inherit", textAlign: "left",
+          }}>
+            <span style={{ fontSize: 22 }}>💰</span>
+            <div>
+              <div style={{ fontSize: 14, fontWeight: 700, color: C.txt }}>{t.invChoiceInvest}</div>
+              <div style={{ fontSize: 11, color: C.dim }}>{t.invChoiceInvestDesc}</div>
+            </div>
+          </button>
+        </div>
+
         {/* Intro */}
         <div style={{ marginBottom: 20 }}>
           <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 20px 16px" }}>
@@ -1200,6 +1549,17 @@ function CalcPage({ t, track, onGoLearn, onGoAbout, onGoPro }) {
             <div style={{ fontSize: 13, color: C.dim, lineHeight: 1.6, marginBottom: 12, textAlign: "justify" }}>{t.ctaProDesc}</div>
             <span style={{ color: C.other, fontSize: 13, fontWeight: 600 }}>{t.ctaProBtn} →</span>
           </button>
+          <button onClick={onGoInvest} style={{
+            background: C.card, border: `1px solid ${C.border}`, borderRadius: 12,
+            padding: "22px 20px", cursor: "pointer", textAlign: "left", fontFamily: "inherit",
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+              <span style={{ fontSize: 20 }}>💰</span>
+              <span style={{ fontSize: 15, fontWeight: 700, color: C.txt }}>{t.invCtaTitle}</span>
+            </div>
+            <div style={{ fontSize: 13, color: C.dim, lineHeight: 1.6, marginBottom: 12, textAlign: "justify" }}>{t.invCtaDesc}</div>
+            <span style={{ color: C.buy, fontSize: 13, fontWeight: 600 }}>{t.invCtaBtn} →</span>
+          </button>
           <button onClick={onGoLearn} style={{
             background: C.card, border: `1px solid ${C.border}`, borderRadius: 12,
             padding: "22px 20px", cursor: "pointer", textAlign: "left", fontFamily: "inherit",
@@ -1225,22 +1585,7 @@ function CalcPage({ t, track, onGoLearn, onGoAbout, onGoPro }) {
         </div>
       </main>
 
-      {/* Sticky bottom bar */}
-      {verdictPos !== "at" && (
-        <button onClick={() => verdictRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-          style={{
-            position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 50,
-            display: "flex", alignItems: "center", justifyContent: "center", gap: 10,
-            padding: "16px 20px", background: C.bg, borderTop: `2px solid ${wc}44`,
-            color: wc, fontSize: 15, fontWeight: 700, cursor: "pointer", border: "none",
-            borderTop: `2px solid ${wc}44`, fontFamily: "inherit",
-            boxShadow: "0 -8px 32px rgba(0,0,0,0.6)",
-          }}>
-          <span style={{ background: wc, color: "#fff", fontSize: 11, fontWeight: 800, padding: "4px 10px", borderRadius: 12, letterSpacing: 0.5 }}>{bw ? t.buyWins : t.rentWins}</span>
-          <span style={{ color: C.txt, fontFamily: "monospace" }}>{fmt.m2(Math.abs(eqDiff))} CZK</span>
-          <span style={{ fontSize: 12, color: C.dim }}>{verdictPos === "below" ? "↓" : "↑"}</span>
-        </button>
-      )}
+      <StickyVerdictBar verdictPos={verdictPos} verdictRef={verdictRef} label={bw ? t.buyWins : t.rentWins} amount={`${fmt.m2(Math.abs(eqDiff))} CZK`} color={wc} />
     </>
   );
 }
@@ -1270,29 +1615,12 @@ function ProCalcPage({ t, track, onGoCalc, onGoLearn, onGoLearnPro }) {
   // ── UI state ──
   const [openSec, setOpenSec] = useState({ eq: true, mo: false, tbl: false });
   const toggleSec = useCallback((k) => { setOpenSec((p) => { const n = { ...p, [k]: !p[k] }; if (n[k]) track("section_opened", { section: `pro_${k}` }); return n; }); }, [track]);
-  const verdictRef = useRef(null);
-  const [verdictPos, setVerdictPos] = useState("at");
 
+  const { verdictRef, verdictPos } = useVerdictObserver(track, "pro");
   const ts = useSliderTracking(track, "pro");
   const s = (setter, name) => (v) => { setter(v); ts(name, v); };
   useTimeOnPage(track, "pro");
   const chartsReady = useRecharts();
-
-  const verdictSeenRef = useRef(false);
-  useEffect(() => {
-    const el = verdictRef.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) setVerdictPos("at");
-      else setVerdictPos(e.boundingClientRect.top > 0 ? "below" : "above");
-      if (e.isIntersecting && !verdictSeenRef.current) {
-        verdictSeenRef.current = true;
-        track("verdict_seen", { page: "pro" });
-      }
-    }, { threshold: 0.1 });
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [track]);
 
   // ── Compute ──
   const r = useMemo(() => computePro({
@@ -1564,36 +1892,330 @@ function ProCalcPage({ t, track, onGoCalc, onGoLearn, onGoLearnPro }) {
     </div>
 
     {/* ── STICKY BOTTOM BAR ── */}
-    {verdictPos !== "at" && (
-      <button onClick={() => verdictRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-        style={{
-          position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 50,
-          display: "flex", alignItems: "center", justifyContent: "center", gap: 10,
-          padding: "16px 20px", background: C.bg,
-          borderTop: `2px solid ${wc}44`,
-          color: wc, fontSize: 15, fontWeight: 700, cursor: "pointer", border: "none",
-          borderTop: `2px solid ${wc}44`, fontFamily: "inherit",
-          boxShadow: "0 -8px 32px rgba(0,0,0,0.6)",
-        }}>
-        <span style={{ background: wc, color: "#fff", fontSize: 11, fontWeight: 800, padding: "4px 10px", borderRadius: 12, letterSpacing: 0.5 }}>
-          {bw ? t.buyWins : t.rentWins}
-        </span>
-        <span style={{ color: C.txt, fontFamily: "monospace" }}>{fmt.m2(Math.abs(eqDiff))} CZK</span>
-        <span style={{ fontSize: 12, color: C.dim }}>{verdictPos === "below" ? "↓" : "↑"}</span>
-      </button>
-    )}
+    <StickyVerdictBar verdictPos={verdictPos} verdictRef={verdictRef} label={bw ? t.buyWins : t.rentWins} amount={`${fmt.m2(Math.abs(eqDiff))} CZK`} color={wc} />
     </>
   );
 }
 
 
 /* ══════════════════════════════════════════
-   MAIN APP (Router + Menu)
+   INVESTOR CALCULATOR PAGE
    ══════════════════════════════════════════ */
+function InvestorPage({ t, track, onGoCalc, onGoLearn, onGoLearnInv }) {
+  const [purchasePrice, setPurchasePrice] = useState(8500000);
+  const [downPayment, setDownPayment] = useState(1700000);
+  const [annualRate, setAnnualRate] = useState(4.5);
+  const [mortgageYears, setMortgageYears] = useState(30);
+  const [propAppr, setPropAppr] = useState(5);
+  const [baseRent, setBaseRent] = useState(22000);
+  const [rentGrowth, setRentGrowth] = useState(5);
+  const [occupancy, setOccupancy] = useState(INV_DEFAULTS.occupancy);
+  const [maintenanceFee, setMaintenanceFee] = useState(INV_DEFAULTS.maintenanceFee);
+  const [transactionCost, setTransactionCost] = useState(INV_DEFAULTS.transactionCost);
+  const [propertyTaxRate, setPropertyTaxRate] = useState(INV_DEFAULTS.propertyTaxRate);
+  const [propertyInsRate, setPropertyInsRate] = useState(INV_DEFAULTS.propertyInsRate);
+  const [mortgageInsRate, setMortgageInsRate] = useState(INV_DEFAULTS.mortgageInsRate);
+  const [incomeTaxRate, setIncomeTaxRate] = useState(INV_DEFAULTS.incomeTaxRate);
+  const [mgmtFee, setMgmtFee] = useState(INV_DEFAULTS.mgmtFee);
+  const [renovationCycle, setRenovationCycle] = useState(INV_DEFAULTS.renovationCycle);
+  const [renovationCostPct, setRenovationCostPct] = useState(INV_DEFAULTS.renovationCostPct);
+  const [altReturn, setAltReturn] = useState(8);
+  const [openSec, setOpenSec] = useState({ eq: true, mo: false, tbl: false });
+  const [expandedCard, setExpandedCard] = useState(null);
+  const toggleSec = useCallback((k) => { setOpenSec((p) => { const n = { ...p, [k]: !p[k] }; if (n[k]) track("section_opened", { section: `inv_${k}` }); return n; }); }, [track]);
+
+  const { verdictRef, verdictPos } = useVerdictObserver(track, "invest");
+  const ts = useSliderTracking(track, "invest");
+  const s = (setter, name) => (v) => { setter(v); ts(name, v); };
+  useTimeOnPage(track, "invest");
+  const chartsReady = useRecharts();
+
+  const r = useMemo(() => computeInvestor({
+    purchasePrice, downPayment, annualRate, mortgageYears, propertyAppreciation: propAppr,
+    baseRent, rentGrowth, occupancy, maintenanceFee, transactionCost,
+    propertyTaxRate, propertyInsRate, mortgageInsRate, incomeTaxRate, mgmtFee,
+    renovationCycle, renovationCostPct, altReturn,
+  }), [purchasePrice, downPayment, annualRate, mortgageYears, propAppr, baseRent, rentGrowth, occupancy, maintenanceFee, transactionCost, propertyTaxRate, propertyInsRate, mortgageInsRate, incomeTaxRate, mgmtFee, renovationCycle, renovationCostPct, altReturn]);
+
+  const last = r.data[r.data.length - 1];
+  const eqDiff = r.investorEquity - r.altEquity;
+  const propWins = eqDiff >= 0;
+  const wc = propWins ? C.buy : C.rent;
+  const xI = Math.max(1, Math.floor(r.data.length / 7));
+
+  const yMaxEq = useMemo(() => { let mx = 0; for (const d of r.data) { const v = Math.max(d.investorEquity, d.altPortfolio); if (v > mx) mx = v; } return Math.ceil(mx / 1e6) * 1e6 + 1e6; }, [r.data]);
+
+  return (
+    <>
+    <div style={{ padding: "24px 24px 32px" }}>
+      <div style={{ maxWidth: 960, margin: "0 auto" }}>
+
+        <h1 style={{ fontSize: 24, fontWeight: 800, color: C.txt, margin: "0 0 8px" }}>{t.invTitle}</h1>
+
+        {/* Intro */}
+        <div style={{ marginBottom: 20 }}>
+          <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 20px 16px" }}>
+            <p style={{ fontSize: 15, color: C.txt, lineHeight: 1.7, margin: "0 0 14px" }}>{t.invIntro}</p>
+            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+              <button onClick={onGoCalc} style={{ background: "none", border: "none", color: C.rent, fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", padding: 0 }}>🧮 {t.invLinkBasic} →</button>
+              <button onClick={onGoLearnInv} style={{ background: "none", border: "none", color: C.rent, fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", padding: 0 }}>📖 {t.invLinkLearn} →</button>
+            </div>
+          </div>
+          <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
+            {[t.invHow1, t.invHow2, t.invHow3].map((s, i) => (
+              <div key={i} style={{ flex: 1, background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "10px 12px", display: "flex", flexDirection: "column", gap: 6, alignItems: "center", textAlign: "center" }}>
+                <span style={{ background: C.stepBg, color: C.stepTxt, fontSize: 11, fontWeight: 800, borderRadius: 10, width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center" }}>{i + 1}</span>
+                <span style={{ fontSize: 11, color: C.dim2, lineHeight: 1.4 }}>{s}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Controls */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 14, marginBottom: 24 }}>
+          <fieldset style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "16px 18px 8px", margin: 0 }}>
+            <legend style={{ fontSize: 10, color: C.buy, textTransform: "uppercase", letterSpacing: 2, fontWeight: 700, padding: "0 4px" }}>{t.invProperty}</legend>
+            <Slider label={t.invPrice} value={purchasePrice} onChange={s(setPurchasePrice, "purchase_price")} min={2e6} max={30e6} step={5e5} format={fmt.m1} unit="CZK" color={C.buy} />
+            <Slider label={t.invDP} value={downPayment} onChange={(v) => { const c = Math.min(v, purchasePrice); setDownPayment(c); ts("down_payment", c); }} min={0} max={purchasePrice} step={1e5} format={fmt.m1} unit="CZK" color={C.buy} />
+            <Slider label={t.invRate} value={annualRate} onChange={s(setAnnualRate, "mortgage_rate")} min={1} max={10} step={0.1} unit="%" color={C.buy} />
+            <Slider label={t.invTerm} value={mortgageYears} onChange={s(setMortgageYears, "mortgage_term")} min={5} max={40} step={1} unit={t.unit} color={C.buy} />
+            <Slider label={t.invAppreciation} value={propAppr} onChange={s(setPropAppr, "appreciation")} min={0} max={12} step={0.5} unit={`%${t.perYr}`} color={C.buy} />
+          </fieldset>
+
+          <fieldset style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "16px 18px 8px", margin: 0 }}>
+            <legend style={{ fontSize: 10, color: C.inv, textTransform: "uppercase", letterSpacing: 2, fontWeight: 700, padding: "0 4px" }}>{t.invRental}</legend>
+            <Slider label={t.invRent} value={baseRent} onChange={s(setBaseRent, "rent")} min={8000} max={80000} step={1000} format={fmt.n} unit="CZK" color={C.inv} />
+            <Slider label={t.invRentGrowth} value={rentGrowth} onChange={s(setRentGrowth, "rent_growth")} min={0} max={12} step={0.5} unit="%" color={C.inv} />
+            <Slider label={t.invOccupancy} value={occupancy} onChange={s(setOccupancy, "occupancy")} min={50} max={100} step={1} unit={t.invOccUnit} color={C.inv} />
+          </fieldset>
+
+          <fieldset style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "16px 18px 8px", margin: 0 }}>
+            <legend style={{ fontSize: 10, color: C.other, textTransform: "uppercase", letterSpacing: 2, fontWeight: 700, padding: "0 4px" }}>{t.invCosts}</legend>
+            <Slider label={t.invMaintenance} value={maintenanceFee} onChange={s(setMaintenanceFee, "maintenance")} min={0} max={10000} step={500} format={fmt.n} unit="CZK/m" color={C.other} />
+            <Slider label={t.invTransfer} value={transactionCost} onChange={s(setTransactionCost, "transfer")} min={0} max={5} step={0.5} unit="%" color={C.other} />
+            <Slider label={t.invPropTax} value={propertyTaxRate} onChange={s(setPropertyTaxRate, "prop_tax")} min={0} max={1} step={0.01} unit="%/yr" color={C.other} />
+            <Slider label={t.invPropIns} value={propertyInsRate} onChange={s(setPropertyInsRate, "prop_ins")} min={0} max={1} step={0.05} unit="%/yr" color={C.other} />
+            <Slider label={t.invMortIns} value={mortgageInsRate} onChange={s(setMortgageInsRate, "mort_ins")} min={0} max={1} step={0.05} unit="%/yr" color={C.other} />
+            <Slider label={t.invIncomeTax} value={incomeTaxRate} onChange={s(setIncomeTaxRate, "income_tax")} min={0} max={30} step={1} unit="%" color={C.other} />
+            <Slider label={t.invMgmtFee} value={mgmtFee} onChange={s(setMgmtFee, "mgmt_fee")} min={0} max={20} step={1} unit={t.invMgmtUnit} color={C.other} />
+            <Slider label={t.invRenoCycle} value={renovationCycle} onChange={s(setRenovationCycle, "reno_cycle")} min={0} max={30} step={1} unit={t.unit} color={C.other} />
+            <Slider label={t.invRenoCost} value={renovationCostPct} onChange={s(setRenovationCostPct, "reno_cost")} min={0} max={30} step={1} unit="%" color={C.other} />
+          </fieldset>
+
+          <fieldset style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "16px 18px 8px", margin: 0 }}>
+            <legend style={{ fontSize: 10, color: C.rent, textTransform: "uppercase", letterSpacing: 2, fontWeight: 700, padding: "0 4px" }}>{t.invAlternative}</legend>
+            <Slider label={t.invAltReturn} value={altReturn} onChange={s(setAltReturn, "alt_return")} min={0} max={20} step={0.5} unit={`%${t.perYr}`} color={C.rent} />
+            <p style={{ fontSize: 10, color: C.faint, lineHeight: 1.5, margin: "4px 0 8px" }}>
+              {t.invLS5}
+            </p>
+          </fieldset>
+        </div>
+
+        {/* Verdict */}
+        <div ref={verdictRef} style={{
+          background: `linear-gradient(135deg, ${wc}18, ${wc}08)`, border: `1px solid ${wc}33`,
+          borderRadius: 16, padding: "28px", marginBottom: 32, scrollMarginTop: 16,
+        }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12, flexWrap: "wrap" }}>
+            <strong style={{ background: wc, color: "#fff", fontSize: 13, fontWeight: 800, padding: "6px 16px", borderRadius: 20, letterSpacing: 1, textTransform: "uppercase" }}>
+              {propWins ? t.invPropertyWins : t.invAltWins}
+            </strong>
+            <span style={{ color: C.dim2, fontSize: 13 }}>{t.invHorizon} {mortgageYears} {t.unit}</span>
+          </div>
+          <div style={{ fontSize: 32, fontWeight: 800, color: C.txt, fontFamily: "monospace", letterSpacing: -1, marginBottom: 16 }}>
+            {fmt.m2(Math.abs(eqDiff))} CZK
+          </div>
+
+          {/* Breakpoint analysis */}
+          {r.breakpoints.length === 0 && (
+            <div style={{ padding: "10px 14px", borderRadius: 10, background: `${wc}12`, border: `1px solid ${wc}33`, fontSize: 13, color: C.txt2, lineHeight: 1.5, marginBottom: 16 }}>
+              💡 {propWins ? t.invPropertyWins : t.invAltWins} {t.invBreakAlways}
+            </div>
+          )}
+          {r.breakpoints.length === 1 && (
+            <div style={{ padding: "10px 14px", borderRadius: 10, background: `${r.breakpoints[0].propWinsAfter ? C.buy : C.rent}12`, border: `1px solid ${r.breakpoints[0].propWinsAfter ? C.buy : C.rent}33`, fontSize: 13, color: C.txt2, lineHeight: 1.5, marginBottom: 16 }}>
+              💡 {r.breakpoints[0].propWinsAfter ? t.invBreakPropAfter : t.invBreakAltAfter} <strong style={{ color: r.breakpoints[0].propWinsAfter ? C.buy : C.rent }}>{r.breakpoints[0].year}</strong>
+            </div>
+          )}
+          {r.breakpoints.length > 1 && (() => {
+            const firstPropWins = r.data[0].investorEquity >= r.data[0].altPortfolio;
+            const periods = [];
+            let prevYear = r.data[0].year, prevWins = firstPropWins;
+            for (const bp of r.breakpoints) {
+              periods.push({ from: prevYear, to: bp.year - 1, propWins: prevWins });
+              prevYear = bp.year; prevWins = bp.propWinsAfter;
+            }
+            periods.push({ from: prevYear, to: r.data[r.data.length - 1].year, propWins: prevWins });
+            return (
+              <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 16 }}>
+                <div style={{ padding: "10px 14px", borderRadius: 10, background: `${C.warn}12`, border: `1px solid ${C.warn}33`, fontSize: 13, color: C.txt2 }}>
+                  ⚠️ {t.invBreakWarning} — {r.breakpoints.length} {t.proBreakPoints}:
+                </div>
+                {periods.map((p, idx) => {
+                  const c = p.propWins ? C.buy : C.rent;
+                  const label = p.propWins ? t.invPropertyWins : t.invAltWins;
+                  return (
+                    <div key={idx} style={{ padding: "8px 14px", borderRadius: 8, background: `${c}10`, border: `1px solid ${c}25`, fontSize: 12, color: C.txt2, display: "flex", alignItems: "center", gap: 8 }}>
+                      <span style={{ width: 8, height: 8, borderRadius: "50%", background: c, flexShrink: 0 }} />
+                      <span><strong style={{ color: c }}>{label}</strong> {t.proLeads}: {p.from}–{p.to}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })()}
+
+          {/* Metric cards with expandable explanations */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))", gap: 10, marginTop: 8 }}>
+            {[
+              ["grossYield", t.invGrossYield, `${r.grossYield.toFixed(1)} %`, null, C.inv, t.invGrossYieldDesc],
+              ["netYield", t.invNetYield, `${r.netYield.toFixed(1)} %`, null, r.netYield >= 0 ? C.inv : C.buy, t.invNetYieldDesc],
+              ["cashFlow", t.invCashFlow, `${fmt.n(r.monthlyCashFlow)} CZK`, "/m", r.monthlyCashFlow >= 0 ? C.inv : C.buy, null],
+              ["cocReturn", t.invCoCReturn, `${r.cocReturn.toFixed(1)} %`, null, r.cocReturn >= 0 ? C.inv : C.buy, t.invCoCDesc],
+              ["totalROI", t.invTotalROI, `${r.totalROI} %`, `${t.invHorizon} ${mortgageYears} ${t.unit}`, r.totalROI >= 0 ? C.inv : C.buy, null],
+            ].map(([key, label, value, sub, color, desc]) => (
+              <div key={key} onClick={desc ? () => setExpandedCard(expandedCard === key ? null : key) : undefined}
+                style={{ background: C.card, border: `1px solid ${expandedCard === key ? color + "66" : C.border}`, borderRadius: 10, padding: "12px 14px", cursor: desc ? "pointer" : "default", transition: "border-color 0.2s" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <div style={{ fontSize: 9, color: C.dim, textTransform: "uppercase", letterSpacing: 1 }}>{label}</div>
+                  {desc && <span style={{ fontSize: 10, color: C.faint }}>ⓘ</span>}
+                </div>
+                <div style={{ fontSize: 15, fontWeight: 700, color, marginTop: 3, fontFamily: "monospace" }}>{value}</div>
+                {sub && <div style={{ fontSize: 10, color: C.faint, marginTop: 2 }}>{sub}</div>}
+                {expandedCard === key && desc && (
+                  <div style={{ fontSize: 11, color: C.dim2, lineHeight: 1.6, marginTop: 8, paddingTop: 8, borderTop: `1px solid ${C.border}` }}>{desc}</div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div style={{ display: "flex", gap: 20, marginTop: 20, flexWrap: "wrap" }}>
+            <div><div style={{ fontSize: 10, color: C.dim, textTransform: "uppercase", letterSpacing: 1 }}>{t.invEquity}</div><div style={{ fontSize: 16, fontWeight: 700, color: C.buy, fontFamily: "monospace", marginTop: 2 }}>{fmt.m1(r.investorEquity)}</div></div>
+            <div><div style={{ fontSize: 10, color: C.dim, textTransform: "uppercase", letterSpacing: 1 }}>{t.invAltEquity}</div><div style={{ fontSize: 16, fontWeight: 700, color: C.rent, fontFamily: "monospace", marginTop: 2 }}>{fmt.m1(r.altEquity)}</div></div>
+            <div><div style={{ fontSize: 10, color: C.dim, textTransform: "uppercase", letterSpacing: 1 }}>{t.invPropertyValue}</div><div style={{ fontSize: 16, fontWeight: 700, color: C.buy, fontFamily: "monospace", marginTop: 2 }}>{fmt.m1(last.propertyValue)}</div></div>
+          </div>
+        </div>
+
+        {/* Equity Chart */}
+        <ChartSection title={t.invEquityChart} open={openSec.eq} onToggle={() => toggleSec("eq")}>
+          {chartsReady ? <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 12px 8px 0" }}>
+            <ResponsiveContainer width="100%" height={320}>
+              <AreaChart data={r.data} margin={{ top: 10, right: 20, bottom: 10, left: 20 }}>
+                <defs>
+                  <linearGradient id="gInvP" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor={C.buy} stopOpacity={0.15} /><stop offset="95%" stopColor={C.buy} stopOpacity={0} /></linearGradient>
+                  <linearGradient id="gInvA" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor={C.rent} stopOpacity={0.15} /><stop offset="95%" stopColor={C.rent} stopOpacity={0} /></linearGradient>
+                </defs>
+                <CartesianGrid {...getGr()} />
+                <XAxis dataKey="year" {...getAx()} interval={xI} />
+                <YAxis {...getAx()} tickFormatter={fmt.m1} domain={[0, yMaxEq]} />
+                <Tooltip content={({ active, payload }) => {
+                  if (!active || !payload?.[0]) return null;
+                  const d = payload[0].payload;
+                  return (<div style={{ ...getTipBox(), minWidth: 240 }}>
+                    <div style={{ fontWeight: 700, marginBottom: 6, fontSize: 14, color: C.txt }}>{d.year}</div>
+                    {tipRow(C.buy, t.invPropertyValue, fmt.m1(d.propertyValue))}
+                    {tipRow(C.tipSub, `  − ${t.debtL}`, fmt.m1(d.balance))}
+                    {tipRow(C.buy, t.invEquity, fmt.m1(d.investorEquity))}
+                    <div style={{ height: 4 }} />
+                    {tipRow(C.rent, t.invPortfolio, fmt.m1(d.altPortfolio))}
+                    <div style={{ borderTop: "1px solid #333", paddingTop: 6, marginTop: 6, fontWeight: 700, color: d.investorEquity >= d.altPortfolio ? C.buy : C.rent }}>
+                      {d.investorEquity >= d.altPortfolio ? `${t.invPropertyWins} +${fmt.m1(d.investorEquity - d.altPortfolio)}` : `${t.invAltWins} +${fmt.m1(d.altPortfolio - d.investorEquity)}`}
+                    </div>
+                  </div>);
+                }} />
+                <Area type="monotone" dataKey="investorEquity" stroke={C.buy} strokeWidth={2.5} fill="url(#gInvP)" activeDot={dp(C.buy)} />
+                <Area type="monotone" dataKey="altPortfolio" stroke={C.rent} strokeWidth={2.5} fill="url(#gInvA)" activeDot={dp(C.rent)} />
+              </AreaChart>
+            </ResponsiveContainer>
+            <ChartLegend items={[[C.buy, t.invLegProperty], [C.rent, t.invLegAlt]]} />
+          </div> : <div style={{ height: 320, display: "flex", alignItems: "center", justifyContent: "center", color: C.dim }}>⏳</div>}
+        </ChartSection>
+
+        {/* Monthly Chart */}
+        <ChartSection title={t.invMonthlyDetail} open={openSec.mo} onToggle={() => toggleSec("mo")}>
+          <div style={{ display: "flex", gap: 12, marginBottom: 16, flexWrap: "wrap" }}>
+            <Card label={t.invNetIncome} value={`${fmt.n(r.data[0].monthlyNetIncome)} CZK/m`} color={C.inv} />
+            <Card label={t.invAllCosts} value={`${fmt.n(r.data[0].monthlyCosts)} CZK/m`} color={C.other} />
+            <Card label={t.invMortgage} value={`${fmt.n(r.mp)} CZK/m`} color={C.buy} />
+          </div>
+          {chartsReady ? <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 12px 8px 0" }}>
+            <ResponsiveContainer width="100%" height={280}>
+              <LineChart data={r.data} margin={{ top: 10, right: 20, bottom: 10, left: 20 }}>
+                <CartesianGrid {...getGr()} />
+                <XAxis dataKey="year" {...getAx()} interval={xI} />
+                <YAxis {...getAx()} tickFormatter={fmt.k} />
+                <Tooltip content={({ active, payload }) => {
+                  if (!active || !payload?.[0]) return null;
+                  const d = payload[0].payload;
+                  return (<div style={{ ...getTipBox(), minWidth: 220 }}>
+                    <div style={{ fontWeight: 700, marginBottom: 6, fontSize: 14, color: C.txt }}>{d.year}</div>
+                    {tipRow(C.inv, t.invRent, `${fmt.n(d.effectiveRent)} CZK`)}
+                    {tipRow(C.other, t.invAllCosts, `${fmt.n(d.monthlyCosts)} CZK`)}
+                    {tipRow(C.buy, t.invMortgage, d.mortgage > 0 ? `${fmt.n(d.mortgage)} CZK` : t.paidS)}
+                    <div style={{ borderTop: "1px solid #333", paddingTop: 4, marginTop: 4 }}>
+                      {tipRow(d.monthlyCashFlow >= 0 ? C.inv : C.buy, t.invCashFlow, `${fmt.n(d.monthlyCashFlow)} CZK`)}
+                    </div>
+                  </div>);
+                }} />
+                <Line type="monotone" dataKey="effectiveRent" stroke={C.inv} strokeWidth={2.5} dot={false} activeDot={dp(C.inv)} />
+                <Line type="monotone" dataKey="monthlyCosts" stroke={C.other} strokeWidth={2} dot={false} strokeDasharray="5 3" activeDot={dp(C.other)} />
+                <Line type="stepAfter" dataKey="mortgage" stroke={C.buy} strokeWidth={2.5} dot={false} activeDot={dp(C.buy)} />
+              </LineChart>
+            </ResponsiveContainer>
+            <ChartLegend items={[[C.inv, t.invLegIncome], [C.other, t.invLegCosts], [C.buy, t.invLegMtg]]} />
+          </div> : <div style={{ height: 280, display: "flex", alignItems: "center", justifyContent: "center", color: C.dim }}>⏳</div>}
+        </ChartSection>
+
+        {/* Table */}
+        <ChartSection title={t.invTableTitle} open={openSec.tbl} onToggle={() => toggleSec("tbl")}>
+          <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, overflow: "auto" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 11, minWidth: 600, fontFamily: "monospace" }}>
+              <thead><tr style={{ borderBottom: `1px solid ${C.border}` }}>
+                {[t.invHYear, t.invHRent, t.invHCosts, t.invHCashFlow, t.invHPropEq, t.invHAltEq, t.invHD].map((h) => (
+                  <th key={h} style={{ padding: "10px 10px", textAlign: "right", color: C.faint, fontWeight: 600, fontSize: 9, textTransform: "uppercase", letterSpacing: 1 }}>{h}</th>
+                ))}
+              </tr></thead>
+              <tbody>{r.data.map((d, i) => {
+                const diff = d.investorEquity - d.altPortfolio;
+                return (<tr key={d.year} style={{ borderBottom: `1px solid ${C.rowBorder}`, background: i & 1 ? C.rowAlt : "transparent" }}>
+                  <td style={{ padding: "6px 10px", textAlign: "right", color: C.dim2 }}>{d.year}</td>
+                  <td style={{ padding: "6px 10px", textAlign: "right", color: C.inv }}>{fmt.n(d.effectiveRent)}</td>
+                  <td style={{ padding: "6px 10px", textAlign: "right", color: C.other }}>{fmt.n(d.monthlyCosts)}</td>
+                  <td style={{ padding: "6px 10px", textAlign: "right", color: d.monthlyCashFlow >= 0 ? C.inv : C.buy }}>{fmt.n(d.monthlyCashFlow)}</td>
+                  <td style={{ padding: "6px 10px", textAlign: "right", color: C.buy, fontWeight: 600 }}>{fmt.m1(d.investorEquity)}</td>
+                  <td style={{ padding: "6px 10px", textAlign: "right", color: C.rent, fontWeight: 600 }}>{fmt.m1(d.altPortfolio)}</td>
+                  <td style={{ padding: "6px 10px", textAlign: "right", color: diff >= 0 ? C.buy : C.rent, fontSize: 10 }}>{diff >= 0 ? `+${fmt.m1(diff)}` : `−${fmt.m1(Math.abs(diff))}`}</td>
+                </tr>);
+              })}</tbody>
+            </table>
+          </div>
+        </ChartSection>
+
+        {/* CTA */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14, marginTop: 16, marginBottom: 8 }}>
+          <button onClick={onGoCalc} style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "22px 20px", cursor: "pointer", textAlign: "left", fontFamily: "inherit" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}><span style={{ fontSize: 20 }}>🧮</span><span style={{ fontSize: 15, fontWeight: 700, color: C.txt }}>{t.invChoiceLive}</span></div>
+            <div style={{ fontSize: 13, color: C.dim, lineHeight: 1.6, marginBottom: 12 }}>{t.invChoiceLiveDesc}</div>
+            <span style={{ color: C.rent, fontSize: 13, fontWeight: 600 }}>{t.navCalc} →</span>
+          </button>
+          <button onClick={onGoLearn} style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "22px 20px", cursor: "pointer", textAlign: "left", fontFamily: "inherit" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}><span style={{ fontSize: 20 }}>📖</span><span style={{ fontSize: 15, fontWeight: 700, color: C.txt }}>{t.navLearn}</span></div>
+            <div style={{ fontSize: 13, color: C.dim, lineHeight: 1.6, marginBottom: 12 }}>{t.ctaLearnDesc}</div>
+            <span style={{ color: C.rent, fontSize: 13, fontWeight: 600 }}>{t.ctaLearnBtn} →</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <StickyVerdictBar verdictPos={verdictPos} verdictRef={verdictRef} label={propWins ? t.invPropertyWins : t.invAltWins} amount={`${fmt.m2(Math.abs(eqDiff))} CZK`} color={wc} />
+    </>
+  );
+}
+
 export default function App() {
   // Read initial page and lang from URL query params
   const initParams = useMemo(() => new URLSearchParams(window.location.search), []);
-  const validPages = ["calc", "pro", "learn", "about"];
+  const validPages = ["calc", "pro", "invest", "learn", "about"];
   const initPage = validPages.includes(initParams.get("page")) ? initParams.get("page") : "calc";
   const initLang = initParams.get("lang") === "en" ? "en" : "cs";
 
@@ -1703,7 +2325,7 @@ export default function App() {
         {menuOpen && (
           <div style={{ position: "absolute", top: "100%", left: 0, right: 0, background: C.menuBg, borderBottom: `1px solid ${C.menuBorder}`, animation: "slideIn 0.2s ease-out", zIndex: 61 }}>
             <div style={{ maxWidth: 960, margin: "0 auto", padding: "8px 24px 16px" }}>
-              {[["calc", t.navCalc, "🧮"], ["pro", t.navPro, "🔬"], ["learn", t.navLearn, "📖"], ["about", t.navAbout, "👋"]].map(([key, label, icon]) => (
+              {[["calc", t.navCalc, "🧮"], ["pro", t.navPro, "🔬"], ["invest", t.navInvest, "💰"], ["learn", t.navLearn, "📖"], ["about", t.navAbout, "👋"]].map(([key, label, icon]) => (
                 <button key={key} onClick={() => go(key)}
                   style={{
                     display: "flex", alignItems: "center", gap: 10, width: "100%",
@@ -1723,10 +2345,11 @@ export default function App() {
       </header>
 
       {/* ── PAGE CONTENT ── */}
-      {page === "calc" && <CalcPage t={t} track={track} onGoLearn={() => go("learn", "calc_bottom_cta")} onGoAbout={() => go("about", "calc_bottom_cta")} onGoPro={() => go("pro", "calc_cta")} />}
+      {page === "calc" && <CalcPage t={t} track={track} onGoLearn={() => go("learn", "calc_bottom_cta")} onGoAbout={() => go("about", "calc_bottom_cta")} onGoPro={() => go("pro", "calc_cta")} onGoInvest={() => go("invest", "calc_cta")} />}
       {page === "pro" && <ProCalcPage t={t} track={track} onGoCalc={() => go("calc", "pro_cta")} onGoLearn={() => go("learn", "pro_cta")} onGoLearnPro={() => { go("learn", "pro_cta_params"); setTimeout(() => document.getElementById("pro-params")?.scrollIntoView({ behavior: "smooth" }), 100); }} />}
-      {page === "learn" && <LearnPage t={t} track={track} onGoCalc={() => go("calc", "learn_cta")} onGoPro={() => go("pro", "learn_cta")} />}
-      {page === "about" && <AboutPage t={t} track={track} onGoCalc={() => go("calc", "about_cta")} onGoLearn={() => go("learn", "about_cta")} onGoPro={() => go("pro", "about_cta")} />}
+      {page === "invest" && <InvestorPage t={t} track={track} onGoCalc={() => go("calc", "invest_cta")} onGoLearn={() => go("learn", "invest_cta")} onGoLearnInv={() => { go("learn", "invest_cta_params"); setTimeout(() => document.getElementById("inv-params")?.scrollIntoView({ behavior: "smooth" }), 100); }} />}
+      {page === "learn" && <LearnPage t={t} track={track} onGoCalc={() => go("calc", "learn_cta")} onGoPro={() => go("pro", "learn_cta")} onGoInvest={() => go("invest", "learn_cta")} />}
+      {page === "about" && <AboutPage t={t} track={track} onGoCalc={() => go("calc", "about_cta")} onGoLearn={() => go("learn", "about_cta")} onGoPro={() => go("pro", "about_cta")} onGoInvest={() => go("invest", "about_cta")} />}
 
       {/* ── FOOTER ── */}
       <footer style={{ borderTop: `1px solid ${C.footerBorder}`, padding: "24px 24px 80px", background: C.footerBg }}>
