@@ -2232,6 +2232,7 @@ export default function App() {
 
   // Update URL when page or lang changes (without reload)
   const isInitialLoad = useRef(true);
+  const isPopState = useRef(false);
   useEffect(() => {
     const newParams = new URLSearchParams();
     if (page !== "calc") newParams.set("page", page);
@@ -2241,9 +2242,11 @@ export default function App() {
     const newUrl = window.location.pathname + (qs ? "?" + qs : "");
 
     if (isInitialLoad.current) {
-      // First render: replace so we don't double the initial entry
       window.history.replaceState({ page, lang }, "", newUrl);
       isInitialLoad.current = false;
+    } else if (isPopState.current) {
+      // Back/forward triggered this — don't push, just reset flag
+      isPopState.current = false;
     } else {
       window.history.pushState({ page, lang }, "", newUrl);
     }
@@ -2252,11 +2255,11 @@ export default function App() {
   // Handle browser back/forward buttons
   useEffect(() => {
     const onPopState = (e) => {
+      isPopState.current = true;
       if (e.state) {
         setPage(e.state.page || "calc");
         setLang(e.state.lang || "cs");
       } else {
-        // No state = initial entry, parse from URL
         const p = new URLSearchParams(window.location.search);
         setPage(validPages.includes(p.get("page")) ? p.get("page") : "calc");
         setLang(p.get("lang") === "en" ? "en" : "cs");
