@@ -1609,22 +1609,41 @@ export default function App() {
   const track = useCallback((name, params) => { if (typeof window.gtag === "function") window.gtag("event", name, params); }, []);
 
   // Update URL when page or lang changes (without reload)
+  const isInitialLoad = useRef(true);
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    // Preserve UTM params
-    const utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content"];
-    const utms = {};
-    utmKeys.forEach(k => { if (params.has(k)) utms[k] = params.get(k); });
-
     const newParams = new URLSearchParams();
     if (page !== "calc") newParams.set("page", page);
     if (lang !== "cs") newParams.set("lang", lang);
-    Object.entries(utms).forEach(([k, v]) => newParams.set(k, v));
 
     const qs = newParams.toString();
     const newUrl = window.location.pathname + (qs ? "?" + qs : "");
-    window.history.replaceState(null, "", newUrl);
+
+    if (isInitialLoad.current) {
+      // First render: replace so we don't double the initial entry
+      window.history.replaceState({ page, lang }, "", newUrl);
+      isInitialLoad.current = false;
+    } else {
+      window.history.pushState({ page, lang }, "", newUrl);
+    }
   }, [page, lang]);
+
+  // Handle browser back/forward buttons
+  useEffect(() => {
+    const onPopState = (e) => {
+      if (e.state) {
+        setPage(e.state.page || "calc");
+        setLang(e.state.lang || "cs");
+      } else {
+        // No state = initial entry, parse from URL
+        const p = new URLSearchParams(window.location.search);
+        setPage(validPages.includes(p.get("page")) ? p.get("page") : "calc");
+        setLang(p.get("lang") === "en" ? "en" : "cs");
+      }
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
 
   // Capture UTM params on first load
   useEffect(() => {
