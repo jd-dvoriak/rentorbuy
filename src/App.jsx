@@ -22,7 +22,7 @@ function useRecharts() {
 const I18N = {
   cs: {
     // Nav
-    navCalc: "Kalkulačka", navPro: "Detailní kalkulačka", navLearn: "Jak na to", navAbout: "O projektu",
+    navCalc: "Pronájem vs. Koupě", navPro: "Detailní kalkulačka", navLearn: "Jak na to", navAbout: "O projektu",
     // Header
     title: "Vyplatí se mi pronájem nebo koupě?",
     meta: "Výchozí hodnoty: průměry Praha, 2026 · Zdroje: Deloitte, ČNB, ČBA, ČSÚ",
@@ -187,7 +187,7 @@ const I18N = {
     aboutProDesc: "Zahrnuje daně, pojištění, údržbu, odpočty úroků a renovace.",
     aboutProBtn: "Otevřít detailní kalkulačku",
     // ── INVESTOR CALCULATOR ──
-    navInvest: "Investiční kalkulačka",
+    navInvest: "Investice do nemovitosti",
     invTitle: "Investiční kalkulačka: Výnos z pronájmu",
     invIntro: "Spočítejte si, jestli se vám vyplatí investice do bytu na pronájem. Kalkulačka zahrnuje všechny náklady vlastníka a porovnává s alternativní investicí.",
     invLinkBasic: "Kalkulačka bydlení", invLinkLearn: "Jak na to — průvodce",
@@ -246,7 +246,7 @@ const I18N = {
     invCoCDesc: "Roční čistý cash flow (po nákladech i splátce hypotéky) dělený vlastním vloženým kapitálem. Ukazuje, kolik % ročně vyděláváte na penězích, které jste skutečně investovali.",
   },
   en: {
-    navCalc: "Calculator", navPro: "Detailed Calculator", navLearn: "Learn", navAbout: "About",
+    navCalc: "Rent vs. Buy", navPro: "Detailed Calculator", navLearn: "Learn", navAbout: "About",
     title: "Should I Rent or Buy?",
     meta: "Defaults: Prague averages, 2026 · Sources: Deloitte, CNB, CBA, CZSO",
     rent: "Renting", buy: "Buying", opp: "Opportunity cost",
@@ -388,7 +388,7 @@ const I18N = {
     aboutProDesc: "Includes taxes, insurance, maintenance, interest deductions, and renovations.",
     aboutProBtn: "Open detailed calculator",
     // ── INVESTOR CALCULATOR ──
-    navInvest: "Investor Calculator",
+    navInvest: "Property Investment",
     invTitle: "Investor Calculator: Rental Yield",
     invIntro: "Calculate whether a rental property investment makes sense. Includes all owner costs and compares with an alternative investment.",
     invLinkBasic: "Housing calculator", invLinkLearn: "Learn — guide",
@@ -2328,20 +2328,23 @@ export default function App() {
         {menuOpen && (
           <div style={{ position: "absolute", top: "100%", left: 0, right: 0, background: C.menuBg, borderBottom: `1px solid ${C.menuBorder}`, animation: "slideIn 0.2s ease-out", zIndex: 61 }}>
             <div style={{ maxWidth: 960, margin: "0 auto", padding: "8px 24px 16px" }}>
-              {[["calc", t.navCalc, "🧮"], ["pro", t.navPro, "🔬"], ["invest", t.navInvest, "💰"], ["learn", t.navLearn, "📖"], ["about", t.navAbout, "👋"]].map(([key, label, icon]) => (
+              {[["calc", t.navCalc, "🏠"], ["invest", t.navInvest, "💰"], ["learn", t.navLearn, "📖"], ["about", t.navAbout, "👋"]].map(([key, label, icon]) => {
+                const isActive = key === "calc" ? (page === "calc" || page === "pro") : page === key;
+                return (
                 <button key={key} onClick={() => go(key)}
                   style={{
                     display: "flex", alignItems: "center", gap: 10, width: "100%",
                     padding: "14px 12px", margin: "2px 0",
-                    background: page === key ? `${C.rent}15` : "transparent",
-                    border: page === key ? `1px solid ${C.rent}33` : "1px solid transparent",
+                    background: isActive ? `${C.rent}15` : "transparent",
+                    border: isActive ? `1px solid ${C.rent}33` : "1px solid transparent",
                     borderRadius: 10, cursor: "pointer", fontFamily: "inherit",
-                    color: page === key ? C.txt : C.dim, fontSize: 15, fontWeight: page === key ? 700 : 400,
+                    color: isActive ? C.txt : C.dim, fontSize: 15, fontWeight: isActive ? 700 : 400,
                     textAlign: "left",
                   }}>
                   <span style={{ fontSize: 18 }}>{icon}</span> {label}
                 </button>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
