@@ -22,7 +22,7 @@ function useRecharts() {
 const I18N = {
   cs: {
     // Nav
-    navCalc: "Pronájem vs. Koupě", navPro: "Detailní kalkulačka", navLearn: "Jak na to", navAbout: "O projektu",
+    navCalc: "Pronájem vs. Koupě", navPro: "Detailní kalkulačka", navLearn: "Jak na to", navAbout: "O projektu", navData: "Data & Přehledy",
     // Header
     title: "Vyplatí se mi pronájem nebo koupě?",
     meta: "Výchozí hodnoty: průměry Praha, 2026 · Zdroje: Deloitte, ČNB, ČBA, ČSÚ",
@@ -236,6 +236,39 @@ const I18N = {
     invLS3t: "Daň z příjmu z pronájmu", invLS3: "Příjem z pronájmu podléhá dani z příjmu. Můžete uplatnit skutečné výdaje nebo paušál 30 %. Standardní sazba je 15 %.",
     invLS4t: "Cash-on-Cash výnos", invLS4: "Roční čistý cash flow dělený vlastním vloženým kapitálem. Ukazuje, kolik procent ročně vyděláváte na penězích, které jste skutečně investovali.",
     invLS5t: "Alternativní investice", invLS5: "Co by vaše peníze vydělaly, kdybyste je místo nemovitosti investovali na trhu. S&P 500 má historický průměr ~10 % ročně. Používáme 8 % jako konzervativní odhad.",
+    // ── DATA PAGE ──
+    dataTitle: "Data & Přehledy",
+    dataHero: "Trh s bydlením v ČR — čísla, trendy, přehledy",
+    dataHeroSub: "Aktuální data z ČSÚ, ČNB, ČBA a Deloitte. Aktualizujeme čtvrtletně.",
+    dataNlTitle: "Měsíční přehled trhu s bydlením",
+    dataNlDesc: "Jednou měsíčně vám pošleme klíčová čísla: sazby, ceny, trendy. Bez spamu, bez reklam. Můžete se kdykoli odhlásit.",
+    dataNlBtn: "Odebírat",
+    dataNlPlaceholder: "vas@email.cz",
+    dataNlConsent: "Přihlášením souhlasíte se zpracováním emailu pro zasílání přehledu.",
+    dataNlSuccess: "Děkujeme! Potvrzení najdete ve své schránce.",
+    dataReportTitle: "Čtvrtletní přehledy",
+    dataReportLatest: "Nejnovější",
+    dataCalcCta: "Spočítejte si to pro vaši situaci",
+    // Q4 2025 Report
+    dataQ4Title: "Trh s bydlením v ČR — Q4 2025",
+    dataQ4Date: "Únor 2026",
+    dataQ4Sources: "Zdroje: ČSÚ, ČNB, ČBA Hypomonitor, Flat Zone, Swiss Life Hypoindex, Deloitte",
+    dataQ4Summary: "Hlavní čísla za Q4 2025",
+    dataQ4Sec1: "Ceny bytů: zpomalení, ale stále nad průměrem",
+    dataQ4Sec1p1: "Růst nabídkových cen bytů ve čtvrtém čtvrtletí zpomalil na 2,4 % mezičtvrtletně — nejpomalejší tempo od poloviny 2024. Přesto jde o hodnotu nad dlouhodobým průměrem 1,8 %.",
+    dataQ4Sec1p2: "Transakční ceny nových bytů v Praze dosáhly 172 700 Kč/m². V Brně průměrná cena bytu překročila 85 000 Kč/m², v Ostravě se pohybuje kolem 45 000 Kč/m². Meziročně ceny bytů v ČR rostly o 13–17 %.",
+    dataQ4Sec1p3: "Tempo růstu cen nemovitostí sedm čtvrtletí v řadě překonává růst příjmů domácností. Na průměrný byt je v ČR potřeba 13,3 hrubých ročních platů — nejhorší dostupnost bydlení v Evropě.",
+    dataQ4Sec2: "Hypotéky: rekordní rok, ale trh se zklidňuje",
+    dataQ4Sec2p1: "Rok 2025 přinesl druhý nejvyšší objem nových hypoték v historii — 321 miliard Kč (+41 % meziročně). Celkový objem včetně refinancování dosáhl 406 miliard Kč.",
+    dataQ4Sec2p2: "Průměrná sazba nových hypoték se od října stabilizovala těsně pod 4,5 %. Průměrná výše nové hypotéky v prosinci dosáhla rekordních 4,5 milionu Kč.",
+    dataQ4Sec2p3: "Objem refinancovaných hypoték dosáhl 85 miliard Kč — téměř dvojnásobek oproti 2024. V roce 2026 se očekává další vlna (~460 miliard Kč).",
+    dataQ4Sec3: "Výhled na rok 2026",
+    dataQ4Sec3p1: "Sazby: stagnace nebo mírný růst. ČNB signalizuje, že základní sazba zůstane vyšší delší dobu.",
+    dataQ4Sec3p2: "Ceny: pokračující růst, ale pomalejší. Central Group odložil nové projekty — méně bytů na trhu = tlak na ceny.",
+    dataQ4Sec3p3: "Od dubna 2026 platí přísnější pravidla pro investiční hypotéky (3. a další nemovitost). Dotkne se ~7,5 % nových hypoték.",
+    dataQ4Sec4: "Co to znamená pro rozhodování",
+    dataQ4Sec4p1: "Při aktuálních pražských parametrech (nájem 22 000 Kč, byt 8,5M, sazba 4,5 %) je splátka hypotéky ~36 000 Kč — o 14 000 Kč více než nájem. Koupě se vyplatí až v horizontu 15+ let.",
+    dataQ4Sec4p2: "V Brně (nájem ~16 000, byt ~5,5M) a Ostravě (nájem ~11 000, byt ~2,8M) je poměr příznivější — splátka je blíže nájmu a koupě se může vyplatit dříve.",
     invHorizon: "Horizont",
     invBreakPropAfter: "Nemovitost se vyplatí od roku",
     invBreakAltAfter: "Alternativa vede po celou dobu. Nemovitost se vyplatí od roku",
@@ -246,7 +279,7 @@ const I18N = {
     invCoCDesc: "Roční čistý cash flow (po nákladech i splátce hypotéky) dělený vlastním vloženým kapitálem. Ukazuje, kolik % ročně vyděláváte na penězích, které jste skutečně investovali.",
   },
   en: {
-    navCalc: "Rent vs. Buy", navPro: "Detailed Calculator", navLearn: "Learn", navAbout: "About",
+    navCalc: "Rent vs. Buy", navPro: "Detailed Calculator", navLearn: "Learn", navAbout: "About", navData: "Data & Reports",
     title: "Should I Rent or Buy?",
     meta: "Defaults: Prague averages, 2026 · Sources: Deloitte, CNB, CBA, CZSO",
     rent: "Renting", buy: "Buying", opp: "Opportunity cost",
@@ -435,6 +468,38 @@ const I18N = {
     invLS3t: "Income tax on rental", invLS3: "Rental income is subject to income tax. You can claim actual expenses or a 30% flat deduction. Standard rate is 15%.",
     invLS4t: "Cash-on-Cash return", invLS4: "Annual net cash flow divided by your own invested capital. Shows what percentage return you earn on the money you actually put in.",
     invLS5t: "Alternative investment", invLS5: "What your money would earn if invested in the market instead of property. S&P 500 historical average is ~10% annually. We use 8% as a conservative estimate.",
+    // ── DATA PAGE ──
+    dataTitle: "Data & Reports",
+    dataHero: "Czech Housing Market — numbers, trends, reports",
+    dataHeroSub: "Current data from CZSO, CNB, CBA, and Deloitte. Updated quarterly.",
+    dataNlTitle: "Monthly housing market overview",
+    dataNlDesc: "Once a month, we send you key numbers: rates, prices, trends. No spam, no ads. Unsubscribe anytime.",
+    dataNlBtn: "Subscribe",
+    dataNlPlaceholder: "your@email.com",
+    dataNlConsent: "By subscribing you agree to receive the monthly overview via email.",
+    dataNlSuccess: "Thank you! Check your inbox for confirmation.",
+    dataReportTitle: "Quarterly reports",
+    dataReportLatest: "Latest",
+    dataCalcCta: "Calculate it for your situation",
+    dataQ4Title: "Czech Housing Market — Q4 2025",
+    dataQ4Date: "February 2026",
+    dataQ4Sources: "Sources: CZSO, CNB, CBA Hypomonitor, Flat Zone, Swiss Life Hypoindex, Deloitte",
+    dataQ4Summary: "Key numbers for Q4 2025",
+    dataQ4Sec1: "Apartment prices: slowing, but still above average",
+    dataQ4Sec1p1: "Asking price growth slowed to 2.4% quarter-over-quarter in Q4 — the slowest since mid-2024. Still above the long-term average of 1.8%.",
+    dataQ4Sec1p2: "Transaction prices for new apartments in Prague reached 172,700 CZK/m². In Brno, average prices exceeded 85,000 CZK/m². In Ostrava, they hover around 45,000 CZK/m². Year-over-year growth across CZ was 13–17%.",
+    dataQ4Sec1p3: "Property price growth has outpaced income growth for seven consecutive quarters. The Czech Republic requires 13.3 gross annual salaries to buy an average apartment — the worst housing affordability in Europe.",
+    dataQ4Sec2: "Mortgages: record year, but market is calming",
+    dataQ4Sec2p1: "2025 delivered the second-highest new mortgage volume in history — 321 billion CZK (+41% YoY). Total volume including refinancing reached 406 billion CZK.",
+    dataQ4Sec2p2: "Average mortgage rate stabilized just below 4.5% since October. Average new mortgage size hit a record 4.5 million CZK in December.",
+    dataQ4Sec2p3: "Refinancing volume reached 85 billion CZK — nearly double vs. 2024. Another wave (~460 billion CZK) is expected in 2026.",
+    dataQ4Sec3: "Outlook for 2026",
+    dataQ4Sec3p1: "Rates: stagnation or slight increase. CNB signals the base rate will stay higher for longer.",
+    dataQ4Sec3p2: "Prices: continued growth but slower. Central Group postponed new projects — fewer apartments on the market = price pressure continues.",
+    dataQ4Sec3p3: "From April 2026, stricter rules apply for investment mortgages (3rd+ property). Affects ~7.5% of new mortgages.",
+    dataQ4Sec4: "What this means for your decision",
+    dataQ4Sec4p1: "At current Prague defaults (rent 22,000 CZK, apartment 8.5M, rate 4.5%), the mortgage payment is ~36,000 CZK — 14,000 CZK more than rent. Buying only pays off after 15+ years.",
+    dataQ4Sec4p2: "In Brno (rent ~16,000, apartment ~5.5M) and Ostrava (rent ~11,000, apartment ~2.8M), the ratio is more favorable — payments are closer to rent and buying can pay off sooner.",
     invHorizon: "Horizon",
     invBreakPropAfter: "Property becomes better from",
     invBreakAltAfter: "Alternative leads the whole time. Property only wins from",
@@ -1474,6 +1539,8 @@ function CalcPage({ t, track, onGoLearn, onGoAbout, onGoPro, onGoInvest }) {
           </div>
         </div>
 
+        <NewsletterSignup t={t} track={track} compact />
+
         {/* Equity Chart */}
         <ChartSection title={t.secEquity} open={openSec.eq} onToggle={() => toggleSec("eq")}>
           {chartsReady ? <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 12px 8px 0" }}>
@@ -1808,6 +1875,8 @@ function ProCalcPage({ t, track, onGoCalc, onGoLearn, onGoLearnPro }) {
           </div>
         </div>
 
+        <NewsletterSignup t={t} track={track} compact />
+
         {/* ── EQUITY CHART ── */}
         <ChartSection title={t.secEquity} open={openSec.eq} onToggle={() => toggleSec("eq")}>
           {chartsReady ? <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 12px 8px 0" }}>
@@ -1894,6 +1963,142 @@ function ProCalcPage({ t, track, onGoCalc, onGoLearn, onGoLearnPro }) {
     {/* ── STICKY BOTTOM BAR ── */}
     <StickyVerdictBar verdictPos={verdictPos} verdictRef={verdictRef} label={bw ? t.buyWins : t.rentWins} amount={`${fmt.m2(Math.abs(eqDiff))} CZK`} color={wc} />
     </>
+  );
+}
+
+
+/* ══════════════════════════════════════════
+   NEWSLETTER SIGNUP COMPONENT
+   ══════════════════════════════════════════ */
+const MAILCHIMP_URL = "https://rentorbuy.us10.list-manage.com/subscribe/post?u=654065e6c8a5bddec5a2cb28b&id=32cd2c098d&f_id=009718e2f0";
+
+function NewsletterSignup({ t, track, compact }) {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!email || !email.includes("@")) return;
+    track("newsletter_signup", { location: compact ? "inline" : "data_page" });
+    window.open(`${MAILCHIMP_URL}&EMAIL=${encodeURIComponent(email)}`, "_blank");
+    setSubmitted(true);
+  };
+
+  if (compact) {
+    return (
+      <div style={{ background: `${C.rent}08`, border: `1px solid ${C.rent}22`, borderRadius: 12, padding: "16px 18px", marginTop: 24 }}>
+        <div style={{ fontSize: 13, fontWeight: 700, color: C.txt, marginBottom: 4 }}>{t.dataNlTitle}</div>
+        <div style={{ fontSize: 11, color: C.dim, marginBottom: 10, lineHeight: 1.5 }}>{t.dataNlDesc}</div>
+        {submitted ? (
+          <div style={{ fontSize: 12, color: C.inv, fontWeight: 600 }}>{t.dataNlSuccess}</div>
+        ) : (
+          <form onSubmit={handleSubmit} style={{ display: "flex", gap: 6 }}>
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t.dataNlPlaceholder}
+              style={{ flex: 1, padding: "8px 12px", background: C.card, border: `1px solid ${C.border}`, borderRadius: 8, color: C.txt, fontSize: 13, fontFamily: "inherit", outline: "none" }} />
+            <button type="submit" style={{ padding: "8px 16px", background: C.rent, border: "none", borderRadius: 8, color: "#fff", fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>{t.dataNlBtn}</button>
+          </form>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ background: `linear-gradient(135deg, ${C.rent}15, ${C.rent}05)`, border: `1px solid ${C.rent}33`, borderRadius: 16, padding: "32px 28px", marginBottom: 32 }}>
+      <div style={{ fontSize: 22, fontWeight: 800, color: C.txt, marginBottom: 6 }}>{t.dataNlTitle}</div>
+      <div style={{ fontSize: 15, color: C.dim, lineHeight: 1.7, marginBottom: 20, maxWidth: 560 }}>{t.dataNlDesc}</div>
+      {submitted ? (
+        <div style={{ fontSize: 15, color: C.inv, fontWeight: 600, padding: "12px 0" }}>{t.dataNlSuccess}</div>
+      ) : (
+        <>
+          <form onSubmit={handleSubmit} style={{ display: "flex", gap: 8, maxWidth: 440 }}>
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t.dataNlPlaceholder}
+              style={{ flex: 1, padding: "12px 16px", background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, color: C.txt, fontSize: 15, fontFamily: "inherit", outline: "none" }} />
+            <button type="submit" style={{ padding: "12px 24px", background: C.rent, border: "none", borderRadius: 10, color: "#fff", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap" }}>{t.dataNlBtn}</button>
+          </form>
+          <div style={{ fontSize: 10, color: C.faint, marginTop: 8 }}>{t.dataNlConsent}</div>
+        </>
+      )}
+    </div>
+  );
+}
+
+/* ══════════════════════════════════════════
+   DATA & REPORTS PAGE
+   ══════════════════════════════════════════ */
+function DataPage({ t, track, onGoCalc, onGoInvest, lang }) {
+  const P = ({ children, style }) => <p style={{ fontSize: 15, color: C.dim, lineHeight: 1.8, margin: "0 0 14px", textAlign: "justify", ...style }}>{children}</p>;
+  const H = ({ children }) => <h3 style={{ fontSize: 17, fontWeight: 700, color: C.txt, margin: "28px 0 12px" }}>{children}</h3>;
+
+  const StatCard = ({ label, value, sub, color }) => (
+    <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "14px 16px", flex: "1 1 140px", minWidth: 140 }}>
+      <div style={{ fontSize: 9, color: C.dim, textTransform: "uppercase", letterSpacing: 1 }}>{label}</div>
+      <div style={{ fontSize: 20, fontWeight: 700, color: color || C.txt, marginTop: 4, fontFamily: "monospace" }}>{value}</div>
+      {sub && <div style={{ fontSize: 10, color: C.faint, marginTop: 2 }}>{sub}</div>}
+    </div>
+  );
+
+  return (
+    <main style={{ maxWidth: 680, margin: "0 auto", padding: "24px 24px 48px" }}>
+      <div style={{ padding: "40px 0 32px", borderBottom: `1px solid ${C.border}`, marginBottom: 8 }}>
+        <h1 style={{ fontSize: 28, fontWeight: 800, color: C.txt, lineHeight: 1.3, margin: 0 }}>{t.dataHero}</h1>
+        <p style={{ fontSize: 16, color: C.dim, marginTop: 8 }}>{t.dataHeroSub}</p>
+      </div>
+
+      <div style={{ marginTop: 32 }}>
+        <NewsletterSignup t={t} track={track} />
+      </div>
+
+      <h2 style={{ fontSize: 22, fontWeight: 800, color: C.txt, margin: "40px 0 20px", display: "flex", alignItems: "center", gap: 10 }}>
+        {t.dataReportTitle}
+      </h2>
+
+      <div style={{ background: `${C.rent}08`, border: `1px solid ${C.rent}22`, borderRadius: 12, padding: "6px 14px", display: "inline-block", fontSize: 11, fontWeight: 600, color: C.rent, marginBottom: 16 }}>
+        {t.dataReportLatest}
+      </div>
+
+      <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 16, padding: "28px 24px", marginBottom: 32 }}>
+        <div style={{ fontSize: 12, color: C.faint, marginBottom: 4 }}>{t.dataQ4Date}</div>
+        <h2 style={{ fontSize: 22, fontWeight: 800, color: C.txt, margin: "0 0 8px" }}>{t.dataQ4Title}</h2>
+        <div style={{ fontSize: 11, color: C.faint, marginBottom: 20 }}>{t.dataQ4Sources}</div>
+
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 24 }}>
+          <StatCard label={lang === "cs" ? "Cena nového bytu Praha" : "New apt price Prague"} value="172 700 Kč/m²" sub="+2,2 % QoQ" color={C.buy} />
+          <StatCard label={lang === "cs" ? "Průměrná sazba" : "Average rate"} value="4,48 %" sub={lang === "cs" ? "beze změny od října" : "unchanged since Oct"} color={C.inv} />
+          <StatCard label={lang === "cs" ? "Nové hypotéky 2025" : "New mortgages 2025"} value="321 mld." sub="+41 % YoY" color={C.rent} />
+          <StatCard label={lang === "cs" ? "Průměrná hypotéka" : "Avg mortgage size"} value="4,5 mil." sub={lang === "cs" ? "rekord" : "record"} color={C.warn} />
+        </div>
+
+        <H>{t.dataQ4Sec1}</H>
+        <P>{t.dataQ4Sec1p1}</P>
+        <P>{t.dataQ4Sec1p2}</P>
+        <P style={{ fontStyle: "italic", color: C.faint }}>{t.dataQ4Sec1p3}</P>
+
+        <H>{t.dataQ4Sec2}</H>
+        <P>{t.dataQ4Sec2p1}</P>
+        <P>{t.dataQ4Sec2p2}</P>
+        <P>{t.dataQ4Sec2p3}</P>
+
+        <H>{t.dataQ4Sec3}</H>
+        <P>{t.dataQ4Sec3p1}</P>
+        <P>{t.dataQ4Sec3p2}</P>
+        <P style={{ fontWeight: 600, color: C.txt }}>{t.dataQ4Sec3p3}</P>
+
+        <H>{t.dataQ4Sec4}</H>
+        <P>{t.dataQ4Sec4p1}</P>
+        <P>{t.dataQ4Sec4p2}</P>
+
+        <div style={{ display: "flex", gap: 10, marginTop: 20 }}>
+          <button onClick={onGoCalc} style={{ flex: 1, padding: "14px", background: C.rent, border: "none", borderRadius: 10, color: "#fff", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
+            {t.dataCalcCta} →
+          </button>
+          <button onClick={onGoInvest} style={{ flex: 1, padding: "14px", background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, color: C.txt, fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>
+            {t.navInvest} →
+          </button>
+        </div>
+      </div>
+
+      <NewsletterSignup t={t} track={track} compact />
+    </main>
   );
 }
 
@@ -2096,6 +2301,8 @@ function InvestorPage({ t, track, onGoCalc, onGoLearn, onGoLearnInv }) {
           </div>
         </div>
 
+        <NewsletterSignup t={t} track={track} compact />
+
         {/* Equity Chart */}
         <ChartSection title={t.invEquityChart} open={openSec.eq} onToggle={() => toggleSec("eq")}>
           {chartsReady ? <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 12px 8px 0" }}>
@@ -2215,7 +2422,7 @@ function InvestorPage({ t, track, onGoCalc, onGoLearn, onGoLearnInv }) {
 export default function App() {
   // Read initial page and lang from URL query params
   const initParams = useMemo(() => new URLSearchParams(window.location.search), []);
-  const validPages = ["calc", "pro", "invest", "learn", "about"];
+  const validPages = ["calc", "pro", "invest", "learn", "data", "about"];
   const initPage = validPages.includes(initParams.get("page")) ? initParams.get("page") : "calc";
   const initLang = initParams.get("lang") === "en" ? "en" : "cs";
 
@@ -2328,7 +2535,7 @@ export default function App() {
         {menuOpen && (
           <div style={{ position: "absolute", top: "100%", left: 0, right: 0, background: C.menuBg, borderBottom: `1px solid ${C.menuBorder}`, animation: "slideIn 0.2s ease-out", zIndex: 61 }}>
             <div style={{ maxWidth: 960, margin: "0 auto", padding: "8px 24px 16px" }}>
-              {[["calc", t.navCalc, "🏠"], ["invest", t.navInvest, "💰"], ["learn", t.navLearn, "📖"], ["about", t.navAbout, "👋"]].map(([key, label, icon]) => {
+              {[["calc", t.navCalc, "🏠"], ["invest", t.navInvest, "💰"], ["data", t.navData, "📊"], ["learn", t.navLearn, "📖"], ["about", t.navAbout, "👋"]].map(([key, label, icon]) => {
                 const isActive = key === "calc" ? (page === "calc" || page === "pro") : page === key;
                 return (
                 <button key={key} onClick={() => go(key)}
@@ -2355,7 +2562,8 @@ export default function App() {
       {page === "pro" && <ProCalcPage t={t} track={track} onGoCalc={() => go("calc", "pro_cta")} onGoLearn={() => go("learn", "pro_cta")} onGoLearnPro={() => { go("learn", "pro_cta_params"); setTimeout(() => document.getElementById("pro-params")?.scrollIntoView({ behavior: "smooth" }), 100); }} />}
       {page === "invest" && <InvestorPage t={t} track={track} onGoCalc={() => go("calc", "invest_cta")} onGoLearn={() => go("learn", "invest_cta")} onGoLearnInv={() => { go("learn", "invest_cta_params"); setTimeout(() => document.getElementById("inv-params")?.scrollIntoView({ behavior: "smooth" }), 100); }} />}
       {page === "learn" && <LearnPage t={t} track={track} onGoCalc={() => go("calc", "learn_cta")} onGoPro={() => go("pro", "learn_cta")} onGoInvest={() => go("invest", "learn_cta")} />}
-      {page === "about" && <AboutPage t={t} track={track} onGoCalc={() => go("calc", "about_cta")} onGoLearn={() => go("learn", "about_cta")} onGoPro={() => go("pro", "about_cta")} onGoInvest={() => go("invest", "about_cta")} />}
+      {page === "data" && <DataPage t={t} track={track} lang={lang} onGoCalc={() => go("calc", "data_cta")} onGoInvest={() => go("invest", "data_cta")} />}
+      {page === "about" && <AboutPage t={t} track={track} onGoCalc={() => go("calc", "about_cta")} onGoLearn={() => go("learn", "about_cta")} onGoPro={() => go("pro", "about_cta")} onGoInvest={() => go("invest", "about_cta")} onGoData={() => go("data", "about_cta")} />}
 
       {/* ── FOOTER ── */}
       <footer style={{ borderTop: `1px solid ${C.footerBorder}`, padding: "24px 24px 80px", background: C.footerBg }}>
