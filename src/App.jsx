@@ -972,14 +972,14 @@ function computeInvestor(params) {
 function Slider({ label, value, onChange, min, max, step, format, unit, color }) {
   const pct = ((value - min) / (max - min)) * 100;
   return (
-    <label style={{ display: "block", marginBottom: 14, cursor: "pointer" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
-        <span style={{ fontSize: 11, color: C.dim }}>{label}</span>
-        <span style={{ fontSize: 14, fontWeight: 700, color, fontFamily: "monospace" }}>{format ? format(value) : value}{unit && ` ${unit}`}</span>
+    <label style={{ display: "block", marginBottom: 18, cursor: "pointer" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
+        <span style={{ fontSize: 12, color: C.dim }}>{label}</span>
+        <span style={{ fontSize: 15, fontWeight: 700, color, fontFamily: "monospace" }}>{format ? format(value) : value}{unit && ` ${unit}`}</span>
       </div>
       <input type="range" min={min} max={max} step={step} value={value} onChange={(e) => onChange(+e.target.value)} aria-label={label}
-        style={{ width: "100%", height: 8, appearance: "none", WebkitAppearance: "none", background: `linear-gradient(90deg,${color} ${pct}%,${C.sliderTrack} ${pct}%)`, borderRadius: 6, outline: "none", cursor: "pointer", touchAction: "manipulation" }} />
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 9, color: C.faint, marginTop: 2 }}>
+        style={{ width: "100%", height: 10, appearance: "none", WebkitAppearance: "none", background: `linear-gradient(90deg,${color} ${pct}%,${C.sliderTrack} ${pct}%)`, borderRadius: 6, outline: "none", cursor: "pointer", touchAction: "manipulation" }} />
+      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 9, color: C.faint, marginTop: 3 }}>
         <span>{format ? format(min) : min}{unit && ` ${unit}`}</span><span>{format ? format(max) : max}{unit && ` ${unit}`}</span>
       </div>
     </label>
@@ -1274,6 +1274,13 @@ function AboutPage({ t, track, onGoCalc, onGoLearn, onGoPro, onGoInvest }) {
         <div style={{ fontSize: 13, color: C.dim, marginBottom: 6 }}>{t.aboutContact}</div>
         <a href="mailto:team@rentorbuy.cz" onClick={() => track("contact_click", { method: "email" })}
           style={{ color: C.rent, fontSize: 18, textDecoration: "none", fontWeight: 700 }}>team@rentorbuy.cz</a>
+        <div style={{ marginTop: 10 }}>
+          <a href="https://instagram.com/rentorbuy.cz" target="_blank" rel="noopener noreferrer" onClick={() => track("contact_click", { method: "instagram" })}
+            style={{ color: C.rent, fontSize: 15, textDecoration: "none", fontWeight: 600, display: "inline-flex", alignItems: "center", gap: 6 }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            @rentorbuy.cz
+          </a>
+        </div>
       </div>
     </main>
   );
@@ -1389,6 +1396,8 @@ function CalcPage({ t, track, onGoLearn, onGoAbout, onGoPro, onGoInvest }) {
   const [propAppr, setPropAppr] = useState(5);
   const [openSec, setOpenSec] = useState({ eq: true, mo: false, tbl: false });
 
+  useEffect(() => { if (downPayment > purchasePrice) setDownPayment(purchasePrice); }, [purchasePrice]);
+
   const { verdictRef, verdictPos } = useVerdictObserver(track, "calc");
   const ts = useSliderTracking(track, "calc");
   const s = (setter, name) => (v) => { setter(v); ts(name, v); };
@@ -1399,7 +1408,7 @@ function CalcPage({ t, track, onGoLearn, onGoAbout, onGoPro, onGoInvest }) {
     setOpenSec((p) => { const n = { ...p, [k]: !p[k] }; if (n[k]) track("section_opened", { section: k }); return n; });
   }, [track]);
 
-  const r = useMemo(() => compute(baseRent, rentRate, purchasePrice, downPayment, annualRate, mortgageYears, investReturn, propAppr),
+  const r = useMemo(() => compute(baseRent, rentRate, purchasePrice, Math.min(downPayment, purchasePrice), annualRate, mortgageYears, investReturn, propAppr),
     [baseRent, rentRate, purchasePrice, downPayment, annualRate, mortgageYears, investReturn, propAppr]);
 
   const last = r.data[r.data.length - 1];
@@ -1485,7 +1494,7 @@ function CalcPage({ t, track, onGoLearn, onGoAbout, onGoPro, onGoInvest }) {
           </fieldset>
           <fieldset style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "16px 18px 8px", margin: 0 }}>
             <legend style={{ fontSize: 10, color: C.buy, textTransform: "uppercase", letterSpacing: 2, fontWeight: 700, padding: "0 4px" }}>{t.buy}</legend>
-            <Slider label={t.price} value={purchasePrice} onChange={s(setPurchasePrice, "purchase_price")} min={2e6} max={30e6} step={5e5} format={fmt.m1} unit="CZK" color={C.buy} />
+            <Slider label={t.price} value={purchasePrice} onChange={s(setPurchasePrice, "purchase_price")} min={5e5} max={30e6} step={5e5} format={fmt.m1} unit="CZK" color={C.buy} />
             <Slider label={t.dp} value={downPayment} onChange={(v) => { const clamped = Math.min(v, purchasePrice); setDownPayment(clamped); ts("down_payment", clamped); }} min={0} max={purchasePrice} step={1e5} format={fmt.m1} unit="CZK" color={C.buy} />
             <Slider label={t.rate} value={annualRate} onChange={s(setAnnualRate, "mortgage_rate")} min={1} max={10} step={0.1} unit="%" color={C.buy} />
             <Slider label={t.term} value={mortgageYears} onChange={s(setMortgageYears, "mortgage_term")} min={5} max={40} step={1} unit={t.unit} color={C.buy} />
@@ -1688,11 +1697,12 @@ function ProCalcPage({ t, track, onGoCalc, onGoLearn, onGoLearnPro }) {
   const s = (setter, name) => (v) => { setter(v); ts(name, v); };
   useTimeOnPage(track, "pro");
   const chartsReady = useRecharts();
+  useEffect(() => { if (downPayment > purchasePrice) setDownPayment(purchasePrice); }, [purchasePrice]);
 
   // ── Compute ──
   const r = useMemo(() => computePro({
     baseRent, rentRate, rentalDeposit,
-    purchasePrice, downPayment, annualRate, mortgageYears, maintenanceFee,
+    purchasePrice, downPayment: Math.min(downPayment, purchasePrice), annualRate, mortgageYears, maintenanceFee,
     investReturn, propertyAppreciation: propAppr,
     propertyTaxRate, propertyInsRate, mortgageInsRate,
     transactionCost, interestDeductionLimit, incomeTaxRate,
@@ -1768,7 +1778,7 @@ function ProCalcPage({ t, track, onGoCalc, onGoLearn, onGoLearnPro }) {
           {/* Mortgage */}
           <fieldset style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "16px 18px 8px", margin: 0 }}>
             <legend style={{ fontSize: 10, color: C.buy, textTransform: "uppercase", letterSpacing: 2, fontWeight: 700, padding: "0 4px" }}>{t.buy}</legend>
-            <Slider label={t.price} value={purchasePrice} onChange={s(setPurchasePrice, "purchase_price")} min={2e6} max={30e6} step={5e5} format={fmt.m1} unit="CZK" color={C.buy} />
+            <Slider label={t.price} value={purchasePrice} onChange={s(setPurchasePrice, "purchase_price")} min={5e5} max={30e6} step={5e5} format={fmt.m1} unit="CZK" color={C.buy} />
             <Slider label={t.dp} value={downPayment} onChange={(v) => { const clamped = Math.min(v, purchasePrice); setDownPayment(clamped); ts("down_payment", clamped); }} min={0} max={purchasePrice} step={1e5} format={fmt.m1} unit="CZK" color={C.buy} />
             <Slider label={t.rate} value={annualRate} onChange={s(setAnnualRate, "mortgage_rate")} min={1} max={10} step={0.1} unit="%" color={C.buy} />
             <Slider label={t.term} value={mortgageYears} onChange={s(setMortgageYears, "mortgage_term")} min={5} max={40} step={1} unit={t.proRenoCycleUnit} color={C.buy} />
@@ -2134,9 +2144,10 @@ function InvestorPage({ t, track, onGoCalc, onGoLearn, onGoLearnInv }) {
   const s = (setter, name) => (v) => { setter(v); ts(name, v); };
   useTimeOnPage(track, "invest");
   const chartsReady = useRecharts();
+  useEffect(() => { if (downPayment > purchasePrice) setDownPayment(purchasePrice); }, [purchasePrice]);
 
   const r = useMemo(() => computeInvestor({
-    purchasePrice, downPayment, annualRate, mortgageYears, propertyAppreciation: propAppr,
+    purchasePrice, downPayment: Math.min(downPayment, purchasePrice), annualRate, mortgageYears, propertyAppreciation: propAppr,
     baseRent, rentGrowth, occupancy, maintenanceFee, transactionCost,
     propertyTaxRate, propertyInsRate, mortgageInsRate, incomeTaxRate, mgmtFee,
     renovationCycle, renovationCostPct, altReturn,
@@ -2180,7 +2191,7 @@ function InvestorPage({ t, track, onGoCalc, onGoLearn, onGoLearnInv }) {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 14, marginBottom: 24 }}>
           <fieldset style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "16px 18px 8px", margin: 0 }}>
             <legend style={{ fontSize: 10, color: C.buy, textTransform: "uppercase", letterSpacing: 2, fontWeight: 700, padding: "0 4px" }}>{t.invProperty}</legend>
-            <Slider label={t.invPrice} value={purchasePrice} onChange={s(setPurchasePrice, "purchase_price")} min={2e6} max={30e6} step={5e5} format={fmt.m1} unit="CZK" color={C.buy} />
+            <Slider label={t.invPrice} value={purchasePrice} onChange={s(setPurchasePrice, "purchase_price")} min={5e5} max={30e6} step={5e5} format={fmt.m1} unit="CZK" color={C.buy} />
             <Slider label={t.invDP} value={downPayment} onChange={(v) => { const c = Math.min(v, purchasePrice); setDownPayment(c); ts("down_payment", c); }} min={0} max={purchasePrice} step={1e5} format={fmt.m1} unit="CZK" color={C.buy} />
             <Slider label={t.invRate} value={annualRate} onChange={s(setAnnualRate, "mortgage_rate")} min={1} max={10} step={0.1} unit="%" color={C.buy} />
             <Slider label={t.invTerm} value={mortgageYears} onChange={s(setMortgageYears, "mortgage_term")} min={5} max={40} step={1} unit={t.unit} color={C.buy} />
@@ -2495,6 +2506,39 @@ export default function App() {
       <style>{`
         @keyframes slideIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        input[type="range"]::-webkit-slider-runnable-track {
+          height: 10px; border-radius: 6px;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+          -webkit-appearance: none; appearance: none;
+          width: 26px; height: 26px; border-radius: 50%;
+          background: #e0e0e4; border: 2px solid #a0a0a8;
+          box-shadow: 0 1px 6px rgba(0,0,0,0.2);
+          cursor: pointer; margin-top: -8px;
+          transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover,
+        input[type="range"]::-webkit-slider-thumb:active {
+          transform: scale(1.15);
+          box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+          background: #d0d0d6;
+        }
+        input[type="range"]::-moz-range-track {
+          height: 10px; border-radius: 6px;
+        }
+        input[type="range"]::-moz-range-thumb {
+          width: 26px; height: 26px; border-radius: 50%;
+          background: #e0e0e4; border: 2px solid #a0a0a8;
+          box-shadow: 0 1px 6px rgba(0,0,0,0.2);
+          cursor: pointer;
+          transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        input[type="range"]::-moz-range-thumb:hover,
+        input[type="range"]::-moz-range-thumb:active {
+          transform: scale(1.15);
+          box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+          background: #d0d0d6;
+        }
       `}</style>
 
       {/* ── HEADER ── */}
@@ -2575,6 +2619,13 @@ export default function App() {
           <div style={{ textAlign: "right", marginLeft: "auto" }}>
             <div style={{ fontSize: 11, color: C.dim, marginBottom: 4 }}>{t.contact}</div>
             <a href="mailto:team@rentorbuy.cz" onClick={() => track("contact_click", { method: "email" })} style={{ color: C.rent, fontSize: 13, textDecoration: "none", fontWeight: 600 }}>team@rentorbuy.cz</a>
+            <div style={{ marginTop: 8 }}>
+              <a href="https://instagram.com/rentorbuy.cz" target="_blank" rel="noopener noreferrer" onClick={() => track("contact_click", { method: "instagram" })}
+                style={{ color: C.rent, fontSize: 12, textDecoration: "none", fontWeight: 500, display: "inline-flex", alignItems: "center", gap: 4 }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                @rentorbuy.cz
+              </a>
+            </div>
             <div style={{ fontSize: 10, color: C.footerTxt2, marginTop: 8 }}>© 2026 rentorbuy.cz</div>
           </div>
         </div>
